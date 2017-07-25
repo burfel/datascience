@@ -12,7 +12,7 @@ import numpy as np
 
 # In[2]:
 
-def initialize(randspeeds = True, N = 100, width = 1000, height = 1000):
+def initialize(randspeeds = True, N = 100, width = 1000, height = 800):
 
     agents = [Point(width*random(), height*random()) for i in range(N)]
 
@@ -76,7 +76,7 @@ def plot(agents, width, height):
 
 # In[3]:
 
-def couzin(agents, speeds, N, rr=1, ro=2, ra=3):
+def couzin(agents, speeds, N, rr=20, ro=2, ra=3):
     # watch only particles inrepuls
     distances = [get_distances(agent, agents) for agent in agents]
     for i in range(N): ### FIX - Eliminate, in some way the i-i interaction
@@ -138,5 +138,5 @@ def simulate(N_steps = 10, a = 0.1, dt = 0.01, N = 100, width = 1000, height = 1
         treat_boundary(width, height, agents, speeds, N)
     window.close()
 
-simulate(N_steps = 100, a =0.1, dt = 10)
+simulate(N_steps = 1000, a =0.1, dt = 1)
 
