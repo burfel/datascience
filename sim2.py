@@ -17,7 +17,7 @@ def initialize(randspeeds = True, N = 100, width = 1000, height = 1000):
     agents = [Point(width*random(), height*random()) for i in range(N)]
 
     if randspeeds:
-        speeds = [[10*(random() - 0.5), 10*(random() - 0.5)] for i in range(N)]
+        speeds = [[(random() - 0.5), (random() - 0.5)] for i in range(N)]
     else:
         speeds = N * [[0, 0]]
 
@@ -139,26 +139,4 @@ def simulate(N_steps = 10, a = 0.1, dt = 0.01, N = 100, width = 1000, height = 1
     window.close()
 
 simulate(N_steps = 100, a =0.1, dt = 10)
-
-
-# In[ ]:
-
-from graphics import *
-
-def plot(width, height):
-    win = GraphWin("Swarm", width, height) # size of box
-    x = Point(500,500)
-    x.draw(win)
-    for i in range(10):
-        win.getMouse() # Pause to view result
-        x.move(10,10)
-    win.getMouse()
-    win.close()    # Close window when done
-
-plot(1000, 1000)
-
-
-# In[ ]:
-
-
 
