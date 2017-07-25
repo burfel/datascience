@@ -77,7 +77,6 @@ def plot(agents, width, height):
 ''' 2. NEIGHBOURHOOD MODEL PROPOSED IN COUZIN 2002
 '''
 
-<<<<<<< HEAD
 def couzin(agents, speeds, N, rr=20, ro=2, ra=3):
     # watch only particles inrepuls
     # compute distances to all agents for each agent
