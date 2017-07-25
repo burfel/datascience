@@ -1,7 +1,8 @@
 
 # coding: utf-8
 
-# In[1]:
+''' 1. SIMPLE MOTION MODEL
+'''
 
 import matplotlib.pyplot as plt
 from graphics import *
@@ -10,20 +11,20 @@ from random import *
 import numpy as np
 
 
-# In[2]:
+def initialize(randspeeds = True, N = 100, width = 1000, height = 800):
 
-def initialize(randspeeds = True, N = 100, width = 1000, height = 1000):
-
+# initialize positions of agents, speed of agents, width and height of window
     agents = [Point(width*random(), height*random()) for i in range(N)]
 
     if randspeeds:
-        speeds = [[(random() - 0.5), (random() - 0.5)] for i in range(N)]
+        speeds = [[10*(random() - 0.5), 10*(random() - 0.5)] for i in range(N)]
     else:
         speeds = N * [[0, 0]]
 
     return agents, speeds, plot(agents, width, height)
 
 
+# define the coupling between the agents 
 def couple_speeds(agents, speeds, a, N):
     nearest_neighbours = [nearest_neighbour(agent, agents, N) for agent in agents]
     for i in range(N):
@@ -33,21 +34,20 @@ def couple_speeds(agents, speeds, a, N):
             speeds[i] = map(lambda x: 10 * x/np.sqrt(speeds[i][0]**2+speeds[i][1]**2), speeds[i]) 
     return
 
+# define a distance functions 
 def get_distances(agent, agents):
     dists = [(a.getX() - agent.getX())**2 + (a.getY() - agent.getY())**2 for a in agents]
     return dists
 
+# returns the index for the nearest agent, i.e. the one with the smallest to Euclidean distance to the agent given
 def nearest_neighbour(agent, agents, N):
-    """
-    Returns the index for the agent with smallest Eucledian distance to agent in question
-    """
     distances = get_distances(agent, agents)
     j = next(i for i in range(N) if agents[i] is agent)
     distances[j] = distances[j-1] + 1
 
     return distances.index(min(distances))
     
-    
+# define boundary conditions
 def treat_boundary(x_bound, y_bound, agents, speeds, N):
     for i in range(N):
         [x, y] = [agents[i].getX(), agents[i].getY()]
@@ -56,7 +56,7 @@ def treat_boundary(x_bound, y_bound, agents, speeds, N):
         if y > y_bound or y < 0:
             speeds[i][1] = -speeds[i][1]
 
-
+# moving the agents, rendering provided by graphics.py
 def next_step(agents, speeds, dt, N):
     dxvec = [dt * speeds[i][0] for i in range(N)]
     dyvec = [dt * speeds[i][1] for i in range(N)]
@@ -64,7 +64,7 @@ def next_step(agents, speeds, dt, N):
     for i in range(N):
         agents[i].move(dxvec[i], dyvec[i])
         
-
+# plot agents
 def plot(agents, width, height):
     win = GraphWin("Swarm", width, height) # size of box
     for agent in agents:
@@ -74,16 +74,20 @@ def plot(agents, width, height):
     #win.close()
 
 
-# In[3]:
+''' 2. NEIGHBOURHOOD MODEL PROPOSED IN COUZIN 2002
+'''
 
-def couzin(agents, speeds, N, rr=1, ro=2, ra=3):
+def couzin(agents, speeds, N, rr=20, ro=2, ra=3):
     # watch only particles inrepuls
+    # compute distances to all agents for each agent
     distances = [get_distances(agent, agents) for agent in agents]
+    # gather all agents in repulsive, orientation and attraction zone
     for i in range(N): ### FIX - Eliminate, in some way the i-i interaction
         r_agents = []
         o_agents = []
         a_agents = []
-        repulsion_flag = False    
+        repulsion_flag = False  
+          
         for j in range(N):
             if i == j:
                 continue
@@ -138,5 +142,23 @@ def simulate(N_steps = 10, a = 0.1, dt = 0.01, N = 100, width = 1000, height = 1
         treat_boundary(width, height, agents, speeds, N)
     window.close()
 
-simulate(N_steps = 100, a =0.1, dt = 10)
+simulate(N_steps = 1000, a =0.1, dt = 1)
+
+
+# In[ ]:
+
+from graphics import *
+
+def plot(width, height):
+    win = GraphWin("Swarm", width, height) # size of box
+    x = Point(500,500)
+    x.draw(win)
+    for i in range(10):
+        win.getMouse() # Pause to view result
+        x.move(10,10)
+    win.getMouse()
+    win.close()    # Close window when done
+
+plot(1000, 1000)
+
 
