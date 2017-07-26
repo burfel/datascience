@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[80]:
+# In[112]:
 
 import matplotlib.pyplot as plt
 from graphics import *
@@ -11,7 +11,7 @@ import numpy as np
 import time
 
 
-# In[81]:
+# In[113]:
 
 def initialize(speed = 1, N = 100, width = 1000, height = 1000):
     """
@@ -92,7 +92,28 @@ def treat_boundary(x_bound, y_bound, agents, speeds, N):
             dy = -y
 
         agents[i].move(dx, dy)
+        
+        
+def periodic_boundary(x_bound, y_bound, agents, speeds, N):  #Changed from rigid boundaries do periodic boundary condition
+    [dx, dy] = [0, 0]
+    for i in range(N):
+        [x, y] = [agents[i].getX(), agents[i].getY()]
+        if x > x_bound:
+            dx = -x_bound         
+        
+        elif x < 0:
+            dx = x_bound
+        
+        if y > y_bound:
+            dy = -y_bound
+        
+        elif y < 0:
+            dy = y_bound
 
+        agents[i].move(dx, dy)
+        
+def get_v_avg(speeds, N):
+    return
 
 def next_step(agents, speeds, dt, N):
     dxvec = [dt * speeds[i][0] for i in range(N)]
@@ -107,7 +128,7 @@ def normalized(vector):
     return vector / np.linalg.norm(vector)
 
 
-# In[84]:
+# In[114]:
 
 def couzin(agents, speeds, N, s, rr=1, ro=2, ra=3):
     # watch only particles inrepuls
@@ -162,7 +183,7 @@ def vicsek(agents, speeds, N, s, noise, r): # s=speed, noise= letter csi tempera
             if distances[j] < r:
                 o_dir = o_dir + speeds[j]
 
-        o_dir = s * normalized(o_dir)
+        o_dir = s * normalized(normalized(o_dir) + noise * np.array([(-1)+2*random(),(-1)+2*random()]))
         if np.linalg.norm(o_dir) != 0:
             speeds[i] = o_dir
 
@@ -170,7 +191,7 @@ def gueron():
     return
 
 
-# In[87]:
+# In[119]:
 
 def simulate(N_steps, a, dt, N, width, height, s):
     """
@@ -188,14 +209,21 @@ def simulate(N_steps, a, dt, N, width, height, s):
     agents, speeds, window = initialize(s, N, width, height)
     for i in range(N_steps):
         next_step(agents, speeds, dt, N)
-        vicsek(agents, speeds, N, s, noise = 0.05, r = 500)
+        
+        ## MODEL
+        vicsek(agents, speeds, N, s, noise = 0.9, r = 500)
         #couzin(agents, speeds, N, s,10,1900,2000)
-        #couple_speeds(agents, speeds, a, s, N)
-        treat_boundary(width, height, agents, speeds, N)
+        #couple_speeds(agents, speeds, a, s, N
+        
+        ## BOUNDARY CONDITIONS
+        #treat_boundary(width, height, agents, speeds, N)
+        periodic_boundary(width, height, agents, speeds, N)
+        #print(v_avg)
+        #v_avg = get_v_avg(speeds)
         #time.sleep(0.02)
     window.close()
 
-simulate(2000, 0.1, 1, 100, 500, 500, 5)
+simulate(2000, 0.1, 1, 100, 500, 500, 2)
 
 
 # In[ ]:
