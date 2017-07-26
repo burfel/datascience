@@ -156,20 +156,15 @@ def vicsek(agents, speeds, N, s, noise, r): # s=speed, noise= letter csi tempera
     # consider only particles within 'r' from pt_i, align pt_i with v_avg
     for i in range(N):
         distances = get_distances(agents[i], agents)
-        angle_avg = angle_noise = angle_dir = 0
-        v_sum = np.array([0.0, 0.0])
-        v_dir = np.array([0.0, 0.0])
+        o_dir = np.array([0.0, 0.0])
         
         for j in range(N):
             if distances[j] < r:
-                v_sum = v_sum + speeds[j]
-#       [cos_avg, sin_avg] = map(lambda x: x/(s*nr), v_sum)
-        angle_avg = np.arctan(v_sum[1] / v_sum[0])
-        angle_noise = 2 * np.pi * noise * (random()-0.5)
-        angle_dir = angle_avg + angle_noise
-        speeds[i] = [s*np.cos(angle_dir), s*np.sin(angle_dir)]
+                o_dir = o_dir + speeds[j]
 
-    return
+        o_dir = s * normalized(o_dir)
+        if np.linalg.norm(o_dir) != 0:
+            speeds[i] = o_dir
 
 def gueron():
     return
