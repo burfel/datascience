@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[80]:
 
 import matplotlib.pyplot as plt
 from graphics import *
@@ -11,34 +11,54 @@ import numpy as np
 import time
 
 
-# In[ ]:
+# In[81]:
 
 def initialize(speed = 1, N = 100, width = 1000, height = 1000):
-
+    """
+    Initializes our agent set with randomly directed speeds, draws the window and the agents
+    """
     agents = [Point(width*random(), height*random()) for i in range(N)]
-    speeds = N * [0]
+    speeds = [np.array([0.0, 0.0]) for i in range(N)]
     for i in range(N):
         theta = 2 * np.pi * random()
-        speeds[i] = [speed * np.cos(theta), speed * np.sin(theta)]
+        speeds[i][0] = speed * np.cos(theta)
+        speeds[i][1] = speed * np.sin(theta)
 
     return agents, speeds, plot(agents, width, height)
 
 
+def plot(agents, width, height):
+    win = GraphWin("Swarm", width, height) # size of box
+    for agent in agents:
+        agent.draw(win)
+    win.getMouse()
+    return win
+
+
 def couple_speeds(agents, speeds, a, s, N):
+    """
+    Simplest model: for each agent, it will give its nearest neighbour a fraction of its speed and re-normalize it
+    
+    """
     nearest_neighbours = [nearest_neighbour(agent, agents, N) for agent in agents]
     for i in range(N):
-            weightedSpeed = map(lambda x: a * x, speeds[nearest_neighbours[i]])
-            #print(agents[i],'<-',weightedAgent)
-            speeds[i] = map(add, speeds[i], weightedSpeed)
-            speeds[i] = map(lambda x: s * x, normalized(speeds[i]))
-            print(speeds[i])
+            weightedSpeed = a * speeds[nearest_neighbours[i]]
+            speeds[i] = speeds[i] + weightedSpeed
+            speeds[i] = s * normalized(speeds[i]) ### PROBLEMA?-------------------------------------------------
+
 
 def get_distances(agent, agents):
+    """
+    Given one angent and the set of all agents, 
+    computes the distances from the first to all of the others
+    """
+    
     dists = [(a.getX() - agent.getX())**2 + (a.getY() - agent.getY())**2 for a in agents]
     for i in range(len(dists)):
         if dists[i] == 0:
             dists[i] = 0.1
     return dists
+
 
 def nearest_neighbour(agent, agents, N):
     """
@@ -49,11 +69,11 @@ def nearest_neighbour(agent, agents, N):
     distances[j] = distances[j-1] + 1
 
     return distances.index(min(distances))
-    
-    
+
+
 def treat_boundary(x_bound, y_bound, agents, speeds, N):
-    [dx, dy] = [0, 0]
     for i in range(N):
+        [dx, dy] = [0, 0]
         [x, y] = [agents[i].getX(), agents[i].getY()]
         if x > x_bound:
             speeds[i][0] = -speeds[i][0]
@@ -73,70 +93,63 @@ def treat_boundary(x_bound, y_bound, agents, speeds, N):
 
         agents[i].move(dx, dy)
 
+
 def next_step(agents, speeds, dt, N):
     dxvec = [dt * speeds[i][0] for i in range(N)]
     dyvec = [dt * speeds[i][1] for i in range(N)]
-    
     for i in range(N):
         agents[i].move(dxvec[i], dyvec[i])
-        
 
-def plot(agents, width, height):
-    win = GraphWin("Swarm", width, height) # size of box
-    for agent in agents:
-        agent.draw(win)
-    win.getMouse()
-    return win
-    #win.close()
 
 def normalized(vector):
-    if vector == [0, 0]:
+    if vector[0] == vector[1] == 0:
         return vector
-    return map(lambda x: x/np.sqrt(vector[0]**2 + vector[1]**2), vector)
-    
+    return vector / np.linalg.norm(vector)
 
 
-# In[ ]:
+# In[84]:
 
-def couzin(agents, speeds, N, rr=1, ro=2, ra=3):
+def couzin(agents, speeds, N, s, rr=1, ro=2, ra=3):
     # watch only particles inrepuls
-    distances = [get_distances(agent, agents) for agent in agents]
     for i in range(N): ### FIX - Eliminate, in some way the i-i interaction
-        r_dir = [0, 0]
-        o_dir = [0, 0]
-        a_dir = [0, 0]
+        curr_agent = agents[i]
+        distances = get_distances(curr_agent, agents)
+        r_dir = np.array([0.0, 0.0])
+        o_dir = np.array([0.0, 0.0])
+        a_dir = np.array([0.0, 0.0])
         repulsion_flag = False    
         
         for j in range(N):
             if i == j:
                 continue
 
-            if distances[i][j] < rr:
-                temp_vec = [agents[j].getX() - agents[i].getX(), agents[j].getY()-agents[i].getY()]
+            if distances[j] < rr:
+                temp_vec = np.array([agents[j].getX() - curr_agent.getX(), agents[j].getY() - curr_agent.getY()])
                 temp_vec = normalized(temp_vec)
-                r_dir = map(add, r_dir, temp_vec)
+                r_dir = r_dir + temp_vec
                 repulsion_flag = True
             
             elif not repulsion_flag:
 
-                if distances[i][j] < ro:
-                    o_dir = map(add, o_dir, speeds[j])
-                elif distances[i][j] < ra:
-                    temp_vec = [agents[j].getX()-agents[i].getX(), agents[j].getY()-agents[i].getY()]
+                if distances[j] < ro:
+                    o_dir = o_dir + speeds[j]
+                
+                elif distances[j] < ra:
+                    temp_vec = np.array([agents[j].getX() - curr_agent.getX(), agents[j].getY() - curr_agent.getY()])
                     temp_vec = normalized(temp_vec)
-                    a_dir = map(add, a_dir, temp_vec)
+                    a_dir = a_dir + temp_vec
             
                     
         if repulsion_flag:
-            tot_dir = map(lambda x: -x, normalized(r_dir))
+            tot_dir =  normalized(-r_dir)
         else:
             o_dir = normalized(o_dir)
             a_dir = normalized(a_dir)
-            tot_dir = map(add, o_dir, a_dir)
+            tot_dir = o_dir + a_dir
             tot_dir = normalized(tot_dir)
 
-        if tot_dir != [0,0]:
-            speeds[i] = map(lambda x: x*np.sqrt(speeds[i][0]**2+speeds[i][1]**2), tot_dir) # re-normalization 
+        if np.linalg.norm(tot_dir) != 0:
+            speeds[i] = s*tot_dir 
 
 
 def vicsek():
@@ -146,9 +159,9 @@ def gueron():
     return
 
 
-# In[ ]:
+# In[87]:
 
-def simulate(N_steps = 10, a = 1, dt = 1, N = 100, width = 500, height = 500, s = 10):
+def simulate(N_steps, a, dt, N, width, height, s):
     """
     Simulates motion of swarm. Recieves following parameters:
 
@@ -163,20 +176,14 @@ def simulate(N_steps = 10, a = 1, dt = 1, N = 100, width = 500, height = 500, s 
 
     agents, speeds, window = initialize(s, N, width, height)
     for i in range(N_steps):
-        print(i)
         next_step(agents, speeds, dt, N)
-        couzin(agents, speeds, N, 10,1900,2000)
+        couzin(agents, speeds, N, s,10,1900,2000)
         #couple_speeds(agents, speeds, a, s, N)
         treat_boundary(width, height, agents, speeds, N)
-        time.sleep(0.02)
+        #time.sleep(0.02)
     window.close()
 
-simulate(N_steps = 2000, N = 50, dt = 1, width = 500, height = 500, s = 5)
-
-
-# In[ ]:
-
-
+simulate(2000, 0.1, 1, 100, 500, 500, 5)
 
 
 # In[ ]:
