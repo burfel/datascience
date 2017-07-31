@@ -3,7 +3,10 @@
 
 # In[13]:
 
-#import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use("TkAgg")
+from matplotlib import pyplot as plt
+
 from graphics import *
 from operator import *
 from random import *
@@ -11,6 +14,7 @@ import numpy as np
 import timeit
 from math import *
 
+"""
 a = 3
 s = 3
 r = 3
@@ -24,6 +28,7 @@ bias = np.array([0.0,-1.0])
 dev_bias = 3
 dTheta = 120
 sight_theta = 180
+"""
 
 
 # In[10]:
@@ -85,6 +90,10 @@ def relative_pos(agent1, agent2):
 
     return np.array([dx, dy]), np.linalg.norm([dx, dy])
 
+def get_cm(agents, N):
+    poses = [np.array([a.getX(), a.getY()]) for a in agents]
+    return np.mean(poses,axis = 0)
+
 def nearest_neighbour(agent, agents, N):
     """
     Returns the index for the agent with smallest Eucledian distance to agent in question
@@ -122,41 +131,6 @@ def biaser(speeds, N, s, i, prop, bias, dev_bias, weight):
             speeds[i] = s*tot_dir
     #bias = np.dot(tot_dir,np.array([[np.cos(rot_bias*i), 0],[0, np.sin(rot_bias*i)]]))
     #return bias
-
-def quality (agents, speeds, N, bias, window, old_cm):
-#ACCURACY (DIRECTIONS DISTRIBUTION)
-    dev = 0.0
-    for i in range(N):
-        dev += angle(bias, speeds[i])
-    dev_avg = dev/(N*2*(np.pi))
-    #print (dev_avg)
-    
-#ELONGATION: SHAPE OF SWARM
-    #can be smarter if we make agents become poses before, more globally in  the code
-    poses = [np.array([a.getX(), a.getY()]) for a in agents]
-    #Center of Mass
-    cm = np.mean(poses,axis=0)
-    #Standard Deviation
-    std = np.std(poses,axis=0)
-    #print (cm, std)
-
-    #Elongation >1 means 
-    elong = std[1] / std[0]
-    #Drawing it
-    #old_cm = Point(cm[0],cm[1])
-    #old_cm.draw(window)
-    #old_cm.setFill("red")
-
-#GROUP DIRECTION
-    #Vector
-    group_dir = np.array([cm[0] - old_cm[0], cm[1] - old_cm[1]])                
-    #print (group_dir)
-    # Norm
-    group_dir = np.linalg.norm(group_dir)
-    #print (group_dir)
-    return cm
-    
-
 
 def rigid_boundary(x_bound, y_bound, agents, speeds, N):
     for i in range(N):
@@ -222,9 +196,8 @@ def rot_matrix(theta, unit = "None"):
 def warn_me_args(N_steps, a, dt, N, width, height, s, rr, ro, ra, noise, prop, weight, bias, dTheta):
     if dt*s < rr:
         print("Warning - step length bigger the repultion radius.")
-        
 
-        
+
 def virtualizer (current, agents, h, w, N):
     lower_limit = current.getY() - h / 2
     upper_limit = current.getY() + h / 2
@@ -367,54 +340,6 @@ def vicsek(agents, speeds, N, s, noise, r): # s=speed, noise= letter csi tempera
         if np.linalg.norm(tot_dir) != 0:
             speeds[i] = tot_dir
     return
-
-#def run(N_steps, N, s, dt, width, height):#N_steps, a, dt, N, width, height, s, rr, ro, ra, noise, prop, weight, bias, dev_bias, dTheta, sight_theta):
-    """
-    Simulates motion of swarm. Recieves following parameters:
-
-    N_steps  - number of steps to perform
-    a -  coupling between neighbouring points
-    dt - time step to be used 
-    N - number of points to be used
-    width & heigth of window
-    s - module of speed throughout agents
-
-    """
-"""    
-    
-    
-    agents, speeds = initialize_agents(s, N, width, height)
-    window = initialize_window(agents, width, height)
-    old_cm=np.array([0.0,0.0])
-    bias = np.array([0.0,-1.0])
-    for i in range(N_steps):
-        
-        next_step(agents, speeds, dt, N)
-        start = timeit.default_timer()
-        ## MODEL
-        #couple_speeds(agents, speeds, a, s, N)
-        #vicsek(agents, speeds, N, s, 0.1, r = 500)
-        couzin(agents, speeds, N, width, height, s, noise, dTheta, rr, ro, ra, sight_theta, 1, 200, 1.5, 1) #(...)last 4 parameters: model2, roa, orient, atract
-
-        #interaction(agents, speeds)
-        
-        
-        biaser(speeds, N, s, i, prop, bias, dev_bias, weight)
-        
-        #INFORMATION TRANSFER: SHAPE & DIRECTION & ALIGNMENT QUALITY 
-        #point_cm.undraw()
-        old_cm = quality(agents, speeds, N, bias, window, old_cm)
-        
-        ## BOUNDARY CONDITIONS
-        #rigid_boundary(width, height, agents, speeds, N)
-        periodic_boundary(width, height, agents, speeds, N)
-
-        #time.sleep(0.02)
-        stop = timeit.default_timer()
-        #print stop - start
-    window.close()
-    return
-"""
 
 
 # In[16]:

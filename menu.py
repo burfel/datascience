@@ -1,3 +1,4 @@
+from processData import *
 from sim300 import *
 import sys
 import numpy as np
@@ -11,7 +12,9 @@ import numpy as np
 # Width and Height of window
 
 [N, Width, Height] = map(int, sys.argv[1:])
-
+parameters_file = 'parameters.txt'
+data_file = 'data.csv'
+model = 0
 
 def save_parameters(parameters, values, par_file):
     file = open(par_file, 'r')
@@ -40,16 +43,13 @@ def load_parameters(par_file):
 
     return parameters
 
+
 def load_model(par_file):
     file = open(par_file, 'r')
     line = file.readline()
     file.close()
 
     return line.split(" = ")[1][:-1]
-
-
-parameters_file = "parameters.txt"
-model = 0
 
 
 repeat = raw_input("Repeat simulation ([y]/n)?\n")
@@ -115,6 +115,8 @@ else:
 [a, s, r, rr, ro, ra, roa, noise, prop, weight, biasx,
 biasy, dev_bias, dTheta, sight_theta, atract, orient] = load_parameters(parameters_file)
 
+
+
 if model in ['None', 'smpl']:
     def interaction(agents, speeds):
         return couple_speeds(agents, speeds, a, s, N)
@@ -135,58 +137,50 @@ elif model == 'vsck':
 
 
 def run(N_steps, dt):
-    # N_steps, a, dt, N, width, height, s, rr, ro, ra, noise,
-    # prop, weight, bias, dev_bias, dTheta, sight_theta):
     """
     Simulates motion of swarm. Recieves following parameters:
-
     N_steps  - number of steps to perform
-    a -  coupling between neighbouring points
     dt - time step to be used
-    N - number of points to be used
-    width & heigth of window
-    s - module of speed throughout agents
-
     """
     prop = 0.4
     weight = 0.8
-    bias = np.array([biasx,biasy])
+    bias = np.array([biasx, biasy])
     dev_bias = 0.1
     rot_bias = 1
 
-
     agents, speeds = initialize_agents(s, N, Width, Height)
     window = initialize_window(agents, Width, Height)
-    old_cm=np.array([0.0,0.0])
+    cm = get_cm(agents, N)
+    cmagent = Point(cm[0], cm[1])
+    cmagent.draw(window)
+    cmagent.setFill("red")
 
     for i in range(N_steps):
 
         next_step(agents, speeds, dt, N)
-        start = timeit.default_timer()
-        ## MODEL
-        #couple_speeds(agents, speeds, a, s, N)
-        #vicsek(agents, speeds, N, s, 0.1, r = 500)
-        #couzin(agents, speeds, N, s, noise, dTheta, rr, ro, ra, sight_theta)
-        #couzin2(agents, speeds, N, s, noise,20,200, 1.5,1) #(...)last 3 parameters: roa, orient, atract
+
+        # Model for agent interactions
         interaction(agents, speeds)
 
-
+        # Intruduction of a bias in "prop" of the agents
         biaser(speeds, N, s, i, prop, bias, dev_bias, weight)
 
-        #INFORMATION TRANSFER: SHAPE & DIRECTION & ALIGNMENT QUALITY 
-        #point_cm.undraw()
-        old_cm = quality(agents, speeds, N, bias, window, old_cm)
+        # INFORMATION TRANSFER: SHAPE & DIRECTION & ALIGNMENT QUALITY
+        [dx, dy] = get_cm(agents, N) - cm
+        cmagent.move(dx, dy)
+        cm = cm + [dx, dy]
 
-        ## BOUNDARY CONDITIONS
-        #rigid_boundary(width, height, agents, speeds, N)
-        periodic_boundary(Width, Height, agents, speeds, N)
+        # BOUNDARY CONDITIONS
+        rigid_boundary(Width, Height, agents, speeds, N)
+        #periodic_boundary(Width, Height, agents, speeds, N)
 
-        #time.sleep(0.02)
-        stop = timeit.default_timer()
-        #print stop - start
+        dev = avg_dev(agents)
+        save_datapoint(i * dt, dev, data_file)
     window.close()
+
+    plot(data_file)
     return
 
 
-run(200, 1)
+run(1000, 1)
 
