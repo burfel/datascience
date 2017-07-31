@@ -1,0 +1,14 @@
+model = czn
+a = 3
+s = 3
+r = 3
+rr = 40
+ro = 150
+ra = 500
+noise = 0.01
+prop = 3
+weight = 3
+bias = 3
+dev_bias = 3
+dTheta = 120
+sight_theta = 340
