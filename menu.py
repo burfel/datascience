@@ -1,4 +1,17 @@
+from sim300 import *
+import sys
 import numpy as np
+
+
+# to be called in the command line as:
+# python menu.py <N> <Width> <Height>
+#
+# loading comand line arguments
+# N - Number of particles
+# Width and Height of window
+
+[N, Width, Height] = map(int, sys.argv[1:])
+
 
 def save_parameters(parameters, values, par_file):
     file = open(par_file, 'r')
@@ -53,6 +66,7 @@ if repeat == 'n':
         model = raw_input("Please choose a model.")
         while model not in ['smpl', 'czn', 'vsck', 'czn2']:
             model = raw_input("Please enter a valid model.")
+        save_parameters(['model'], [model], parameters_file)
 
     rep_par = raw_input("Use saved parameters ([y]/n)?\n")
     while rep_par not in ['', 'y', 'n']:
@@ -78,7 +92,7 @@ if repeat == 'n':
             sight_theta = input("Field of view: sight_theta = ")
             save_parameters(['s', 'noise', 'dTheta', 'rr', 'ro', 'ra', 'sight_theta'], [s, noise, dTheta, rr, ro, ra, sight_theta], parameters_file)
 
-        elif model == 'cz2':
+        elif model == 'czn2':
             s = input("Speed: s = ")
             noise = input("Noise: noise = ")
             dTheta = input("Max angle of turn: dTheta = ")
@@ -92,37 +106,35 @@ if repeat == 'n':
         elif model == 'vsck':
             s = input("Speed: s = ")
             noise = input("Noise: noise = ")
-            r = input("Repulsion radius: rr = ")
+            r = input("Repulsion radius: r = ")
             save_parameters(['s', 'noise', 'r'], [s, noise, r], parameters_file)
 
 else:
     model = load_model('parameters.txt')
 
-print(load_parameters(parameters_file))
-
-[a, s, r, rr, ro, ra, noise, prop, weight,
-bias, dev_bias, dTheta, sight_theta] = load_parameters(parameters_file)
+[a, s, r, rr, ro, ra, roa, noise, prop, weight, biasx,
+biasy, dev_bias, dTheta, sight_theta, atract, orient] = load_parameters(parameters_file)
 
 if model in ['None', 'smpl']:
     def interaction(agents, speeds):
-        return couple_speeds(agents, speeds, a, s, N_particles)
+        return couple_speeds(agents, speeds, a, s, N)
 
 elif model == 'czn':
     def interaction(agents, speeds):
-        return couzin(agents, speeds, N_particles, s, noise, dTheta, rr, ro, ra, sight_theta)
+        return couzin(agents, speeds, N, Width, Height, s, noise, dTheta, rr, ro, ra, sight_theta, 0, roa, atract, orient)
 
-elif model == 'cz2':
+elif model == 'czn2':
     def interaction(agents, speeds):
-        return couzin2(agents, speeds, N_particles, s, noise, rr, roa, orient,atract)
+        return couzin(agents, speeds, N, Width, Height, s, noise, dTheta, rr, ro, ra, sight_theta, 1, roa, atract, orient)
 
 elif model == 'vsck':
     def interaction(agents, speeds):
-        return vicsek(agents, speeds, N_particles, s, noise, r)
+        return vicsek(agents, speeds, N, s, noise, r)
 
 
 
 
-def run(N_steps, N, s, dt, width, height):
+def run(N_steps, dt):
     # N_steps, a, dt, N, width, height, s, rr, ro, ra, noise,
     # prop, weight, bias, dev_bias, dTheta, sight_theta):
     """
@@ -138,13 +150,13 @@ def run(N_steps, N, s, dt, width, height):
     """
     prop = 0.4
     weight = 0.8
-    bias = np.array([0.0,-1.0])
+    bias = np.array([biasx,biasy])
     dev_bias = 0.1
     rot_bias = 1
 
 
-    agents, speeds = initialize_agents(s, N, width, height)
-    window = initialize_window(agents, width, height)
+    agents, speeds = initialize_agents(s, N, Width, Height)
+    window = initialize_window(agents, Width, Height)
     old_cm=np.array([0.0,0.0])
 
     for i in range(N_steps):
@@ -159,7 +171,7 @@ def run(N_steps, N, s, dt, width, height):
         interaction(agents, speeds)
 
 
-        bias = biaser(speeds, N, s, i, prop, bias, dev_bias, weight)
+        biaser(speeds, N, s, i, prop, bias, dev_bias, weight)
 
         #INFORMATION TRANSFER: SHAPE & DIRECTION & ALIGNMENT QUALITY 
         #point_cm.undraw()
@@ -167,7 +179,7 @@ def run(N_steps, N, s, dt, width, height):
 
         ## BOUNDARY CONDITIONS
         #rigid_boundary(width, height, agents, speeds, N)
-        periodic_boundary(width, height, agents, speeds, N)
+        periodic_boundary(Width, Height, agents, speeds, N)
 
         #time.sleep(0.02)
         stop = timeit.default_timer()
@@ -176,5 +188,5 @@ def run(N_steps, N, s, dt, width, height):
     return
 
 
-run(200,50, 5, 0.1, 100, 100)
+run(200, 1)
 
