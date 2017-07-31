@@ -1,0 +1,142 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+
+\begin{document}
+
+\section*{Factor de cinemática}
+\section*{Secção eficaz}
+\section*{Perda de energia}
+\section*{NRA}  
+\section*{Montagen - Laboratório de Feixe de Iões - CTN -Esquema}
+\section*{Montagen - Gerador de Van der Graff}
+
+	\begin{itemize}
+		\item o pente da esquerda, a uma tensão da ordem de kV deposita carga na correia isolante, polarizando-a
+		
+		\item essa carga é transportada pela correia isolante, havendo no outro extremo um pente que, ao colocar carga negativa na correia, acumula carga positiva no respectivo terminal
+		
+		\item para manter o equilíbrio de carga, existe uma coroa (calote esférica com agulhas metálicas), ligada à massa
+		
+		\item o fluxo de carga coroa-terminal é controlada pela distância D, controlada remotamente
+		
+		\item sistema colocado numa mistura de gases isolantes, como SF6, para evitar descargas
+	\end{itemize}
+
+\section*{Montagen - Fonte de Iões e tubo de aceleração}
+	\begin{itemize}
+		\item 4 garrafas contendo gases diferentes para utilização no feixe
+		
+		\item fluxo do gás seleccionado é controlado pela dilatação de um material condutor, proporcional à corrente aplicada e calibrada para controlo automático
+		
+		\item utilizam-se iões mono-ionizados
+	\end{itemize}
+
+\section*{Montagen - controlo do feixe}
+\section*{Montagen - Câmara de detecção Small}
+
+	\begin{itemize}
+	\item importante conhecer a carga depositada na amostra pois só se podem comparar directamente amostras com com o mesmo valor de Q
+	\end{itemize}
+	
+\section*{Montagen - Detectores utilizados}
+
+	\begin{itemize}
+	\item Absorvedor em NRA para filtrar protões de RBS, que têm energia mais baixa, também afeta iões mais energéticos no entanto menos. Isto tem de ser tido em conta quando se faz a calibração
+	\item Corrente gerada nos detetores é integrada na capacidade do pre-amplificador e gera um sinal em tensão à saída proporcional à energia da partícula detectada 
+	\end{itemize}
+
+\section*{Montagen - Amostras analisadas}
+	
+	\begin{itemize}
+	\item Só dizer o que são e para que servem
+	\end{itemize}
+
+\section*{NRA - Calibração}
+\section*{NRA - Espectros amostras JET}
+	
+	\begin{itemize}
+	\item Falar dos vários picos observados, mencionar pico estranho que aparece em JET-B
+	\item Esse pico estranho aparece no lugar de P3 é possivelmente Carbono
+	\end{itemize}
+
+\section*{NRA - Concentração $N_S$ de $^2H$}
+
+	\begin{itemize}
+	\item JET-B face interior incidência direta de linhas de campo logo maior deposição
+	\item JET-A face interior mas ligeiramente voltada para cima tem incidência indireta de linhas de campo
+	\item JET-C está na face exterior não tem incidência linhas de campo
+	\end{itemize}
+	
+\section*{NRA - Profundidade de $^2H$ - $\frac{dE}{dx}$ por troços}
+
+	\begin{itemize}
+	\item Para o dE/dx considerou-se a largura a meia-altura do pico, não se considerou toda a largura pois como é uma distribuição estatística para a mesma profundidade a partícula de 3He pode ser retrodispersa com uma energia ligeiramente diferente
+        \item A perda de energia do ião incidente é simétrica da do protão emitido na reação, quanto mais energia perde maior a energia do protão que salta
+	\item Despreza-se a perda de energia do protão no material, dE/dx desprezavel
+	\item Para ter maior rigor na espessura percorrida utiliza-se um método iterativo que vai atualizando o dE/dx , que aumenta com a diminuição de E.
+	\item Podemos utilizar este método pois pode-se aproximar o dE entre os protões ao dE do feixe
+	
+	\end{itemize}	
+
+\section*{RBS - Perfil de 2H e 9Be na telha do JET}
+
+	\begin{itemize}
+	\item Apenas são contabilizadas a área de pD para 2H e a de p0 para o 9Be
+	\item Análise é meramente qualitativa, no entanto área dos picos é proporcional à concentração do material sabemos assim em que zonas há mais/menos
+	\item Densidade de 9Be constante, 2H parece ir aumentando
+	\item existe uma zona onde há diminuição da concentração de 2H e 9Be revela que existe uma zona com deformações onde há menos deposição.
+	\item Densidade máxima de 2H é $2.8\times10^{16}$ átm/cm2 semelhante a JET-C, área menos exposta à incidência direta do plasma
+	\end{itemize}
+
+\section*{RBS - Calibração - amostra de Óxidos}
+
+	\begin{itemize}
+	\item Identificamos patamares correspondentes sabendo que K aumenta com Z
+	\item Deslocamento para a direita para 3He pois é mais leve logo K maior
+	\item Retiramos valor a meia altura de todos os fins de patamar e consideramos como erro esse intervalo, fazemos reta de calibração E(C) com esses valores kE0(C)
+	\item Obteve-se a altura H de cada patamar, aproximou-se o fator (razão dos poderes de paragem) [$\epsilon$]/[$\epsilon$] a 1
+	\item Fatores inferiores a 1 esperado dado que é uma amostra de óxidos esperamos que haja mais O
+	\item Desvios aos valores fornecidos devem-se a considerar o fator 1 quando este pode variar até 10$\%$
+	\end{itemize}
+
+\section*{RBS - Análise Detetor $^{28}Si$ com filme de $^{197}Au$ - caracterização espetro}
+	
+	\begin{itemize}
+	\item Energia do Patamar coincide com o Si, a do pico com a do Au
+	\item Deslocamento para a direita para 3He pois é mais leve logo K maior 
+	\item Podemos mencionar que esta diferença diminui com o aumento de Z pelo que o patamar de Si está mais afastado que os picos de Au
+	\item Maior número de contagens para 3He pois secção eficaz é maior pela mesma razão
+	\item O aumento do número de contagens de Au quando $\theta$ aumenta revela que o Au está à superficie dado que o feixe agora tem de percorrer maior distância no mesmo antes de chegar ao Si. O facto de a energia do Si dar ligeiramente inferior ao esperado também suporta a teoria.	
+	\end{itemize}
+
+\section*{RBS - Análise Detetor $^{28}Si$ com filme de $^{197}Au$ - Densidade e Grossura do filme}
+
+	\begin{itemize}
+	\item Para a área do pico considera-se todo o ele, definiu-se região de interesse (Fit Panel) e depois somou-se as contagens dentro dessa zona
+	\item Ns obtido pela fórmula que relaciona com Q, A e $\sigma$
+	\item Para o dE/dx considerou-se a largura a meia-altura do pico, não se considerou toda a largura pois como é uma distribuição estatística para a mesma profundidade a partícula de 3He pode ser retrodispersa com uma energia ligeiramente diferente
+	\item Usa-se dE/dxE0 para antes da colisão, assume-se que energia não varia muito, e dE/dxkE0 para depois, voltando a assumir o mesmo. Valores obtidos SRIM
+	\item Grande deterioração em relação aos valores inicias de Ns
+	\end{itemize}
+
+\section*{RBS - Espetro JET-C}
+
+	\begin{itemize}
+	\item Energia do fim patamar coincide com W a profundidade indefinida
+	\item Alto número de contagens W átomo pesado - maior secção eficaz
+	\item Energia Be demasiado baixa, perto da zona de corte, logo não se vê
+	\end{itemize}
+
+\section*{Final}
+\begin{itemize}
+	\item Não considerados os Erros/Incertezas\\
+	Neste tipo de análise não acrescentam informação, complicam cálculos (por Instrução do Docente)
+	\end{itemize}
+
+
+\end{document}
+
