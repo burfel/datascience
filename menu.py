@@ -3,15 +3,19 @@ from sim300 import *
 import sys
 import numpy as np
 
-
 # to be called in the command line as:
 # python menu.py <N> <Width> <Height>
-#
-# loading comand line arguments
-# N - Number of particles
-# Width and Height of window
+# where N      -- number of particles,
+#       Width  -- width of window,
+#       Height -- height of window
 
+
+# loading command line arguments:
+# N      -- number of particles,
+# Width  -- width of window,
+# Height -- height of window
 [N, Width, Height] = map(int, sys.argv[1:])
+
 parameters_file = 'parameters.txt'
 data_file = 'data.csv'
 model = 0
