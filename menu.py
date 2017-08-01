@@ -219,4 +219,4 @@ def run(N_steps, dt):
     return
 
 
-#run(10000, 0.1)
+run(10000, 0.1)
