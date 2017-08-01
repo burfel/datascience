@@ -1,4 +1,5 @@
 from processData import *
+# imports sim300.py as a package
 from sim300 import *
 import sys
 import numpy as np
@@ -169,15 +170,19 @@ elif model == 'mill':
 
 def run(N_steps, dt):
     """
-    Simulates motion of swarm. Recieves following parameters:
-    N_steps  - number of steps to perform
-    dt - time step to be used
+    Simulates motion of swarm. 
+    INPUT: 
+        N_steps  -- number of steps to perform
+        dt       -- time step to be used
     """
-    prop = 0.4
+    # percentage of agents that are biased
+    prop = 0.4 
     weight = 0.8
     bias = np.array([biasx, biasy]) # should be a direction (angle)
+    # standard deviation around the bias 
     dev_bias = 0.1
-    rot_bias = 1
+    # "speed" of rotation
+    # rot_bias = 1
 
     agents, speeds = initialize_agents(s, N, Width, Height)
     window = initialize_window(agents, Width, Height)
@@ -193,7 +198,7 @@ def run(N_steps, dt):
         # Model for agent interactions
         interaction(agents, speeds, dt)
 
-        # Intruduction of a bias in "prop" of the agents
+        # Introduction of a bias in "prop" of the agents
         #biaser(speeds, N, s, i, prop, bias, dev_bias, weight)
 
         # INFORMATION TRANSFER: SHAPE & DIRECTION & ALIGNMENT QUALITY
