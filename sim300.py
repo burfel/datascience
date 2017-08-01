@@ -268,7 +268,7 @@ def virtualizer (current, agents, h, w, N):
 # In[15]:
 
 #COUZIN MODEL IMPLEMENTED WITH REPULSE, ATRACT AND ORIENT ZONES SEPARATED (1ST PAPER)
-def couzin(agents, speeds, N, width, height, s, noise, dTheta, rr, ro, ra, sight_range, model2, roa, atract, orient):
+def couzin(agents, speeds, N, width, height, s, noise, dTheta, rr, ro, ra, sight_range, model2, roa, atract, orient, pbc):
     
     if not model2:
         atract = orient = 1
@@ -279,7 +279,10 @@ def couzin(agents, speeds, N, width, height, s, noise, dTheta, rr, ro, ra, sight
         a_dir = np.array([0.0, 0.0])
         repulsion_flag = False    
         
-        virtuals = virtualizer(agents[i], agents, height, width, N)
+        if pbc:
+            virtuals = virtualizer(agents[i], agents, height, width, N)
+        else:
+            virtuals = agents
         
         for j in range(N):     
             if i == j:
@@ -339,6 +342,37 @@ def vicsek(agents, speeds, N, s, noise, r): # s=speed, noise= letter csi tempera
         
         if np.linalg.norm(tot_dir) != 0:
             speeds[i] = tot_dir
+    return
+
+
+# MILL MODEL
+def mill (agents, speeds, dt, N, width, height, cr, ca, lr, la, alpha, beta):
+    clr = cr / lr
+    cla = ca / la
+    for i in range(N):
+        u_dir = np.array([0.0, 0.0])
+        propulsion = np.array([0.0, 0.0])
+        friction = np.array([0.0, 0.0])
+        grad_U = np.array([0.0, 0.0])
+        
+        for j in range(N): # Duality interactions, by the Morse potential  
+            if i == j:
+                #Eliminate the i-i interaction
+                continue
+
+            rel_pos, distance = relative_pos(agents[i], agents[j])
+            u_dir = normalized(rel_pos)
+            grad_U = grad_U + u_dir * (clr*np.exp(-distance / lr) - cla *np.exp(- distance / la))
+            
+        norm = np.linalg.norm(speeds[i])
+        
+        propulsion = alpha * speeds[i] # self-propulsion propto alpha
+        friction =  beta * ((np.linalg.norm(speeds[i])) ** 2) * speeds[i] #friction force propto beta
+        #friction =  beta * speeds[i] #friction force propto beta
+
+        d_speed = propulsion - friction - grad_U
+        speeds[i] = speeds[i] + dt * d_speed
+
     return
 
 
