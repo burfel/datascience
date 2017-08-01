@@ -125,15 +125,16 @@ if repeat == 'n':
             la = input("Atraction length: la = ")
             alpha = input("Self propulsion: alpha = ")
             beta = input("Friction coeficient: beta = ")
-            save_parameters(['cr', 'ca', 'lr', 'la', 'alpha', 'beta'],
-                            [cr, ca, lr, la, alpha, beta], parameters_file)
+            mass = input("Agents's mass: mass = ")
+            save_parameters(['cr', 'ca', 'lr', 'la', 'alpha', 'beta', 'mass'],
+                            [cr, ca, lr, la, alpha, beta, mass], parameters_file)
 else:
     model = load_model('parameters.txt')
 
 [a, s, r, rr, ro, ra, roa, noise,
  prop, weight, biasx, biasy, dev_bias,
  dTheta, sight_theta, atract, orient,
- cr, ca, lr, la, alpha, beta] = load_parameters(parameters_file)
+ cr, ca, lr, la, alpha, beta, mass] = load_parameters(parameters_file)
 
 
 if model in ['None', 'smpl']:
@@ -156,7 +157,7 @@ elif model == 'vsck':
 
 elif model == 'mill':
     def interaction(agents, speeds, dt):
-        return mill(agents, speeds, dt, N, Width, Height, cr, ca, lr, la, alpha, beta)
+        return mill(agents, speeds, dt, N, Width, Height, cr, ca, lr, la, alpha, beta, mass)
 
 
 def run(N_steps, dt):
@@ -186,7 +187,7 @@ def run(N_steps, dt):
         interaction(agents, speeds, dt)
 
         # Intruduction of a bias in "prop" of the agents
-        biaser(agents, speeds, N, s, i, prop, bias_angle, dev_bias, weight)
+        #biaser(agents, speeds, N, s, i, prop, bias_angle, dev_bias, weight)
 
         # INFORMATION TRANSFER: SHAPE & DIRECTION & ALIGNMENT QUALITY
         [dx, dy] = get_cm(agents, N) - cm
@@ -194,8 +195,8 @@ def run(N_steps, dt):
         cm = cm + [dx, dy]
 
         # BOUNDARY CONDITIONS
-        #rigid_boundary(Width, Height, agents, speeds, N)
-        periodic_boundary(Width, Height, agents, speeds, N)
+        rigid_boundary(Width, Height, agents, speeds, N)
+        #periodic_boundary(Width, Height, agents, speeds, N)
 
         dev = avg_dev(agents)
         save_datapoint(i * dt, dev, data_file)
@@ -205,4 +206,4 @@ def run(N_steps, dt):
     return
 
 
-run(1000, 1)
+run(1000, 0.1)
