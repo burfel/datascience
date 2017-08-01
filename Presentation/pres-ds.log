@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  1 AUG 2017 17:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  1 AUG 2017 17:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1979,10 +1979,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 460.
  ) 
 Here is how much of TeX's memory you used:
- 27965 strings out of 493014
- 562483 string characters out of 6133351
- 592500 words of memory out of 5000000
- 30939 multiletter control sequences out of 15000+600000
+ 27954 strings out of 493014
+ 562395 string characters out of 6133351
+ 592512 words of memory out of 5000000
+ 30928 multiletter control sequences out of 15000+600000
  13300 words of font info for 51 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  56i,18n,56p,10379b,710s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1999,7 +1999,7 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/
 016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/201
 6/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2016/texmf-
 dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on pres-ds.pdf (8 pages, 162475 bytes).
+Output written on pres-ds.pdf (8 pages, 162554 bytes).
 PDF statistics:
  119 PDF objects out of 1000 (max. 8388607)
  87 compressed objects within 1 object stream
