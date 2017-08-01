@@ -1,47 +1,37 @@
 
 # coding: utf-8
 
-# In[13]:
+# In[2]:
 
 import matplotlib
 matplotlib.use("TkAgg")
 from matplotlib import pyplot as plt
 
+from processData import *
 from graphics import *
 from operator import *
 from random import *
 import numpy as np
 import timeit
-from math import *
-
-"""
-a = 3
-s = 3
-r = 3
-rr = 20
-ro = 70
-ra = 300
-noise = 0.01
-prop = 0.4
-weight = 3
-bias = np.array([0.0,-1.0])
-dev_bias = 3
-dTheta = 120
-sight_theta = 180
-"""
 
 
-# In[10]:
+# In[1]:
 
 def initialize_agents(speed, N, width, height):
     """
     Initializes our agent set with randomly directed speeds, draws the window and the agents
     """
-    agents = [Point(width*random(), height*random()) for i in range(N)]
+    seed()
+    
+    radius = height/2
+    agents = [Point(radius + uniform(0,radius)*np.cos(uniform(0, 2*np.pi)), #Random in a, using uniform()
+                    radius + uniform(0,radius)*np.sin(uniform(0, 2*np.pi))) for i in range(N)]
+    
+    #agents = [Point(uniform(0, width), uniform(0, height)) for i in range(N)]
     speeds = [np.array([0.0, 0.0]) for i in range(N)]
     
     for i in range(N):
-        theta = np.pi * random()
+        theta = uniform(0, 2 * np.pi)
         speeds[i][0] = speed * np.cos(theta)
         speeds[i][1] = speed * np.sin(theta)
 
@@ -66,10 +56,6 @@ def couple_speeds(agents, speeds, a, s, N):
         weightedSpeed = a * speeds[nearest_neighbours[i]]
         speeds[i] = speeds[i] + weightedSpeed
         speeds[i] = s * normalized(speeds[i])
-
-
-def angle(vec1, vec2):  # (Not so) stupid way of doing an angle
-    return np.arccos(np.dot(normalized(vec1),normalized(vec2)))
             
 def get_distances(agent, agents, N):
     """
@@ -107,24 +93,28 @@ def nearest_neighbour(agent, agents, N):
 
 def softened_angle(speed, newspeed, s, maxTheta):
     theta = angle(speed, newspeed)
-    if maxTheta**2 > theta**2:
-        return s*newspeed
+    if maxTheta > theta: # changed to non-square ---> TEST!
+        return s * newspeed
     else:
         return np.dot(rot_matrix(maxTheta), speed)    
 
 def in_sight_range(rel_pos, speed1, angle_range):
-    return 360*angle(speed1, rel_pos)/np.pi < angle_range
+    return 360 * angle(speed1, rel_pos) / np.pi < angle_range
     
 
 def noisy_vector(noise):
     return noise * np.array([2 * random() - 1, 2 * random() - 1])
     
-def biaser(speeds, N, s, i, prop, bias, dev_bias, weight):
+def biaser(agents, speeds, N, s, i, prop, bias_angle, dev_bias, weight):
     #bias = np.array([0.0,1.0])
-    #Ns has to be integer 
+    #Ns has to be integer
+    bias_angle = np.pi * bias_angle / 180
+    bias = np.array([np.cos(bias_angle), np.sin(bias_angle)])
+    
     Ns = int(N * prop)
     gbias = np.random.normal(bias, dev_bias, )
     for i in range(Ns):
+        agents[i].setFill('green')
         tot_dir = normalized(normalized(speeds[i]) + weight * gbias)
         
         if np.linalg.norm(tot_dir) != 0:
@@ -178,20 +168,7 @@ def next_step(agents, speeds, dt, N):
     dyvec = [dt * speeds[i][1] for i in range(N)]
     for i in range(N):
         agents[i].move(dxvec[i], dyvec[i])
-        
 
-def normalized(vector):
-    if vector[0] == vector[1] == 0:
-        return vector
-    return vector / np.linalg.norm(vector)
-
-
-def rot_matrix(theta, unit = "None"):
-    if unit in ["None", "deg"]:
-        c, s = np.cos(pi * theta / 180), np.sin(pi * theta / 180)
-    elif unit == "rad":
-        c, s = np.cos(theta), np.sin(theta)
-    return np.array([[c, -s],[s, c]])
 
 def warn_me_args(N_steps, a, dt, N, width, height, s, rr, ro, ra, noise, prop, weight, bias, dTheta):
     if dt*s < rr:
@@ -210,7 +187,7 @@ def virtualizer (current, agents, h, w, N):
 
     for j in range(N):
         #make more compact!!!
-        virtuals[j]=vagents[j]
+        virtuals[j] = vagents[j]
         
         #newcopy = agents[i].clone()
         candidates = [vagents[j],
@@ -221,7 +198,7 @@ def virtualizer (current, agents, h, w, N):
         #virtuals[j] = next((cand for cand in candidates if lower_limit < cand[1] < upper_limit and left_limit < cand[0] < right_limit),False
         for i in range(9):
             if lower_limit < candidates[i][1] < upper_limit and left_limit < candidates[i][0] < right_limit:
-                virtuals[j]=candidates[i]
+                virtuals[j] = candidates[i]
             
         ##ATTENTION HERE!!
 #        if not virtuals[j]:
@@ -230,44 +207,30 @@ def virtualizer (current, agents, h, w, N):
         
     return vvirtuals
 
-        
-#def get_v_avg(speeds, N):
-#    return
-#   
-#def get_potencials(distances, N):
-#    potentials = np.zeros(N, N)
-#    for i in range(N):
-#        for j in range(i+1,N):
-#            potentials[i][j] = potentials[j][i] = morse_pot(distances[i][j])
-#    return potentials  
-#    
-#def morse_pot(r, ca = 0.5, cr = 1, la = 3, lr = 0.5):
-#    return cr*np.exp(-r/lr) - ca * np.exp(-r)
-#
-#def weird_paper(agents, N, dt):
-#    distances = [get_distances(agent, agents) for agent in agents]
-#    potencials = get_potencials(distances, N)
-#    for i in range(N):
-#            newSpeed = speed[i] + dt * potentials
-#            speeds[i] = speeds[i] + weightedSpeed
-#            speeds[i] = s * normalized(speeds[i]) ### PROBLEMA?-------------------------------------------------
-#
-#    return
+
+def get_cm_std(agents, N):
+    poses = [np.array([a.getX(), a.getY()]) for a in agents]
+    return np.mean(poses,axis = 0), np.std(poses,axis = 0)
+
+def mill_observables (N, agents, speeds):
+    cm, std = get_cm_std(agents, N)
+    mean_R = np.linalg.norm(std)
+    point_cm = Point(cm[0],cm[1])
+    norm_R = N*[0.0]
+    vector_R = N*[0,0]
+    angles = N*[0.0]
+    for i in range(N):
+        vector_R[i],norm_R[i] = relative_pos(point_cm, agents[i])
+        angles[i] = np.pi() - angle(vector_R[i],speeds[i])
+    min_R = min(norm_R)
+    max_R = max(norm_R)
+    
+    return mean_R, min_R, max_R, angles
 
 
-# In[ ]:
+# In[48]:
 
-
-
-
-# In[ ]:
-
-
-
-
-# In[15]:
-
-#COUZIN MODEL IMPLEMENTED WITH REPULSE, ATRACT AND ORIENT ZONES SEPARATED (1ST PAPER)
+#COUZIN MODEL IMPLEMENTED WITH REPULSION, ATRACT AND ORIENT ZONES SEPARATED (1ST PAPER)
 def couzin(agents, speeds, N, width, height, s, noise, dTheta, rr, ro, ra, sight_range, model2, roa, atract, orient, pbc):
     
     if not model2:
@@ -345,42 +308,41 @@ def vicsek(agents, speeds, N, s, noise, r): # s=speed, noise= letter csi tempera
     return
 
 
-# MILL MODEL
-def mill (agents, speeds, dt, N, width, height, cr, ca, lr, la, alpha, beta):
+##MILL MODEL
+def mill(agents, speeds, dt, N, width, height, cr, ca, lr, la, alpha, beta, mass):
+    # we're there! N=30, s=5, dt=0.1, Radius=height/4  
+    # we're there! N=30, s=5, dt=0.1, Radius=height/4  
+    # we're there aswell! N=20, s=5, dt=0.1, Radius=height/4  
+    # The winner at 12:28 (1/8/2017)! N=60, s=5, dt=0.1, Radius=height/2
+    
     clr = cr / lr
     cla = ca / la
+    
     for i in range(N):
         u_dir = np.array([0.0, 0.0])
         propulsion = np.array([0.0, 0.0])
         friction = np.array([0.0, 0.0])
         grad_U = np.array([0.0, 0.0])
         
-        for j in range(N): # Duality interactions, by the Morse potential  
+        #virtuals = virtualizer(agents[i], agents, height, width, N)
+        
+        for j in range(N):   #Duality interactions, by the Morse potential  
             if i == j:
                 #Eliminate the i-i interaction
                 continue
 
             rel_pos, distance = relative_pos(agents[i], agents[j])
             u_dir = normalized(rel_pos)
-            grad_U = grad_U + u_dir * (clr*np.exp(-distance / lr) - cla *np.exp(- distance / la))
+            grad_U = grad_U + u_dir * (clr*np.exp(- distance / lr) - cla * np.exp(- distance / la))
             
-        norm = np.linalg.norm(speeds[i])
         
         propulsion = alpha * speeds[i] # self-propulsion propto alpha
-        friction =  beta * ((np.linalg.norm(speeds[i])) ** 2) * speeds[i] #friction force propto beta
-        #friction =  beta * speeds[i] #friction force propto beta
-
-        d_speed = propulsion - friction - grad_U
-        speeds[i] = speeds[i] + dt * d_speed
-
+        norm = (np.linalg.norm(speeds[i]))
+        friction =  beta * (norm ** 2) * speeds[i] #friction force prop to beta
+        
+        d_speed = (propulsion - friction - grad_U) / mass
+        speeds[i]= speeds[i] + dt * d_speed
     return
-
-
-# In[16]:
-
-#run(300, 5, 10, 1, 500, 500)
-# Field of view is around 340º for pigeons as saind in the source:
-# https://www.quora.com/What-does-a-pigeons-field-of-view-look-like
 
 
 # In[ ]:
