@@ -16,38 +16,51 @@ def save_datapoint(x, y, data_file):
     return
 
 
+def normalized(vector):
+    if vector[0] == vector[1] == 0:
+        return vector
+    return vector / np.linalg.norm(vector)
+
+
+def angle(vec1, vec2):  # (Not so) stupid way of doing an angle
+    return np.arccos(np.dot(normalized(vec1),normalized(vec2)))
+
+
+def rot_matrix(theta, unit = "None"):
+    if unit in ["None", "deg"]:
+        c, s = np.cos(pi * theta / 180), np.sin(pi * theta / 180)
+    elif unit == "rad":
+        c, s = np.cos(theta), np.sin(theta)
+    return np.array([[c, -s],[s, c]])
+
+
 def avg_dev(agents):
+    # reeives array of agents, returns cm and dispersion
     poses = [np.array([a.getX(), a.getY()]) for a in agents]
-    return np.linalg.norm(np.std(poses, axis=0))
+    return avg_vec(poses), std_dev(poses)
+
+def avg_vec(vecs):
+    # receives an array of vectors, computes average vector 
+    return np.mean(vecs, axis = 0)
+
+def std_dev(vecs):
+    # receives an array of vectors, computes std deviation vector
+    return np.std(vecs, axis=0)
+
+def avg_dir(vecs):
+    norm_vecs = [normalized(vec) for vec in vecs]
+    return avg_vec(norm_vecs)
 
 
-def quality(agents, speeds, N, bias, window, old_cm):
-    # ACCURACY (DIRECTIONS DISTRIBUTION)
-    dev = 0.0
-    for i in range(N):
-        dev += angle(bias, speeds[i])
-    dev_avg = dev / (N * 2 * (np.pi))
+def accuracy(speeds, N, bias):
+    # ACCURACY (AVERAGE DEVIATION TO BIAS) 
+    return 180 * angle(avg_dir(speeds), bias) / np.pi
 
+
+def elongation(agents):
     # ELONGATION: SHAPE OF SWARM
-    # can be smarter if we make agents become poses before,
-    # more globally in  the code
-    poses = [np.array([a.getX(), a.getY()]) for a in agents]
-
-    # Center of Mass
-    cm = np.mean(poses, axis=0)
-
-    # Standard Deviation
-    std = np.std(poses, axis=0)
-
-    # Elongation >1 means
-    elong = std[1] / std[0]
-
-    # GROUP DIRECTION
-    # Vector
-    group_dir = np.array([cm[0] - old_cm[0], cm[1] - old_cm[1]])
-    # Norm
-    group_dir = np.linalg.norm(group_dir)
-    return cm
+    cm, std = avg_dev(agents)
+    return std[1] / std[0]
 
 
 def plot(file):
@@ -56,6 +69,7 @@ def plot(file):
     fig = plt.figure()
 
     ax1 = fig.add_subplot(111)
+    ax2 = fig.add_subplot()
 
     ax1.set_title("Agents's dispersion")
     ax1.set_xlabel('time')
@@ -65,10 +79,14 @@ def plot(file):
 
     leg = ax1.legend()
 
+    print('Ploting...')
     plt.show()
+    #fig.plot(data['x'], data['y'], color='r', label='the data')
 
 
-    fig.plot(data['x'], data['y'], color='r', label='the data')
+
+
+
 
 
 

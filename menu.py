@@ -1,31 +1,22 @@
 from processData import *
-# imports sim300.py as a package
 from sim300 import *
 import sys
 import numpy as np
 
-'''
-to be called in the command line as:
-python menu.py <N> <Width> <Height>
-where N      -- number of particles,
-      Width  -- width of window,
-      Height -- height of window
-'''
 
-# loading command line arguments:
-# N      -- number of particles,
-# Width  -- width of window,
-# Height -- height of window
+# to be called in the command line as:
+# python menu.py <N> <Width> <Height>
+#
+# loading comand line arguments
+# N - Number of particles
+# Width and Height of window
+
 [N, Width, Height] = map(int, sys.argv[1:])
-
-# file to save parameter sets
 parameters_file = 'parameters.txt'
-
-
 data_file = 'data.csv'
 model = 0
 
-# saving parameters 
+
 def save_parameters(parameters, values, par_file):
     file = open(par_file, 'r')
     lines = list(file)
@@ -44,7 +35,7 @@ def save_parameters(parameters, values, par_file):
 
     file.close()
 
-# loading parameters
+
 def load_parameters(par_file):
     par_file = open(par_file, 'r')
     parameters = list(par_file)[1:]
@@ -69,11 +60,11 @@ while repeat not in ['', 'y', 'n']:
 if repeat == 'n':
     if model not in ['None', 'smpl', 'czn', 'vsck', 'czn2', 'mill']:
         print('Models available:\n'
-              'Simple speed coupling.............smpl\n'
-              'Couzin model......................czn\n'
-              'Viscek model......................vsck\n'
-              'Couzin-2 model....................czn2\n'
-              'Mill model........................mill')
+              'Simple speed coupling............ smpl\n'
+              'Couzin model.....................  czn\n'
+              'Viscek model..................... vsck\n'
+              'Couzin-2 model................... czn2\n'
+              'Mill model....................... mill')
 
         model = raw_input("Please choose a model.")
         while model not in ['smpl', 'czn', 'vsck', 'czn2', 'mill']:
@@ -89,7 +80,6 @@ if repeat == 'n':
 
     else:
         print('Previous parameters will be overwritten.')
-        # default model is the simple model
         if model in ['None', 'smpl']:
             s = input("Speed: s = ")
             a = input("Coupling: a = ")
@@ -101,7 +91,7 @@ if repeat == 'n':
             dTheta = input("Max angle of turn: dTheta = ")
             rr = input("Repulsion radius: rr = ")
             ro = input("Orientation radius: ro = ")
-            ra = input("Attraction radius: ra = ")
+            ra = input("Atraction radius: ra = ")
             sight_theta = input("Field of view: sight_theta = ")
             save_parameters(['s', 'noise', 'dTheta', 'rr',
                              'ro', 'ra', 'sight_theta'],
@@ -113,12 +103,12 @@ if repeat == 'n':
             noise = input("Noise: noise = ")
             dTheta = input("Max angle of turn: dTheta = ")
             rr = input("Repulsion radius: rr = ")
-            roa = input("Orientation/attraction radius: roa = ")
+            roa = input("Orientation/atraction radius: roa = ")
             orient = input("Orientation weight: orient = ")
-            attract = input("Attraction weight: attract = ")
+            atract = input("Atract weight: atract = ")
             save_parameters(['s', 'noise', 'dTheta', 'rr',
-                             'roa', 'attract', 'orient'],
-                            [s, noise, dTheta, rr, roa, attract, orient],
+                             'roa', 'atract', 'orient'],
+                            [s, noise, dTheta, rr, roa, atract, orient],
                             parameters_file)
 
         elif model == 'vsck':
@@ -129,12 +119,12 @@ if repeat == 'n':
                             [s, noise, r], parameters_file)
 
         elif model == 'mill':
-            cr = input("Repulsion coefficient: cr = ")
-            ca = input("Attraction coefficient: ca = ")
+            cr = input("Repulsion coeficient: cr = ")
+            ca = input("Atraction coeficient: ca = ")
             lr = input("Repulsion length: lr = ")
-            la = input("Attraction length: la = ")
+            la = input("Atraction length: la = ")
             alpha = input("Self propulsion: alpha = ")
-            beta = input("Friction coefficient: beta = ")
+            beta = input("Friction coeficient: beta = ")
             save_parameters(['cr', 'ca', 'lr', 'la', 'alpha', 'beta'],
                             [cr, ca, lr, la, alpha, beta], parameters_file)
 else:
@@ -142,7 +132,7 @@ else:
 
 [a, s, r, rr, ro, ra, roa, noise,
  prop, weight, biasx, biasy, dev_bias,
- dTheta, sight_theta, attract, orient,
+ dTheta, sight_theta, atract, orient,
  cr, ca, lr, la, alpha, beta] = load_parameters(parameters_file)
 
 
@@ -153,12 +143,12 @@ if model in ['None', 'smpl']:
 elif model == 'czn':
     def interaction(agents, speeds, dt):
         return couzin(agents, speeds, N, Width, Height, s, noise, dTheta,
-                      rr, ro, ra, sight_theta, 0, roa, attract, orient, 1)
+                      rr, ro, ra, sight_theta, 0, roa, atract, orient, 1)
 
 elif model == 'czn2':
     def interaction(agents, speeds, dt):
         return couzin(agents, speeds, N, Width, Height, s, noise, dTheta,
-                      rr, ro, ra, sight_theta, 1, roa, attract, orient, 1)
+                      rr, ro, ra, sight_theta, 1, roa, atract, orient, 1)
 
 elif model == 'vsck':
     def interaction(agents, speeds, dt):
@@ -171,19 +161,15 @@ elif model == 'mill':
 
 def run(N_steps, dt):
     """
-    Simulates motion of swarm. 
-    INPUT: 
-        N_steps  -- number of steps to perform
-        dt       -- time step to be used
+    Simulates motion of swarm. Recieves following parameters:
+    N_steps  - number of steps to perform
+    dt - time step to be used
     """
-    # percentage of agents that are biased
-    prop = 0.4 
+
+    prop = 0.4
     weight = 0.8
-    bias = np.array([biasx, biasy]) # should be a direction (angle) #~mean/ "centre" of the normal distribution
-    # standard deviation around the bias 
+    bias_angle = 90  
     dev_bias = 0.1
-    # "speed" of rotation
-    # rot_bias = 1
 
     agents, speeds = initialize_agents(s, N, Width, Height)
     window = initialize_window(agents, Width, Height)
@@ -199,8 +185,8 @@ def run(N_steps, dt):
         # Model for agent interactions
         interaction(agents, speeds, dt)
 
-        # Introduction of a bias in "prop" of the agents
-        #biaser(speeds, N, s, i, prop, bias, dev_bias, weight)
+        # Intruduction of a bias in "prop" of the agents
+        biaser(agents, speeds, N, s, i, prop, bias_angle, dev_bias, weight)
 
         # INFORMATION TRANSFER: SHAPE & DIRECTION & ALIGNMENT QUALITY
         [dx, dy] = get_cm(agents, N) - cm
@@ -215,8 +201,8 @@ def run(N_steps, dt):
         save_datapoint(i * dt, dev, data_file)
     window.close()
 
-    plot(data_file)
+    #plot(data_file)
     return
 
 
-run(10000, 0.1)
+run(1000, 1)
