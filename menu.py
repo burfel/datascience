@@ -4,12 +4,13 @@ from sim300 import *
 import sys
 import numpy as np
 
-# to be called in the command line as:
-# python menu.py <N> <Width> <Height>
-# where N      -- number of particles,
-#       Width  -- width of window,
-#       Height -- height of window
-
+'''
+to be called in the command line as:
+python menu.py <N> <Width> <Height>
+where N      -- number of particles,
+      Width  -- width of window,
+      Height -- height of window
+'''
 
 # loading command line arguments:
 # N      -- number of particles,
@@ -178,7 +179,7 @@ def run(N_steps, dt):
     # percentage of agents that are biased
     prop = 0.4 
     weight = 0.8
-    bias = np.array([biasx, biasy]) # should be a direction (angle)
+    bias = np.array([biasx, biasy]) # should be a direction (angle) #~mean/ "centre" of the normal distribution
     # standard deviation around the bias 
     dev_bias = 0.1
     # "speed" of rotation
