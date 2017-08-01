@@ -22,27 +22,25 @@ def initialize_agents(speed, N, width, height):
     Initializes our agent set with randomly directed speeds, draws the window and the agents
     """
     seed()
-    
-    radius = height/2
-    agents = [Point(radius + uniform(0,radius)*np.cos(uniform(0, 2*np.pi)), #Random in a, using uniform()
-                    radius + uniform(0,radius)*np.sin(uniform(0, 2*np.pi))) for i in range(N)]
-    
-    
-    
+
+    agents = N * [0]
     #agents = [Point(uniform(0, width), uniform(0, height)) for i in range(N)]
-    speeds = [np.array([0.0, 0.0]) for i in range(N)]
+    speeds = N * [0,0] 
     
     for i in range(N):
         theta = uniform(0, 2 * np.pi)
-        speeds[i][0] = speed * np.cos(theta)
-        speeds[i][1] = speed * np.sin(theta)
+        speeds[i]= speed * np.array([np.cos(theta), np.sin(theta)])
+        
+        theta = uniform(0, 2 * np.pi)
+        radius = uniform(0,height/2)
+        agents[i] = Point(width / 2 + radius * np.cos(theta),
+                          height / 2 + radius * np.sin(theta))
 
     return agents, speeds
 
-
 def initialize_leaders(agents, prop, N_groups, N):
     Ns = int(N * prop)
-    colors = ['blue', 'green', 'yellow']
+    colors = ['red', 'blue', 'yellow']
     leader_groups = []
     for j in range(N_groups):
         leader_groups.append([])
@@ -119,7 +117,7 @@ def in_sight_range(rel_pos, speed1, angle_range):
 def noisy_vector(noise):
     return noise * np.array([2 * random() - 1, 2 * random() - 1])
     
-def biaser(agents, leaders, speeds, N, s, i, prop, bias, dev_bias, weight, win):
+def biaser(agents, leaders, speeds, N, s, prop, bias, dev_bias, weight, win):
     #bias = np.array([0.0,1.0])
     #Ns has to be integer
 
@@ -190,37 +188,33 @@ def warn_me_args(N_steps, a, dt, N, width, height, s, rr, ro, ra, noise, prop, w
         print("Warning - step length bigger the repultion radius.")
 
 
-def virtualizer (current, agents, h, w, N):
-    lower_limit = current.getY() - h / 2
-    upper_limit = current.getY() + h / 2
-    left_limit = current.getX() - w / 2
-    right_limit = current.getX() + w / 2
+def virtualizer(agents, h, w, N):
+    vagents = [np.array([agent.getX(),agent.getY()])
+               for agent in agents]
+    virtuals = N * [N * [0.0, 0.0]]
+    virtual_points = N * [N * [0]]
     
-    vagents=[np.array([agent.getX(),agent.getY()]) for agent in agents]
-    virtuals = N * [0.0, 0.0]
-    vvirtuals = N * [Point(0.0, 0.0)]
+    for i in range(N):
+        d_limit = agents[i].getY() - h / 2
+        u_limit = agents[i].getY() + h / 2
+        l_limit = agents[i].getX() - w / 2
+        r_limit = agents[i].getX() + w / 2
+        for j in range(N):
+            virtuals[i][j] = vagents[j]
+            candidates = [vagents[j],
+                          vagents[j] + [w, 0], vagents[j] + [-w, 0],
+                          vagents[j] + [w, h], vagents[j] + [w, -h],
+                          vagents[j] + [-w, h], vagents[j] + [-w, -h],
+                          vagents[j] + [0, h], vagents[j] + [0, -h]]
 
-    for j in range(N):
-        #make more compact!!!
-        virtuals[j] = vagents[j]
+            #virtuals[j] = next((cand for cand in candidates if lower_limit < cand[1] < upper_limit and left_limit < cand[0] < right_limit),False
+            for candidate in candidates:
+                if d_limit < candidate[1] < u_limit and l_limit < candidate[0] < r_limit:
+                    virtuals[i][j] = candidate
+
+            virtual_points[i][j] = Point(virtuals[i][j][0],virtuals[i][j][1])
         
-        #newcopy = agents[i].clone()
-        candidates = [vagents[j],
-                      vagents[j]+[w,0],vagents[j]+[-w,0],vagents[j]+[w,h],vagents[j]+[w,-h],
-                      vagents[j]+[-w,h],vagents[j]+[-w,-h],vagents[j]+[0,h],vagents[j]+[0,-h]]
-        #print candidates
-        
-        #virtuals[j] = next((cand for cand in candidates if lower_limit < cand[1] < upper_limit and left_limit < cand[0] < right_limit),False
-        for i in range(9):
-            if lower_limit < candidates[i][1] < upper_limit and left_limit < candidates[i][0] < right_limit:
-                virtuals[j] = candidates[i]
-            
-        ##ATTENTION HERE!!
-#        if not virtuals[j]:
- #           virtuals[j] = agents[j]
-        vvirtuals[j] = Point(virtuals[j][0],virtuals[j][1])
-        
-    return vvirtuals
+    return virtual_points
 
 
 def get_cm_std(agents, N):
@@ -246,7 +240,7 @@ def mill_observables (N, agents, speeds):
 # In[13]:
 
 #COUZIN MODEL IMPLEMENTED WITH REPULSION, ATRACT AND ORIENT ZONES SEPARATED (1ST PAPER)
-def couzin(agents, speeds, N, width, height, s, noise, dTheta, rr, ro, ra, sight_range, model2, roa, atract, orient, pbc):
+def couzin(agents, other_agents, speeds, N, width, height, s, noise, dTheta, rr, ro, ra, sight_range, model2, roa, atract, orient):
     
     if not model2:
         atract = orient = 1
@@ -256,18 +250,13 @@ def couzin(agents, speeds, N, width, height, s, noise, dTheta, rr, ro, ra, sight
         o_dir = np.array([0.0, 0.0])
         a_dir = np.array([0.0, 0.0])
         repulsion_flag = False    
-        
-        if pbc:
-            virtuals = virtualizer(agents[i], agents, height, width, N)
-        else:
-            virtuals = agents
-        
+
         for j in range(N):     
             if i == j:
                 #Eliminate the i-i interaction
                 continue
 
-            rel_pos, distance = relative_pos(agents[i], virtuals[j])
+            rel_pos, distance = relative_pos(agents[i], other_agents[i][j])
             
             if in_sight_range(rel_pos, speeds[i], sight_range):
                 if distance < rr:
@@ -306,7 +295,7 @@ def couzin(agents, speeds, N, width, height, s, noise, dTheta, rr, ro, ra, sight
     return
 
     
-def vicsek(agents, speeds, N, s, noise, r): # s=speed, noise= letter csi temperature factor, r=radius of interaction
+def vicsek(agents, other_agents, speeds, N, s, noise, r): # s=speed, noise= letter csi temperature factor, r=radius of interaction
     # consider only particles within 'r' from pt_i, align pt_i with v_avg
     for i in range(N):
         tot_dir = np.array([0.0, 0.0])
@@ -324,7 +313,7 @@ def vicsek(agents, speeds, N, s, noise, r): # s=speed, noise= letter csi tempera
 
 
 ##MILL MODEL
-def mill(agents, speeds, dt, N, width, height, cr, ca, lr, la, alpha, beta, mass):
+def mill(agents, other_agents, speeds, dt, N, width, height, cr, ca, lr, la, alpha, beta, mass):
     # we're there! N=30, s=5, dt=0.1, Radius=height/4  
     # we're there! N=30, s=5, dt=0.1, Radius=height/4  
     # we're there aswell! N=20, s=5, dt=0.1, Radius=height/4  
@@ -346,7 +335,7 @@ def mill(agents, speeds, dt, N, width, height, cr, ca, lr, la, alpha, beta, mass
                 #Eliminate the i-i interaction
                 continue
 
-            rel_pos, distance = relative_pos(agents[i], agents[j])
+            rel_pos, distance = relative_pos(agents[i], other_agents[j])
             u_dir = normalized(rel_pos)
             grad_U = grad_U + u_dir * (clr*np.exp(- distance / lr) - cla * np.exp(- distance / la))
             

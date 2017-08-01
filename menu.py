@@ -1,7 +1,7 @@
 from processData import *
 from sim300 import *
-import sys
 import numpy as np
+import sys
 
 
 # to be called in the command line as:
@@ -38,7 +38,7 @@ def save_parameters(parameters, values, par_file):
 
 def load_parameters(par_file):
     par_file = open(par_file, 'r')
-    parameters = list(par_file)[1:]
+    parameters = list(par_file)
     parameters = [float(par.split(" = ")[1]) for par in parameters]
     par_file.close()
 
@@ -53,24 +53,31 @@ def load_model(par_file):
     return line.split(" = ")[1][:-1]
 
 
+####################################### Ask for requirements ################################################
+
+
 repeat = raw_input("Repeat simulation ([y]/n)?\n")
 while repeat not in ['', 'y', 'n']:
     repeat = raw_input("Please enter valid input ([y]/n)?\n")
 
 if repeat == 'n':
+    
+    ############################ Model Selection ################################
     if model not in ['None', 'smpl', 'czn', 'vsck', 'czn2', 'mill']:
         print('Models available:\n'
-              'Simple speed coupling............ smpl\n'
-              'Couzin model.....................  czn\n'
-              'Viscek model..................... vsck\n'
-              'Couzin-2 model................... czn2\n'
-              'Mill model....................... mill')
+              'Simple speed coupling............ 0\n'
+              'Couzin model..................... 1\n'
+              'Viscek model..................... 2\n'
+              'Couzin-2 model................... 3\n'
+              'Mill model....................... 4')
 
-        model = raw_input("Please choose a model.")
-        while model not in ['smpl', 'czn', 'vsck', 'czn2', 'mill']:
-            model = raw_input("Please enter a valid model.")
+        model = input("Please choose a model.\n")
+        while model not in range(5):
+            model = input("Please enter a valid model.\n")
         save_parameters(['model'], [model], parameters_file)
 
+
+    ############################## Use same Parameter? ####################################
     rep_par = raw_input("Use saved parameters ([y]/n)?\n")
     while rep_par not in ['', 'y', 'n']:
         rep_par = raw_input("Please enter valid input ([y]/n)?\n")
@@ -80,12 +87,12 @@ if repeat == 'n':
 
     else:
         print('Previous parameters will be overwritten.')
-        if model in ['None', 'smpl']:
+        if model in ['None', 0]:
             s = input("Speed: s = ")
             a = input("Coupling: a = ")
             save_parameters(['s', 'a'], [s, a], parameters_file)
 
-        elif model == 'czn':
+        elif model == 1:
             s = input("Speed: s = ")
             noise = input("Noise: noise = ")
             dTheta = input("Max angle of turn: dTheta = ")
@@ -98,7 +105,7 @@ if repeat == 'n':
                             [s, noise, dTheta, rr, ro, ra, sight_theta],
                             parameters_file)
 
-        elif model == 'czn2':
+        elif model == 3:
             s = input("Speed: s = ")
             noise = input("Noise: noise = ")
             dTheta = input("Max angle of turn: dTheta = ")
@@ -111,14 +118,14 @@ if repeat == 'n':
                             [s, noise, dTheta, rr, roa, atract, orient],
                             parameters_file)
 
-        elif model == 'vsck':
+        elif model == 2:
             s = input("Speed: s = ")
             noise = input("Noise: noise = ")
             r = input("Repulsion radius: r = ")
             save_parameters(['s', 'noise', 'r'],
                             [s, noise, r], parameters_file)
 
-        elif model == 'mill':
+        elif model == 4:
             cr = input("Repulsion coeficient: cr = ")
             ca = input("Atraction coeficient: ca = ")
             lr = input("Repulsion length: lr = ")
@@ -128,39 +135,123 @@ if repeat == 'n':
             mass = input("Agents's mass: mass = ")
             save_parameters(['cr', 'ca', 'lr', 'la', 'alpha', 'beta', 'mass'],
                             [cr, ca, lr, la, alpha, beta, mass], parameters_file)
+
+        #########################  Bias Selection ############################
+        use_bias = raw_input("Use bias ([y]/n)?\n")
+        while use_bias not in ['', 'y', 'n']:
+            use_bias = raw_input("Please enter valid input ([y]/n)?\n")
+
+        if use_bias in ['', 'y']:
+            use_bias = 1
+            prop = input("Fraction of leading agents: prop = ")
+            weight = input("Intensity of bias: weight = ")
+            dev_bias = input("Jitter of bias: dev_bias = ")
+            n_lead = input("Number of biased groups: n_lead = ")
+            save_parameters(['n_lead', 'prop', 'weight', 'dev_bias'],
+                            [n_lead, prop, weight, dev_bias], parameters_file)
+            for i in range(n_lead):
+                bias_angle = input("Bias angle for group " + str(i + 1) + ": bias_angle_" + str(i + 1) + " = ")
+                save_parameters(['bias_angle_' + str(i + 1)],
+                                [bias_angle], parameters_file)
+        else:
+            use_bias = 0
+        save_parameters(['use_bias'],
+                        [use_bias], parameters_file)
+        ######################################################################
+
+
+        ####################  Periodic Boudary Conditions ####################
+        use_pbc = raw_input("Use PBCs ([y]/n)?\n")
+        while use_pbc not in ['', 'y', 'n']:
+            use_pbc = raw_input("Please enter valid input ([y]/n)?\n")
+
+        if use_pbc in ['', 'y']:
+            use_pbc = 1
+        else:
+            use_pbc = 0
+        save_parameters(['use_pbc'],
+                        [use_pbc], parameters_file)
+        ######################################################################
 else:
     model = load_model('parameters.txt')
 
-[a, s, r, rr, ro, ra, roa, noise,
- prop, weight, bias_angle, dev_bias,
+
+#####################################################################################################
+
+
+[model, use_pbc, use_bias, a, s, r, rr, ro, ra, roa, noise, n_lead,
+ prop, weight, bias_angle_1, bias_angle_2, bias_angle_3, dev_bias,
  dTheta, sight_theta, atract, orient,
  cr, ca, lr, la, alpha, beta, mass] = load_parameters(parameters_file)
 
 
-if model in ['None', 'smpl']:
+########################################## Implement requirements ################################################
+
+# define treatment of boundaries
+if use_pbc:
+    def treat_boundary(agents, speeds):
+        return periodic_boundary(Width, Height, agents, speeds, N)
+
+    def agents_to_interact(agents):
+        return virtualizer(agents, Height, Width, N)
+
+else:
+    def treat_boundary(agents, speeds):
+        return rigid_boundary(Width, Height, agents, speeds, N)
+
+    def agents_to_interact(agents):
+        return N * [agents]
+
+# define bias
+
+if use_bias:
+    biases = [np.array([np.cos(np.pi * bias_angle_1 / 180), np.sin(np.pi * bias_angle_1 / 180)]),
+            np.array([np.cos(np.pi * bias_angle_2 / 180), np.sin(np.pi * bias_angle_2 / 180)]),
+            np.array([np.cos(np.pi * bias_angle_3 / 180), np.sin(np.pi * bias_angle_3 / 180)])]
+    print(biases)
+
+    def treat_biases(agents, speeds, leaders, win):
+        for i in range(int(n_lead)):
+            biases[i] = biaser(agents, leaders[i], speeds, N, s, prop, biases[i], dev_bias, weight, win)
+
+
+else:
+    def treat_biases(agents, leaders, speeds, win):
+        return
+
+# define particle interaction based on chosen model
+if model in ['None', 0]:
     def interaction(agents, speeds, dt):
-        return couple_speeds(agents, speeds, a, s, N)
+        other_agents = agents_to_interact(agents)
+        return couple_speeds(agents, other_agents, speeds, a, s, N)
 
-elif model == 'czn':
+elif model == 1:
     def interaction(agents, speeds, dt):
-        return couzin(agents, speeds, N, Width, Height, s, noise, dTheta,
-                      rr, ro, ra, sight_theta, 0, roa, atract, orient, 1)
+        other_agents = agents_to_interact(agents)
+        return couzin(agents, other_agents, speeds, N, Width, Height, s, noise, dTheta,
+                      rr, ro, ra, sight_theta, 0, roa, atract, orient)
 
-elif model == 'czn2':
+elif model == 3:
     def interaction(agents, speeds, dt):
-        return couzin(agents, speeds, N, Width, Height, s, noise, dTheta,
-                      rr, ro, ra, sight_theta, 1, roa, atract, orient, 1)
+        other_agents = agents_to_interact(agents)
+        return couzin(agents, other_agents, speeds, N, Width, Height, s, noise, dTheta,
+                      rr, ro, ra, sight_theta, 1, roa, atract, orient)
 
-elif model == 'vsck':
+elif model == 2:
     def interaction(agents, speeds, dt):
-        return vicsek(agents, speeds, N, s, noise, r)
+        other_agents = agents_to_interact(agents)
+        return vicsek(agents, other_agents, speeds, N, s, noise, r)
 
-elif model == 'mill':
+elif model == 4:
     def interaction(agents, speeds, dt):
-        return mill(agents, speeds, dt, N, Width, Height, cr, ca, lr, la, alpha, beta, mass)
+        other_agents = agents_to_interact(agents)
+        return mill(agents, other_agents, speeds, dt, N, Width, Height, cr, ca, lr, la, alpha, beta, mass)
+
+# define introduction of biases
 
 
-print(bias_angle)
+
+######################################################################################################################
 
 def run(N_steps, dt):
     """
@@ -170,16 +261,15 @@ def run(N_steps, dt):
     """
 
     agents, speeds = initialize_agents(s, N, Width, Height)
-    window = initialize_window(agents, Width, Height)
     cm = get_cm(agents, N)
     cmagent = Point(cm[0], cm[1])
-    cmagent.draw(window)
-    cmagent.setFill("red")
-    bias1 = np.array([np.cos(np.pi * bias_angle / 180), np.sin(np.pi * bias_angle / 180)])
-    bias2 = np.array([np.cos(np.pi * (bias_angle+90) / 180), np.sin(np.pi * (bias_angle+90) / 180)])
-    
+    cmagent.setFill("green")
 
-    leader_groups = initialize_leaders(agents, prop, 2, N)
+    window = initialize_window(agents + [cmagent], Width, Height)
+
+    leaders = 0
+    if use_bias:
+        leaders = initialize_leaders(agents, prop, int(n_lead), N)
 
     for i in range(N_steps):
 
@@ -189,8 +279,7 @@ def run(N_steps, dt):
         interaction(agents, speeds, dt)
 
         # Intruduction of a bias in "prop" of the agents
-        bias1 = biaser(agents, leader_groups[0], speeds, N, s, i, prop, bias1, dev_bias, weight, window)
-	bias2 = biaser(agents, leader_groups[1], speeds, N, s, i, prop, bias2, dev_bias, weight, window)
+        treat_biases(agents, speeds, leaders, window)
 
         # INFORMATION TRANSFER: SHAPE & DIRECTION & ALIGNMENT QUALITY
         [dx, dy] = get_cm(agents, N) - cm
@@ -198,8 +287,7 @@ def run(N_steps, dt):
         cm = cm + [dx, dy]
 
         # BOUNDARY CONDITIONS
-        #rigid_boundary(Width, Height, agents, speeds, N)
-        periodic_boundary(Width, Height, agents, speeds, N)
+        treat_boundary(agents, speeds)
 
         dev = avg_dev(agents)
         save_datapoint(i * dt, dev, data_file)
@@ -209,4 +297,4 @@ def run(N_steps, dt):
     return
 
 
-run(1000, 1)
+run(500, 1)
