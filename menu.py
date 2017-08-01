@@ -132,7 +132,7 @@ else:
     model = load_model('parameters.txt')
 
 [a, s, r, rr, ro, ra, roa, noise,
- prop, weight, biasx, biasy, dev_bias,
+ prop, weight, bias_angle, dev_bias,
  dTheta, sight_theta, atract, orient,
  cr, ca, lr, la, alpha, beta, mass] = load_parameters(parameters_file)
 
@@ -160,6 +160,8 @@ elif model == 'mill':
         return mill(agents, speeds, dt, N, Width, Height, cr, ca, lr, la, alpha, beta, mass)
 
 
+print(bias_angle)
+
 def run(N_steps, dt):
     """
     Simulates motion of swarm. Recieves following parameters:
@@ -167,17 +169,17 @@ def run(N_steps, dt):
     dt - time step to be used
     """
 
-    prop = 0.4
-    weight = 0.8
-    bias_angle = 90  
-    dev_bias = 0.1
-
     agents, speeds = initialize_agents(s, N, Width, Height)
     window = initialize_window(agents, Width, Height)
     cm = get_cm(agents, N)
     cmagent = Point(cm[0], cm[1])
     cmagent.draw(window)
     cmagent.setFill("red")
+    bias1 = np.array([np.cos(np.pi * bias_angle / 180), np.sin(np.pi * bias_angle / 180)])
+    bias2 = np.array([np.cos(np.pi * (bias_angle+90) / 180), np.sin(np.pi * (bias_angle+90) / 180)])
+    
+
+    leader_groups = initialize_leaders(agents, prop, 2, N)
 
     for i in range(N_steps):
 
@@ -187,7 +189,8 @@ def run(N_steps, dt):
         interaction(agents, speeds, dt)
 
         # Intruduction of a bias in "prop" of the agents
-        #biaser(agents, speeds, N, s, i, prop, bias_angle, dev_bias, weight)
+        bias1 = biaser(agents, leader_groups[0], speeds, N, s, i, prop, bias1, dev_bias, weight, window)
+	bias2 = biaser(agents, leader_groups[1], speeds, N, s, i, prop, bias2, dev_bias, weight, window)
 
         # INFORMATION TRANSFER: SHAPE & DIRECTION & ALIGNMENT QUALITY
         [dx, dy] = get_cm(agents, N) - cm
@@ -195,8 +198,8 @@ def run(N_steps, dt):
         cm = cm + [dx, dy]
 
         # BOUNDARY CONDITIONS
-        rigid_boundary(Width, Height, agents, speeds, N)
-        #periodic_boundary(Width, Height, agents, speeds, N)
+        #rigid_boundary(Width, Height, agents, speeds, N)
+        periodic_boundary(Width, Height, agents, speeds, N)
 
         dev = avg_dev(agents)
         save_datapoint(i * dt, dev, data_file)
@@ -206,4 +209,4 @@ def run(N_steps, dt):
     return
 
 
-run(1000, 0.1)
+run(1000, 1)

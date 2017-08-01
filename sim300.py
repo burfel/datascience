@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[2]:
+# In[11]:
 
 import matplotlib
 matplotlib.use("TkAgg")
@@ -15,7 +15,7 @@ import numpy as np
 import timeit
 
 
-# In[1]:
+# In[12]:
 
 def initialize_agents(speed, N, width, height):
     """
@@ -27,6 +27,8 @@ def initialize_agents(speed, N, width, height):
     agents = [Point(radius + uniform(0,radius)*np.cos(uniform(0, 2*np.pi)), #Random in a, using uniform()
                     radius + uniform(0,radius)*np.sin(uniform(0, 2*np.pi))) for i in range(N)]
     
+    
+    
     #agents = [Point(uniform(0, width), uniform(0, height)) for i in range(N)]
     speeds = [np.array([0.0, 0.0]) for i in range(N)]
     
@@ -37,6 +39,18 @@ def initialize_agents(speed, N, width, height):
 
     return agents, speeds
 
+
+def initialize_leaders(agents, prop, N_groups, N):
+    Ns = int(N * prop)
+    colors = ['blue', 'green', 'yellow']
+    leader_groups = []
+    for j in range(N_groups):
+        leader_groups.append([])
+        for i in range(Ns):
+            agent_index = i + j * Ns
+            leader_groups[j].append(agent_index)
+            agents[agent_index].setFill(colors[j])
+    return leader_groups
 
 def initialize_window(agents, width, height):
     win = GraphWin("Swarm", width, height) # size of box
@@ -105,22 +119,23 @@ def in_sight_range(rel_pos, speed1, angle_range):
 def noisy_vector(noise):
     return noise * np.array([2 * random() - 1, 2 * random() - 1])
     
-def biaser(agents, speeds, N, s, i, prop, bias_angle, dev_bias, weight):
+def biaser(agents, leaders, speeds, N, s, i, prop, bias, dev_bias, weight, win):
     #bias = np.array([0.0,1.0])
     #Ns has to be integer
-    bias_angle = np.pi * bias_angle / 180
-    bias = np.array([np.cos(bias_angle), np.sin(bias_angle)])
-    
-    Ns = int(N * prop)
+
+    comands = {"Up": [0, -1], "Down": [0, 1], "Right": [1, 0], "Left": [-1, 0]}
     gbias = np.random.normal(bias, dev_bias, )
-    for i in range(Ns):
-        agents[i].setFill('green')
+    for i in leaders:
         tot_dir = normalized(normalized(speeds[i]) + weight * gbias)
         
         if np.linalg.norm(tot_dir) != 0:
             speeds[i] = s*tot_dir
+            
+    key = win.checkKey()
+    if key is not "":
+         bias = np.array(comands[key])
     #bias = np.dot(tot_dir,np.array([[np.cos(rot_bias*i), 0],[0, np.sin(rot_bias*i)]]))
-    #return bias
+    return bias
 
 def rigid_boundary(x_bound, y_bound, agents, speeds, N):
     for i in range(N):
@@ -228,7 +243,7 @@ def mill_observables (N, agents, speeds):
     return mean_R, min_R, max_R, angles
 
 
-# In[48]:
+# In[13]:
 
 #COUZIN MODEL IMPLEMENTED WITH REPULSION, ATRACT AND ORIENT ZONES SEPARATED (1ST PAPER)
 def couzin(agents, speeds, N, width, height, s, noise, dTheta, rr, ro, ra, sight_range, model2, roa, atract, orient, pbc):
@@ -343,6 +358,24 @@ def mill(agents, speeds, dt, N, width, height, cr, ca, lr, la, alpha, beta, mass
         d_speed = (propulsion - friction - grad_U) / mass
         speeds[i]= speeds[i] + dt * d_speed
     return
+
+#mill (dt, agents, speeds, N, width, height, cr=100, ca=150, lr=80, la=200.0, alpha=1.0, beta=0.01, mass=1) # we're there! N=30, s=5, dt=0.1, Radius=height/4  
+        #mill (dt, agents, speeds, N, width, height, cr=100, ca=150, lr=80, la=200.0, alpha=1.2, beta=0.01, mass=3) # we're there! N=30, s=5, dt=0.1, Radius=height/4  
+        #mill (dt, agents, speeds, N, width, height, cr=100, ca=150, lr=80, la=200.0, alpha=1.0, beta=0.01, mass=1) # we're there aswell! N=20, s=5, dt=0.1, Radius=height/4  
+        #mill (dt, agents, speeds, N, width, height, cr=50, ca=100, lr=50, la=100.0, alpha=1.0, beta=0.01, mass=1) # The winner at 12:28 (1/8/2017)! N=60, s=5, dt=0.1, Radius=height/2  
+        #mill (dt, agents, speeds, N, width, height, cr=50, ca=100, lr=50, la=100.0, alpha=1.0, beta=0.5, mass=1)
+        
+        ##OBSERVABLES FOR MILL MODEL
+        #mean_R, min_R, max_R, angles = mill_observables(N, agents, speeds)
+        #if (i > 500):
+        #    print mean_R, min_R, max_R
+        #    print angles[0],angles[N/2], angles[N-1]
+        
+        # WE WANT TO PLOT:
+        #Rmin, Rmax, Rmean OVER THE TIME OF THE SIMULATION, SEE IT CONVERGES
+        #angles[i] AT ONE STABLE MOMENT OF THE SIMULATION (END) AS A DISTRIBUTION OF ANGLES, SEE TWO PEAKS AROUND 90º
+        
+        
 
 
 # In[ ]:
