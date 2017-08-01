@@ -16,11 +16,14 @@ import numpy as np
 # Height -- height of window
 [N, Width, Height] = map(int, sys.argv[1:])
 
+# file to save parameter sets
 parameters_file = 'parameters.txt'
+
+
 data_file = 'data.csv'
 model = 0
 
-
+# saving parameters 
 def save_parameters(parameters, values, par_file):
     file = open(par_file, 'r')
     lines = list(file)
@@ -39,7 +42,7 @@ def save_parameters(parameters, values, par_file):
 
     file.close()
 
-
+# loading parameters
 def load_parameters(par_file):
     par_file = open(par_file, 'r')
     parameters = list(par_file)[1:]
@@ -64,11 +67,11 @@ while repeat not in ['', 'y', 'n']:
 if repeat == 'n':
     if model not in ['None', 'smpl', 'czn', 'vsck', 'czn2', 'mill']:
         print('Models available:\n'
-              'Simple speed coupling............ smpl\n'
-              'Couzin model.....................  czn\n'
-              'Viscek model..................... vsck\n'
-              'Couzin-2 model................... czn2\n'
-              'Mill model....................... mill')
+              'Simple speed coupling.............smpl\n'
+              'Couzin model......................czn\n'
+              'Viscek model......................vsck\n'
+              'Couzin-2 model....................czn2\n'
+              'Mill model........................mill')
 
         model = raw_input("Please choose a model.")
         while model not in ['smpl', 'czn', 'vsck', 'czn2', 'mill']:
@@ -84,6 +87,7 @@ if repeat == 'n':
 
     else:
         print('Previous parameters will be overwritten.')
+        # default model is the simple model
         if model in ['None', 'smpl']:
             s = input("Speed: s = ")
             a = input("Coupling: a = ")
@@ -95,7 +99,7 @@ if repeat == 'n':
             dTheta = input("Max angle of turn: dTheta = ")
             rr = input("Repulsion radius: rr = ")
             ro = input("Orientation radius: ro = ")
-            ra = input("Atraction radius: ra = ")
+            ra = input("Attraction radius: ra = ")
             sight_theta = input("Field of view: sight_theta = ")
             save_parameters(['s', 'noise', 'dTheta', 'rr',
                              'ro', 'ra', 'sight_theta'],
@@ -107,12 +111,12 @@ if repeat == 'n':
             noise = input("Noise: noise = ")
             dTheta = input("Max angle of turn: dTheta = ")
             rr = input("Repulsion radius: rr = ")
-            roa = input("Orientation/atraction radius: roa = ")
+            roa = input("Orientation/attraction radius: roa = ")
             orient = input("Orientation weight: orient = ")
-            atract = input("Atract weight: atract = ")
+            attract = input("Attraction weight: attract = ")
             save_parameters(['s', 'noise', 'dTheta', 'rr',
-                             'roa', 'atract', 'orient'],
-                            [s, noise, dTheta, rr, roa, atract, orient],
+                             'roa', 'attract', 'orient'],
+                            [s, noise, dTheta, rr, roa, attract, orient],
                             parameters_file)
 
         elif model == 'vsck':
@@ -123,12 +127,12 @@ if repeat == 'n':
                             [s, noise, r], parameters_file)
 
         elif model == 'mill':
-            cr = input("Repulsion coeficient: cr = ")
-            ca = input("Atraction coeficient: ca = ")
+            cr = input("Repulsion coefficient: cr = ")
+            ca = input("Attraction coefficient: ca = ")
             lr = input("Repulsion length: lr = ")
-            la = input("Atraction length: la = ")
+            la = input("Attraction length: la = ")
             alpha = input("Self propulsion: alpha = ")
-            beta = input("Friction coeficient: beta = ")
+            beta = input("Friction coefficient: beta = ")
             save_parameters(['cr', 'ca', 'lr', 'la', 'alpha', 'beta'],
                             [cr, ca, lr, la, alpha, beta], parameters_file)
 else:
@@ -136,7 +140,7 @@ else:
 
 [a, s, r, rr, ro, ra, roa, noise,
  prop, weight, biasx, biasy, dev_bias,
- dTheta, sight_theta, atract, orient,
+ dTheta, sight_theta, attract, orient,
  cr, ca, lr, la, alpha, beta] = load_parameters(parameters_file)
 
 
@@ -147,12 +151,12 @@ if model in ['None', 'smpl']:
 elif model == 'czn':
     def interaction(agents, speeds, dt):
         return couzin(agents, speeds, N, Width, Height, s, noise, dTheta,
-                      rr, ro, ra, sight_theta, 0, roa, atract, orient, 1)
+                      rr, ro, ra, sight_theta, 0, roa, attract, orient, 1)
 
 elif model == 'czn2':
     def interaction(agents, speeds, dt):
         return couzin(agents, speeds, N, Width, Height, s, noise, dTheta,
-                      rr, ro, ra, sight_theta, 1, roa, atract, orient, 1)
+                      rr, ro, ra, sight_theta, 1, roa, attract, orient, 1)
 
 elif model == 'vsck':
     def interaction(agents, speeds, dt):
