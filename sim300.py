@@ -32,7 +32,7 @@ def initialize_agents(speed, N, width, height):
         speeds[i]= speed * np.array([np.cos(theta), np.sin(theta)])
         
         theta = uniform(0, 2 * np.pi)
-        radius = uniform(0,height/2)
+        radius = uniform(0,height/4)
         agents[i] = Point(width / 2 + radius * np.cos(theta),
                           height / 2 + radius * np.sin(theta))
 
@@ -129,9 +129,9 @@ def biaser(agents, leaders, speeds, N, s, prop, bias, dev_bias, weight, win):
         if np.linalg.norm(tot_dir) != 0:
             speeds[i] = s*tot_dir
             
-    key = win.checkKey()
-    if key is not "":
-         bias = np.array(comands[key])
+    #key = win.checkKey()
+    #if key is not "":
+    #     bias = np.array(comands[key])
     #bias = np.dot(tot_dir,np.array([[np.cos(rot_bias*i), 0],[0, np.sin(rot_bias*i)]]))
     return bias
 
@@ -335,7 +335,7 @@ def mill(agents, other_agents, speeds, dt, N, width, height, cr, ca, lr, la, alp
                 #Eliminate the i-i interaction
                 continue
 
-            rel_pos, distance = relative_pos(agents[i], other_agents[j])
+            rel_pos, distance = relative_pos(agents[i], other_agents[i][j])
             u_dir = normalized(rel_pos)
             grad_U = grad_U + u_dir * (clr*np.exp(- distance / lr) - cla * np.exp(- distance / la))
             
