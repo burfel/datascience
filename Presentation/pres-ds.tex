@@ -114,7 +114,7 @@
 
 \title[Short title]{Data Science Course\\
 \small{Understading swarm behaviour}}
-\vspace*{-30pt}\titlegraphic{\includegraphics[width=5cm]{FUB_logo.png}}
+\vspace*{-30pt}\titlegraphic{\includegraphics[width=5cm]{./img/FUB_logo.png}}
 
 \author[Grupo B4]{Felicia Burtscher, Frederik Eistrup, Jos\'{e} Senart\\  %\includegraphics[width=0.15\columnwidth]{../img/SF_linda.pdf}\\
 %\includegraphics[width=0.15\columnwidth]{../img/LBIC_CELLO_fig5.png}\includegraphics[width=0.15\columnwidth]{../img/LBIC_CELLO_fig9.png}
@@ -279,14 +279,12 @@
 	
 	\begin{equation} \label{eqOfMotion}
 	\begin{split}
-    & \dot{x_{i}} = v_{i} \\
-	& \dot{v_{i}} = (\alpha - \beta |v_{i}|^{2}) v_{i} - \nabla_{x_{i}} \sum_{j \neq i}^{} U(|x_{i} - x_{j}|)
+    & \frac{\partial \vec{x_{i}}}{\partial t} = \vec{v_{i}} \\
+	m & \frac{\partial \vec{v_{i}}}{\partial t} = (\alpha - \beta |\vec{v_{i}}|^{2}) \vec{v_{i}} - \vec{\nabla_{i}} U(\vec{x_{i}})
 	\end{split}
 	\end{equation}
 	
-	where \( U \) is a pairwise interaction potential and \alpha, \beta \(> 0\) are values for propulsion and friction forces.\\
-
-	
+	where \( U \) is a pairwise interaction potential and \( \alpha, \beta > 0\) are values for propulsion and friction forces.\\
 
 \end{frame}
 
@@ -295,10 +293,10 @@
 	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
 	
 
-For \( U \) we choose the Morse potential which is a common choice for interacting swarming systems
+For \( U \) we choose the \textit{Morse potential} which is a common choice for interacting swarming systems
 
 \begin{equation} \label{morsePotential}
-U(r) = \underbrace{-C_{a} e^{-r/l_{a}}}_{\text{attraction}} + \underbrace{C_{r}e^{-r/l_{r}}}_{\text{repulsion}}
+U(\vec{x_{i}}) = \sum_{j \neq i}^{} [ \underbrace{-C_{a} e^{-| \vec{x_{i}} - \vec{x_{j}} | / l_{a}}}_{\text{attraction}} + \underbrace{C_{r}e^{-|\vec{x_{i}}-\vec{x_{j}}|/l_{r}}}_{\text{repulsion}} ]
 \end{equation}
 where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_{a}\), \( l_{r}\) their respective length scales.
 	
@@ -327,6 +325,201 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 %(heavy-atom molecules and paramagnetic species)
 %
 %\end{multicols}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{czn2}}
+Figure 1: Accuracy 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quantification \texttt{czn2}}
+	Figure 2: Group elongation 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quantification \texttt{czn2}}
+	Figure 3: Two groups
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	
+	\begin{figure}[H]
+		\includegraphics[width=1.\columnwidth]{./img/H-stabilityPhaseDiagram.png}
+		\caption{H-stability phase diagram of the Morse potential}
+		\label{hstability}
+	\end{figure}
+	
+	
+	%%\begin{multicols}{2}
+	%\begin{figure}[H]
+	%\hspace{-10pt}\includegraphics[width=0.9\columnwidth]{../img/SF_esq20.pdf}
+	%\end{figure}
+	%\begin{multicols}{2}
+	%
+	%\hspace{-20pt}\vspace{-20pt}
+	%\begin{figure}[H]
+	%\hspace{-20pt}\vspace{-20pt}\includegraphics[width=0.7\columnwidth]{../img/SF_esq19.png}
+	%\end{figure}
+	%%\columnbreak
+	%\footnotesize
+	%\hspace{-20pt}Non-Radiatively: Singlet to Triplet state (reverse of the electron spin)\\
+	%\hspace{-20pt}1- Overlap of vibrational levels\\
+	%(little E loss/gain, $\sim kT$)\\
+	%\hspace{-20pt}2- \textbf{Spin-Orbit Coupling}\\
+	%%(Interaction with $\overrightarrow{L}$ of non-circular orbits)\\
+	%%\hspace{-20pt}
+	%(heavy-atom molecules and paramagnetic species)
+	%
+	%\end{multicols}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	
+%\begin{figure}[H]
+%\includegraphics[width=1.\columnwidth]{./img/H-stabilityPhaseDiagram.png}
+%\caption{H-stability phase diagram of the Morse potential}
+%\label{hstability}
+%\end{figure}
+%	
+
+Region I \\
+Region II \\
+Region III \\
+Region IV \\
+Region V \\
+Region VI \\
+	
+   %%\begin{multicols}{2}
+	%\begin{figure}[H]
+	%\hspace{-10pt}\includegraphics[width=0.9\columnwidth]{../img/SF_esq20.pdf}
+	%\end{figure}
+	%\begin{multicols}{2}
+	%
+	%\hspace{-20pt}\vspace{-20pt}
+	%\begin{figure}[H]
+	%\hspace{-20pt}\vspace{-20pt}\includegraphics[width=0.7\columnwidth]{../img/SF_esq19.png}
+	%\end{figure}
+	%%\columnbreak
+	%\footnotesize
+	%\hspace{-20pt}Non-Radiatively: Singlet to Triplet state (reverse of the electron spin)\\
+	%\hspace{-20pt}1- Overlap of vibrational levels\\
+	%(little E loss/gain, $\sim kT$)\\
+	%\hspace{-20pt}2- \textbf{Spin-Orbit Coupling}\\
+	%%(Interaction with $\overrightarrow{L}$ of non-circular orbits)\\
+	%%\hspace{-20pt}
+	%(heavy-atom molecules and paramagnetic species)
+	%
+	%\end{multicols}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	
+	\begin{figure}[H]
+		\includegraphics[width=.75\columnwidth]{./img/ClumpsRing.png}
+		\caption{Catastrophic geometry. \\(a) Clumps. (b) Ring Clumping. (c) Rings.}
+		\label{clumps}
+	\end{figure}
+	
+	
+	%%\begin{multicols}{2}
+	%\begin{figure}[H]
+	%\hspace{-10pt}\includegraphics[width=0.9\columnwidth]{../img/SF_esq20.pdf}
+	%\end{figure}
+	%\begin{multicols}{2}
+	%
+	%\hspace{-20pt}\vspace{-20pt}
+	%\begin{figure}[H]
+	%\hspace{-20pt}\vspace{-20pt}\includegraphics[width=0.7\columnwidth]{../img/SF_esq19.png}
+	%\end{figure}
+	%%\columnbreak
+	%\footnotesize
+	%\hspace{-20pt}Non-Radiatively: Singlet to Triplet state (reverse of the electron spin)\\
+	%\hspace{-20pt}1- Overlap of vibrational levels\\
+	%(little E loss/gain, $\sim kT$)\\
+	%\hspace{-20pt}2- \textbf{Spin-Orbit Coupling}\\
+	%%(Interaction with $\overrightarrow{L}$ of non-circular orbits)\\
+	%%\hspace{-20pt}
+	%(heavy-atom molecules and paramagnetic species)
+	%
+	%\end{multicols}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	
+	\begin{figure}[H]
+		\includegraphics[width=1.\columnwidth]{./img/snapshots.png}
+		%\caption{snapshots of farms for different values of \( N \) in region VII. }
+		\label{snapshots}
+	\end{figure}
+	
+	
+	%%\begin{multicols}{2}
+	%\begin{figure}[H]
+	%\hspace{-10pt}\includegraphics[width=0.9\columnwidth]{../img/SF_esq20.pdf}
+	%\end{figure}
+	%\begin{multicols}{2}
+	%
+	%\hspace{-20pt}\vspace{-20pt}
+	%\begin{figure}[H]
+	%\hspace{-20pt}\vspace{-20pt}\includegraphics[width=0.7\columnwidth]{../img/SF_esq19.png}
+	%\end{figure}
+	%%\columnbreak
+	%\footnotesize
+	%\hspace{-20pt}Non-Radiatively: Singlet to Triplet state (reverse of the electron spin)\\
+	%\hspace{-20pt}1- Overlap of vibrational levels\\
+	%(little E loss/gain, $\sim kT$)\\
+	%\hspace{-20pt}2- \textbf{Spin-Orbit Coupling}\\
+	%%(Interaction with $\overrightarrow{L}$ of non-circular orbits)\\
+	%%\hspace{-20pt}
+	%(heavy-atom molecules and paramagnetic species)
+	%
+	%\end{multicols}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	
+	\begin{figure}[H]
+		\includegraphics[width=.7 \columnwidth]{./img/vortexScaling.png}
+		\caption{Vortex scaling for the catastrophic Morse potential.}
+		\label{vortexScaling}
+	\end{figure}
+	
+	
+	%%\begin{multicols}{2}
+	%\begin{figure}[H]
+	%\hspace{-10pt}\includegraphics[width=0.9\columnwidth]{../img/SF_esq20.pdf}
+	%\end{figure}
+	%\begin{multicols}{2}
+	%
+	%\hspace{-20pt}\vspace{-20pt}
+	%\begin{figure}[H]
+	%\hspace{-20pt}\vspace{-20pt}\includegraphics[width=0.7\columnwidth]{../img/SF_esq19.png}
+	%\end{figure}
+	%%\columnbreak
+	%\footnotesize
+	%\hspace{-20pt}Non-Radiatively: Singlet to Triplet state (reverse of the electron spin)\\
+	%\hspace{-20pt}1- Overlap of vibrational levels\\
+	%(little E loss/gain, $\sim kT$)\\
+	%\hspace{-20pt}2- \textbf{Spin-Orbit Coupling}\\
+	%%(Interaction with $\overrightarrow{L}$ of non-circular orbits)\\
+	%%\hspace{-20pt}
+	%(heavy-atom molecules and paramagnetic species)
+	%
+	%\end{multicols}
 \end{frame}
 
 %\begin{frame}
