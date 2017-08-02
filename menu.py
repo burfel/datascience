@@ -295,7 +295,7 @@ def run(N_steps, dt):
         save_datapoint(i * dt, dev, data_file)
     window.close()
 
-    #plot(data_file)
+    plot(data_file)
     return
 
 
