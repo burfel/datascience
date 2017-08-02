@@ -11,10 +11,9 @@ import sys
 # N - Number of particles
 # Width and Height of window
 
-[N, Width, Height] = map(int, sys.argv[1:])
+[steps, time_step] = map(int, sys.argv[1:])
 parameters_file = 'parameters.txt'
 data_file = 'data.csv'
-model = 0
 
 
 def save_parameters(parameters, values, par_file):
@@ -56,25 +55,28 @@ def load_model(par_file):
 ####################################### Ask for requirements ################################################
 
 
+N = input("Number of agents: N = ")
+Width = input("Window dimensions: Width = ")
+Height = input("Window dimensions: Height = ")
+
 repeat = raw_input("Repeat simulation ([y]/n)?\n")
 while repeat not in ['', 'y', 'n']:
     repeat = raw_input("Please enter valid input ([y]/n)?\n")
 
 if repeat == 'n':
-    
-    ############################ Model Selection ################################
-    if model not in ['None', 'smpl', 'czn', 'vsck', 'czn2', 'mill']:
-        print('Models available:\n'
-              'Simple speed coupling............ 0\n'
-              'Couzin model..................... 1\n'
-              'Viscek model..................... 2\n'
-              'Couzin-2 model................... 3\n'
-              'Mill model....................... 4')
 
-        model = input("Please choose a model.\n")
-        while model not in range(5):
-            model = input("Please enter a valid model.\n")
-        save_parameters(['model'], [model], parameters_file)
+    ############################ Model Selection ################################
+    print('Models available:\n'
+          'Simple speed coupling............ 0\n'
+          'Couzin model..................... 1\n'
+          'Viscek model..................... 2\n'
+          'Couzin-2 model................... 3\n'
+          'Mill model....................... 4')
+
+    model = input("Please choose a model.\n")
+    while model not in range(5):
+        model = input("Please enter a valid model.\n")
+    save_parameters(['model'], [model], parameters_file)
 
 
     ############################## Use same Parameter? ####################################
@@ -297,4 +299,4 @@ def run(N_steps, dt):
     return
 
 
-run(2000, 0.1)
+run(steps, time_step)
