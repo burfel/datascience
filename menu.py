@@ -11,9 +11,10 @@ import sys
 # N - Number of particles
 # Width and Height of window
 
-[steps, time_step] = map(int, sys.argv[1:])
+[N, Width, Height] = map(int, sys.argv[1:])
 parameters_file = 'parameters.txt'
 data_file = 'data.csv'
+model = 0
 
 
 def save_parameters(parameters, values, par_file):
@@ -55,28 +56,25 @@ def load_model(par_file):
 ####################################### Ask for requirements ################################################
 
 
-N = input("Number of agents: N = ")
-Width = input("Window dimensions: Width = ")
-Height = input("Window dimensions: Height = ")
-
 repeat = raw_input("Repeat simulation ([y]/n)?\n")
 while repeat not in ['', 'y', 'n']:
     repeat = raw_input("Please enter valid input ([y]/n)?\n")
 
 if repeat == 'n':
-
+    
     ############################ Model Selection ################################
-    print('Models available:\n'
-          'Simple speed coupling............ 0\n'
-          'Couzin model..................... 1\n'
-          'Viscek model..................... 2\n'
-          'Couzin-2 model................... 3\n'
-          'Mill model....................... 4')
+    if model not in ['None', 'smpl', 'czn', 'vsck', 'czn2', 'mill']:
+        print('Models available:\n'
+              'Simple speed coupling............ 0\n'
+              'Couzin model..................... 1\n'
+              'Viscek model..................... 2\n'
+              'Couzin-2 model................... 3\n'
+              'Mill model....................... 4')
 
-    model = input("Please choose a model.\n")
-    while model not in range(5):
-        model = input("Please enter a valid model.\n")
-    save_parameters(['model'], [model], parameters_file)
+        model = input("Please choose a model.\n")
+        while model not in range(5):
+            model = input("Please enter a valid model.\n")
+        save_parameters(['model'], [model], parameters_file)
 
 
     ############################## Use same Parameter? ####################################
@@ -295,8 +293,8 @@ def run(N_steps, dt):
         save_datapoint(i * dt, dev, data_file)
     window.close()
 
-    plot(data_file)
+    #plot(data_file)
     return
 
 
-run(steps, time_step)
+run(500, 1)
