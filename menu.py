@@ -11,8 +11,12 @@ import sys
 # N - Number of particles
 # Width and Height of window
 
-[N, Width, Height] = map(int, sys.argv[1:])
-parameters_file = 'parameters.txt'
+#[N, Width, Height] = map(int, sys.argv[1:])
+steps = 1000
+time_step = 1
+parameters_file = 'mill_I'
+
+parameters_file = 'parameters/' + parameters_file + ".txt"
 data_file = 'data.csv'
 model = 0
 
@@ -54,6 +58,15 @@ def load_model(par_file):
 
 
 ####################################### Ask for requirements ################################################
+
+N = 5
+Width = 150
+Height = 150
+
+#N = input("Number of agents: N = ")
+#Width = input("Window dimensions: Width = ")
+#Height = input("Window dimensions: Height = ")
+
 
 
 repeat = raw_input("Repeat simulation ([y]/n)?\n")
