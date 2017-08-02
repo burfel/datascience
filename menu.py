@@ -59,13 +59,10 @@ def load_model(par_file):
 
 ####################################### Ask for requirements ################################################
 
-N = 5
-Width = 150
-Height = 150
 
-#N = input("Number of agents: N = ")
-#Width = input("Window dimensions: Width = ")
-#Height = input("Window dimensions: Height = ")
+N = input("Number of agents: N = ")
+Width = input("Window dimensions: Width = ")
+Height = input("Window dimensions: Height = ")
 
 
 

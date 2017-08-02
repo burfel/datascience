@@ -15,6 +15,41 @@ def save_datapoint(x, y, data_file):
     file.close()
     return
 
+def save_parameters(parameters, values, par_file):
+    file = open(par_file, 'r')
+    lines = list(file)
+    lines = [par.split(" = ") for par in lines]
+    file.close()
+
+    for i in range(len(parameters)):
+        for line in lines:
+            if line[0] == parameters[i]:
+                line[1] = str(values[i]) + '\n'
+
+    file = open(par_file, 'w')
+
+    for line in lines:
+        file.write(line[0] + ' = ' + str(line[1]))
+
+    file.close()
+
+
+def load_parameters(par_file):
+    par_file = open(par_file, 'r')
+    parameters = list(par_file)
+    parameters = [float(par.split(" = ")[1]) for par in parameters]
+    par_file.close()
+
+    return parameters
+
+
+def load_model(par_file):
+    file = open(par_file, 'r')
+    line = file.readline()
+    file.close()
+
+    return line.split(" = ")[1][:-1]
+
 
 def normalized(vector):
     if vector[0] == vector[1] == 0:
@@ -52,9 +87,9 @@ def avg_dir(vecs):
     return avg_vec(norm_vecs)
 
 
-def accuracy(speeds, N, bias):
+def accuracy(speeds, bias):
     # ACCURACY (AVERAGE DEVIATION TO BIAS) 
-    return 180 * angle(avg_dir(speeds), bias) / np.pi
+    return angle(avg_dir(speeds), bias) / np.pi
 
 
 def elongation(agents):
@@ -63,9 +98,13 @@ def elongation(agents):
     return std[1] / std[0]
 
 
+#def load_data():
+
 def plot(file):
-    data = np.genfromtxt(file, delimiter='\t', skip_header=7,
-                         skip_footer=3, names=['x', 'y'])
+    data = np.genfromtxt(file, delimiter='\t', skip_header=0,
+                         skip_footer=0, names=['x', 'y'])
+    print data['x']
+    print data['y']
     fig = plt.figure()
 
     ax1 = fig.add_subplot(111)
