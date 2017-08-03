@@ -151,121 +151,199 @@
   \frametitle{Presentation Overview}
 
   \begin{itemize}
-  	\item Review past models (simple speed coupling, couszin model, vicsek model)
-	\item Paper 1: Effective leadership and decision-making in animal groups on the move (Couzin et al)
-	\item Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al)
-	\item Quantification
+  	\item Review past models (simple speed coupling, couzin model, vicsek model)
+	\item Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al)
+	\item Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)
+%	\item Quantification
   \end{itemize}
 
 
  % \end{multicols}
 \end{frame}
 
+%\begin{frame}
+%  \frametitle{Review past models (simple speed coupling, couszin model, viszek model)}
+%  
+%  
+%%  \texttt{
+%%  Models available:\\
+%%  'Simple speed coupling..................smpl'
+%%  'Couzin model...........................czn'
+%%  'Couzin-2 model.........................czn2'
+%%  'Viscek model...........................vsck'
+%%  'Mill model.............................mill'
+%%}
+%  
+%\end{frame}
+
+
 \begin{frame}
-  \frametitle{Review past models (simple speed coupling, couszin model, viszek model)}
-  
-  
-  \texttt{
-  Models available:\\
-  'Simple speed coupling..................smpl'
-  'Couzin model...........................czn'
-  'Couzin-2 model.........................czn2'
-  'Viscek model...........................vsck'
-  'Mill model.............................mill'
-}
-  
+	\frametitle{Review past models (simple speed coupling, vicsek model, couzin model)}
+	
+\textbf{Simple speed coupling}: weighted speed
+
+\hspace{3}
+
+Particle adapts a fraction of its nearest neighbour's speed.
+
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Review past models (simple speed coupling, viszek model, couzin model)}
+	\frametitle{Review past models (simple speed coupling, vicsek model, couzin model)}
 	
-\textbf{simple speed coupling}
-
-
-
+	\textbf{Vicsek model} \\
 	
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Review past models (simple speed coupling, viszek model, couzin)}
 	
-	\textbf{Viszek model}
+	\begin{itemize}
+		\item introduce interaction zones: repulsion and alignment
+		\item add noise
+	\end{itemize}
 	
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Review past models: simple speed coupling, viszek model, couzin}
+	\frametitle{Review past models: simple speed coupling, vicsek model, couzin model}
 	
 	\textbf{Couzin model}
 	
-	rr, ro, ra
+	\begin{itemize}
+		\item different zones of neighbourhoods: repulsion, orientation, attraction
+%		\item 
+	\end{itemize}
+	
+\begin{figure}
+	\includegraphics[width=.45\columnwidth]{./img/zones.png}
+	\caption{Representation of an individual in the model centred at the origin: \textit{zor} = zone of repulsion, \textit{zoo} = zone of orientation, \textit{zoa} = zone of attraction. \( \alpha \) = field of perception}
+	\label{zones}
+\end{figure}
 	
 \end{frame}
 
 %%%%---------------------------------------------------------------------------------------------
 
 \begin{frame}
-  \frametitle{Paper 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+  \frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+  
+  We introduce a bias: orientation of \( \geq 1 \) particle (the "informed" one/ "scout"). 
+  
+  \hspace{1}
+  
  
-\textbf{Theory}
+ \textbf{THEORY} 
+ 
+ \hspace{1}
+ 
+\textbf{New parameters}: weight of bias, proportion of bias, group direction
 
+\textbf{Goal:} Which parameter sets give a nice group movement, and how does the behaviour change when we change the parameters?
+
+
+\end{frame}
+
+
+%\begin{frame}
+%	\frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+%	
+%	\textbf{METHOD} 
+%	
+%	\hspace{1}
+%	
+%	\begin{itemize}
+%		\item Explicit Euler method: \( v_{t+1}= v_{t} + \Delta t \cdot f(t_{n}, v_{t})  \)
+%		\item How \( d \) is updated in each zone: see paper
+%	\end{itemize}
+%	
+%	
+%\end{frame}
+
+
+\begin{frame}
+	\frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+	
+	\textbf{IMPLEMENTATION} 
+	
+	\hspace{1}
+	
+	\begin{itemize}
+		\item periodic boundary conditions
+		\item virtual interaction of agents
+		\item explicit Euler method: \( v_{t+1}= v_{t} + \Delta t \cdot f(t_{n}, v_{t})  \)
+	\end{itemize}
+	
+	
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Paper 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+	\frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
 	
-\textbf{Implementation}
+	\textbf{SIMULATION} on specific parameter set 
 	
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Paper 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
-	
-	\textbf{Bias, which parameter we control, show simulation gif}
 	
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Paper 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+	\frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
 	
-	\textbf{Quantification} \\ \\
-	Results
+	\textbf{QUANTIFICATION} 
+
+	\hspace{1}
+	
+	\begin{itemize}
+		\item Accuracy
+		\item Group elongation
+		\item Two scouts
+	\end{itemize}
+	
 	
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Paper 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+	\frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
 	
-	\textbf{Quantification} \\ \\
-	Results
+	\textbf{SIMULATION} optimised
 	
 \end{frame}
+
+
+%\begin{frame}
+%	\frametitle{Paper 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+%	
+%	\textbf{Bias, which parameter we control, show simulation gif}
+%	
+%\end{frame}
+
+
 
 %%%%---------------------------------------------------------------------------------------------
 
 \begin{frame}
-  \frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
   
   \textbf{Motivation}: Simulate swarming of multiagent systems in order to understand the operating principles of natural swarms, e.g. swaring behaviour of \textit{M. xanthus} cells. \\ 
+  
+  
+  \begin{wrapfigure}{}{\textwidth}
+  	\begin{center}
+  		\includegraphics[width=0.18\textwidth]{./img/mill.png}
+  	\end{center}
+  \end{wrapfigure}
 
-\hspace{3}
+%\hspace{3}
 
   We choose a \textbf{kinetic theory} based approach.\\
 
 \hspace{3}
 
-  The model conditions are:
+  The model traits are:
   \begin{itemize}
-  	\item self-propelled particles
-  	\item propulsion and friction  forces
-  	\item repulsive and attractive interaction between particles
+  	\item self-propulsion
+  	\item friction 
+  	\item interaction between particles: repulsion and attraction
   \end{itemize}
  % as we will see this leads to various morphologies, e.f. flocks, rotating mills, rings and clumps.
  
@@ -280,7 +358,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
 	
 %	  
 %	  But: As N=#particles grows, it becomes increasingly difficult to follows the dynamics of each individual agent. Therefore, we choose a continuous approach where particles are represented by a density field. \\
@@ -302,7 +380,7 @@
 \end{equation}
 
 \begin{equation}
-		    m  \frac{d\vec{v_{i}}}{d t} = (\textcolor{red}{\alpha} x- \textcolor{red}{\beta} |\vec{v_{i}}|^{2}) \vec{v_{i}} - \textcolor{red}{\vec{\nabla_{i}} U(\vec{x_{i}})}
+		    F = m  \frac{d\vec{v_{i}}}{d t} = (\textcolor{red}{\alpha}v- \textcolor{red}{\beta} |\vec{v_{i}}|^{2}) \vec{v_{i}} - \textcolor{red}{\vec{\nabla_{i}} U(\vec{x_{i}})}
 \end{equation}
 
 	
@@ -312,7 +390,7 @@
 
 
 \begin{frame}
-	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
 	
 
 For \( U \) we choose the \textit{Morse potential} %which is a common choice for interacting swarming systems
@@ -335,30 +413,52 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 %%%%---------------------------------------------------------------------------------------------
 
 \begin{frame}
-	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
 	
-	\textbf{Implementation}
+	\textbf{IMPLEMENTATION}
 	
-	We use the explicit Euler method to solve the ODEs.
+	\begin{itemize}
+		\item rigid boundary conditions
+		\item no virtual interactions
+		\item initial conditions of random distribution
+		\item explicit Euler method to solve the ODEs
+	\end{itemize}
+	
 
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
+	\frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
 	
-%	\textbf{Implementation}
+	\textbf{SIMULATION}
 	
-	INSERT one good simulation
+	INSERT one example simulation
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
+	
+	%	\textbf{Region simulation}
+	%	
+	%	INSERT simulation of different regions
+	
+	\begin{figure}[H]
+		\includegraphics[width=.6\columnwidth]{./img/ClumpsRing.png}
+		\caption{Catastrophic geometry. \\(a) Clumps. (b) Ring Clumping. (c) Rings.}
+		\label{clumps}
+	\end{figure}
 	
 \end{frame}
 
 
 
 \begin{frame}
-	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
 	
-	\textbf{Quantification}
+%	\textbf{Quantification}
 	
 	\begin{figure}[H]
 		\includegraphics[width=.9\columnwidth]{./img/H-stabilityPhaseDiagram.png}
@@ -369,27 +469,13 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 \end{frame}
 
 
-\begin{frame}
-	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
-	
-%	\textbf{Region simulation}
-%	
-%	INSERT simulation of different regions
-	
-	\begin{figure}[H]
-		\includegraphics[width=.65\columnwidth]{./img/ClumpsRing.png}
-		\caption{Catastrophic geometry. \\(a) Clumps. (b) Ring Clumping. (c) Rings.}
-		\label{clumps}
-	\end{figure}
-	
-\end{frame}
 
 
 \begin{frame}
-	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
 	
 	
-	INSERT own simulations -- compare
+	INSERT own simulations 
 %	%	\textbf{Region simulation}
 %	%	
 %	%	INSERT simulation of different regions
@@ -402,20 +488,20 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 	
 \end{frame}
 
-
-\begin{frame}
-	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
-	
-	\textbf{Simulation of catastrophic region VII}
-	
-	\begin{figure}[H]
-		\includegraphics[width=1.\columnwidth]{./img/snapshots.png}
-		%\caption{snapshots of farms for different values of \( N \) in region VII. }
-		\label{snapshots}
-	\end{figure}
-	
-
-\end{frame}
+% maybe: INTERESTING Trend of N: As N increases we get a smaller radius
+%\begin{frame}
+%  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
+%	
+%	\textbf{Simulation of catastrophic region VII}
+%	
+%	\begin{figure}[H]
+%		\includegraphics[width=1.\columnwidth]{./img/snapshots.png}
+%		%\caption{snapshots of farms for different values of \( N \) in region VII. }
+%		\label{snapshots}
+%	\end{figure}
+%	
+%
+%\end{frame}
 
 
 %\begin{frame}
@@ -432,14 +518,18 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 
 
 \begin{frame}
-	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
 	
-	\textbf{Quantification}
+	\textbf{QUANTIFICATION}
 	
 \begin{itemize}
 	\item parameter sets for different regions
-	\item ring formation 
-	\item \( v^{2} \) \xrightarrow{n \to \infty} \( \alpha / \beta \)
+	\item testing interesting trends, e.g. \( R \propto \frac{\alpha m}{\beta N}\) (from setting \( F_{centrifugal} = F_{centripetal} \))
+	\item \( \vec{v}^{2} \) \xrightarrow{n \to \infty} \( \alpha / \beta \) coming from \( (\alpha - \vec{v}^2 \beta ) \vec{v} = 0 \) for steady state
+	\item confirmation of ring formation \\
+	- \( R_{max}, R_{mean}, R_{min} \) converge to same value \\
+	- \( v_{radial} \to 0 \) and \( v_{tangential} \to | v |  \) for \( N \to \infty \)
+	\item (trend of N, e.g. in simulation of region VII)
 \end{itemize}
 	
 \end{frame}
