@@ -8,7 +8,7 @@ from sim300 import *
 #import timeit
 
 
-N = 30
+N = 40
 Height = 500
 Width = 500
 
@@ -215,7 +215,7 @@ def analysis(study_par, par_range, par_file):
     for val in par_range:
         print(val)
         saved_parameters[par_index] = val
-        agents, speeds = def_and_run(saved_parameters, 50, 1, True)
+        agents, speeds = def_and_run(saved_parameters, 500, 1, True)
         treat_data(agents, speeds, val)
 
 

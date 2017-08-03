@@ -25,7 +25,7 @@ def initialize_agents(speed, N, width, height):
 
     agents = N * [0]
     #agents = [Point(uniform(0, width), uniform(0, height)) for i in range(N)]
-    speeds = N * [0,0] 
+    speeds = N * [[0,0]]
     
     for i in range(N):
         theta = uniform(0, 2 * np.pi)
