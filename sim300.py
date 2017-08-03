@@ -17,6 +17,7 @@ import timeit
 
 # In[12]:
 
+# initialises our agent set with randomly directed speeds
 def initialize_agents(speed, N, width, height):
     """
     Initializes our agent set with randomly directed speeds, draws the window and the agents
@@ -25,14 +26,14 @@ def initialize_agents(speed, N, width, height):
 
     agents = N * [0]
     #agents = [Point(uniform(0, width), uniform(0, height)) for i in range(N)]
-    speeds = N * [[0,0]]
+    speeds = N * [[0,0]] 
     
     for i in range(N):
         theta = uniform(0, 2 * np.pi)
         speeds[i]= speed * np.array([np.cos(theta), np.sin(theta)])
         
         theta = uniform(0, 2 * np.pi)
-        radius = uniform(0,height/4)
+        radius = uniform(0,height/2)
         agents[i] = Point(width / 2 + radius * np.cos(theta),
                           height / 2 + radius * np.sin(theta))
 
@@ -50,8 +51,10 @@ def initialize_leaders(agents, prop, N_groups, N):
             agents[agent_index].setFill(colors[j])
     return leader_groups
 
+# draws the window and the agents
 def initialize_window(agents, width, height):
-    win = GraphWin("Swarm", width, height) # size of box
+    #win = GraphWin("Swarm", width, height) # size of box
+    win = GraphWin("My Swarm", width, height, autoflush=False)
     for agent in agents:
         agent.draw(win)
     win.getMouse()
@@ -117,7 +120,7 @@ def in_sight_range(rel_pos, speed1, angle_range):
 def noisy_vector(noise):
     return noise * np.array([2 * random() - 1, 2 * random() - 1])
     
-def biaser(agents, leaders, speeds, N, s, prop, bias, dev_bias, weight, win):
+def biaser(agents, leaders, speeds, N, s, prop, bias, dev_bias, weight):
     #bias = np.array([0.0,1.0])
     #Ns has to be integer
 
@@ -129,11 +132,8 @@ def biaser(agents, leaders, speeds, N, s, prop, bias, dev_bias, weight, win):
         if np.linalg.norm(tot_dir) != 0:
             speeds[i] = s*tot_dir
             
-    #key = win.checkKey()
-    #if key is not "":
-    #     bias = np.array(comands[key])
     #bias = np.dot(tot_dir,np.array([[np.cos(rot_bias*i), 0],[0, np.sin(rot_bias*i)]]))
-    return bias
+    return
 
 def rigid_boundary(x_bound, y_bound, agents, speeds, N):
     for i in range(N):
@@ -266,13 +266,14 @@ def couzin(agents, other_agents, speeds, N, width, height, s, noise, dTheta, rr,
 
                 elif not repulsion_flag:
                     
-                    if model2: # Couzin 2
+                    # Couzin 2
+                    if model2:
                         if distance < roa:
                             o_dir = o_dir + speeds[j]
                             rel_pos = normalized(rel_pos)
                             a_dir = a_dir + rel_pos
-
-                    else: # Couzin 1
+                    # Couzin 1
+                    else:
                         if distance < ro:
                             o_dir = o_dir + speeds[j]
 
@@ -314,10 +315,6 @@ def vicsek(agents, other_agents, speeds, N, s, noise, r): # s=speed, noise= lett
 
 ##MILL MODEL
 def mill(agents, other_agents, speeds, dt, N, width, height, cr, ca, lr, la, alpha, beta, mass):
-    # we're there! N=30, s=5, dt=0.1, Radius=height/4  
-    # we're there! N=30, s=5, dt=0.1, Radius=height/4  
-    # we're there aswell! N=20, s=5, dt=0.1, Radius=height/4  
-    # The winner at 12:28 (1/8/2017)! N=60, s=5, dt=0.1, Radius=height/2
     
     clr = cr / lr
     cla = ca / la
