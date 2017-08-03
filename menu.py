@@ -285,11 +285,11 @@ def run(N_steps, dt):
 
         next_step(agents, speeds, dt, N)
 
-        # Model for agent interactions
-        interaction(agents, speeds, dt)
-
         # Intruduction of a bias in "prop" of the agents
         treat_biases(agents, speeds, leaders, window)
+
+        # Model for agent interactions
+        interaction(agents, speeds, dt)
 
         # INFORMATION TRANSFER: SHAPE & DIRECTION & ALIGNMENT QUALITY
         [dx, dy] = get_cm(agents, N) - cm
