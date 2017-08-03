@@ -108,6 +108,9 @@
 \usepackage{vwcol} 
 \usepackage{multirow}
 \usepackage{color}
+\usepackage[export]{adjustbox}
+\usepackage{graphicx}
+\usepackage{subfig}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -214,10 +217,11 @@ Particle adapts a fraction of its nearest neighbour's speed.
 	\end{itemize}
 	
 \begin{figure}
-	\includegraphics[width=.45\columnwidth]{./img/zones.png}
+	\includegraphics[width=.45\columnwidth, left]{./img/zones.png}
 	\caption{Representation of an individual in the model centred at the origin: \textit{zor} = zone of repulsion, \textit{zoo} = zone of orientation, \textit{zoa} = zone of attraction. \( \alpha \) = field of perception}
 	\label{zones}
 \end{figure}
+
 	
 \end{frame}
 
@@ -226,7 +230,8 @@ Particle adapts a fraction of its nearest neighbour's speed.
 \begin{frame}
   \frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
   
-  We introduce a bias: orientation of \( \geq 1 \) particle (the "informed" one/ "scout"). 
+  We introduce a bias: orientation of \( \geq 1 \) particle (the "informed" one/ "scout") and merge orientation and attraction zone.
+  
   
   \hspace{1}
   
@@ -239,6 +244,20 @@ Particle adapts a fraction of its nearest neighbour's speed.
 
 \textbf{Goal:} Which parameter sets give a nice group movement, and how does the behaviour change when we change the parameters?
 
+\hspace{1}
+
+update of \( d \) in each zone: \\
+\begin{figure}
+	\begin{tabular}{cc}
+		\includegraphics[width=35mm]{./img/eq1.png} &   \includegraphics[width=40mm]{./img/eq2.png} \\
+		%		(a) first & (b) second \\[6pt]
+		\includegraphics[width=30mm]{./img/eq3.png} \\
+%		(d) fourth \\[6pt]
+%		\multicolumn{2}{c}
+%		{\includegraphics[width=40mm]{./img/eq3.png} }\\
+		%		\multicolumn{2}{c}{(e) fifth}
+	\end{tabular}
+\end{figure}
 
 \end{frame}
 
@@ -259,6 +278,7 @@ Particle adapts a fraction of its nearest neighbour's speed.
 %\end{frame}
 
 
+%%%%------Senart's part------%%%%
 \begin{frame}
 	\frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
 	
@@ -269,7 +289,7 @@ Particle adapts a fraction of its nearest neighbour's speed.
 	\begin{itemize}
 		\item periodic boundary conditions
 		\item virtual interaction of agents
-		\item explicit Euler method: \( v_{t+1}= v_{t} + \Delta t \cdot f(t_{n}, v_{t})  \)
+		\item explicit Euler method: \( v_{n+1}= v_{n} + \tau \cdot f(t_{n}, v_{n})  \)
 	\end{itemize}
 	
 	
@@ -321,10 +341,12 @@ Particle adapts a fraction of its nearest neighbour's speed.
 
 %%%%---------------------------------------------------------------------------------------------
 
+
+%%%%------Felicia's part------%%%%
 \begin{frame}
   \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
   
-  \textbf{Motivation}: Simulate swarming of multiagent systems in order to understand the operating principles of natural swarms, e.g. swaring behaviour of \textit{M. xanthus} cells. \\ 
+  \textbf{Motivation}: Simulate swarming of multiagent systems in order to understand the operating principles of natural swarms, e.g. swarming behaviour of \textit{M. xanthus} cells. \\ 
   
   
   \begin{wrapfigure}{}{\textwidth}
@@ -411,7 +433,7 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 
 
 %%%%---------------------------------------------------------------------------------------------
-
+%%%%------Fred's part------%%%%
 \begin{frame}
   \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
 	
@@ -525,11 +547,12 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 \begin{itemize}
 	\item parameter sets for different regions
 	\item testing interesting trends, e.g. \( R \propto \frac{\alpha m}{\beta N}\) (from setting \( F_{centrifugal} = F_{centripetal} \))
-	\item \( \vec{v}^{2} \) \xrightarrow{n \to \infty} \( \alpha / \beta \) coming from \( (\alpha - \vec{v}^2 \beta ) \vec{v} = 0 \) for steady state
+	\item \( \vec{v}^{2} \) \xrightarrow{t \to \infty} \( \alpha / \beta \) coming from \( (\alpha - \vec{v}^2 \beta ) \vec{v} = 0 \) for steady state
 	\item confirmation of ring formation \\
 	- \( R_{max}, R_{mean}, R_{min} \) converge to same value \\
-	- \( v_{radial} \to 0 \) and \( v_{tangential} \to | v |  \) for \( N \to \infty \)
-	\item (trend of N, e.g. in simulation of region VII)
+	- \( v_{radial} \to 0 \) and \( v_{tangential} \to | v_{i} |  \) for \( t \to \infty \)
+	\item influence of increasing \( N \) on the shape
+%	\item (trend of N, e.g. in simulation of region VII)
 \end{itemize}
 	
 \end{frame}
