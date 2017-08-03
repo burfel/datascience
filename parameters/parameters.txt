@@ -1,8 +1,9 @@
 model = 3
 use_pbc = 1
 use_bias = 1
+N = 30
 a = 0.6
-s = 5
+s = 0
 r = 40
 rr = 2
 ro = 150

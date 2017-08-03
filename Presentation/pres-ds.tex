@@ -107,6 +107,10 @@
 \usepackage{multicol}
 \usepackage{vwcol} 
 \usepackage{multirow}
+\usepackage{color}
+\usepackage[export]{adjustbox}
+\usepackage{graphicx}
+\usepackage{subfig}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -114,7 +118,8 @@
 
 \title[Short title]{Data Science Course\\
 \small{Understading swarm behaviour}}
-\vspace*{-30pt}\titlegraphic{\includegraphics[width=5cm]{./img/FUB_logo.png}}
+%\vspace*{-30pt}\titlegraphic{\includegraphics[width=5cm]{./img/FUB_logo.png}}
+\vspace*{-30pt}\titlegraphic{\includegraphics[width=5cm]{./img/swarm.png}}
 
 \author[Grupo B4]{Felicia Burtscher, Frederik Eistrup, Jos\'{e} Senart\\  %\includegraphics[width=0.15\columnwidth]{../img/SF_linda.pdf}\\
 %\includegraphics[width=0.15\columnwidth]{../img/LBIC_CELLO_fig5.png}\includegraphics[width=0.15\columnwidth]{../img/LBIC_CELLO_fig9.png}
@@ -149,140 +154,257 @@
   \frametitle{Presentation Overview}
 
   \begin{itemize}
-  	\item All models: sim300.py
-	\item Paper 1: Effective leadership and decision-making in animal groups on the move (Couzin et al)
-	\item Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al)
-	\item Quantification
+  	\item Review past models (simple speed coupling, couzin model, vicsek model)
+	\item Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al)
+	\item Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)
+%	\item Quantification
   \end{itemize}
 
 
  % \end{multicols}
 \end{frame}
 
-\begin{frame}
-  \frametitle{All models: sim300.py}
-  
-  
-  \texttt{
-  Models available:\\
-  'Simple speed coupling..................smpl'
-  'Couzin model...........................czn'
-  'Viscek model...........................vsck'
-  'Couzin-2 model.........................czn2'
-  'Mill model.............................mill'
-}
-  
-   
-%Photovoltaics efficiency from Solar Spectrum is limited (Shockley-Queisser Limit $\sim 34\%$)\\
-%\begin{multicols}{2}
-%%\hspace{-10pt}
-%\begin{figure}[H]
-%%centering
-%	\hspace{-20pt} \includegraphics[width=1.15\columnwidth]{../img/SF_esq14.pdf}
-%\end{figure}
-%\begin{figure}[H]
-%%	\centering
-%\hspace{60pt}	\includegraphics[width=.85\columnwidth]{../img/SF_esq16.pdf}
-%\end{figure}
-%
-%\end{multicols}
-%
-%
-%\begin{multicols}{2}
-%Wasted Energy\\
-% $\rightarrow$ Possible to collect?\\
-%\columnbreak
-%Solutions:\\
-%
-%- \st{Non-Linear Optics} ($\omega'=2\omega$)\\
-%- Multi-layer design\\
-%- Up- \& Down-Conversion
-%\end{multicols}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Paper 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
- 
- same as Couzin 1 model but without orientation phase
-%\small
-%\begin{multicols}{2}
-%\begin{figure}[H]
-%%centering
-%\includegraphics[width=1\columnwidth]{../img/SF_esq17.pdf}
-%\end{figure}
-%\columnbreak
-%
-%\underline{Up-Conversion} (UC)\\
-%low E photons \textbf{added} to $E_g$\\
-%$\rightarrow$ Triplet-Triplet Annihilation (TTA)\\
-%%picture w/ band diagram UC
-%
-%\vspace{10pt}
-%
-%\underline{Down-Conversion} (DC)\\
-%high E photons \textbf{split} to $E_g$\\
-%\footnotesize(Multi-Exciton Generation (MEG))\\
-%\small
-%$\rightarrow$ Quantum Dots (inorganic)\\
-%\begin{multicols}{2}
-%\vspace{-30pt}\begin{figure}[H]
-%\vspace{-10pt}\includegraphics[width=0.6\columnwidth]{../img/SF_esq12.pdf}
-%\end{figure}
-%\hspace{-10pt}$\rightarrow$\textbf{Singlet-Fission (SF)} (organic) \\
-%
-%\end{multicols}
-%
-%\end{multicols}
-\end{frame}
+%\begin{frame}
+%  \frametitle{Review past models (simple speed coupling, couszin model, viszek model)}
+%  
+%  
+%%  \texttt{
+%%  Models available:\\
+%%  'Simple speed coupling..................smpl'
+%%  'Couzin model...........................czn'
+%%  'Couzin-2 model.........................czn2'
+%%  'Viscek model...........................vsck'
+%%  'Mill model.............................mill'
+%%}
+%  
+%\end{frame}
 
 
 \begin{frame}
-  \frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
-\small A kinetic theory based approach for swarming systems of self-propelled discrete particles. \\
-
-%Models to describe a collection of interacting agents as discrete particles or as a continuous density
-
-  Individuals driven by self-propelling forces and pairwise attractive and repulsive interactions lead to various morphologies, e.f. flocks, rotating mills, rings and clumps. \\
-  We can \\
-  - average in direction or velocity \\
-  - consider different zones of interaction and averaging (see Couzin et al)
-  
-
-%\begin{multicols}{2}
-%
-%\begin{figure}[H]
-%%centering
-%\includegraphics[width=1\columnwidth]{../img/SF_esq7.pdf}
-%\end{figure}
-%
-%- $T_1$ lower than $S_1$ due to exchange interaction (we need $2E_{T1}\simeq E_{S1}$)\\
-%- \textbf{Spin Conservation} \underline{disallows} competing thermal relaxation\\
-%\end{multicols}
-%
-%\begin{figure}[H]
-%%centering
-%\includegraphics[width=1\columnwidth]{../img/SF_esq9.pdf}
-%\end{figure}
-
-
-\end{frame}
-
-\begin{frame}
-	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
+	\frametitle{Review past models (simple speed coupling, vicsek model, couzin model)}
 	
-	  
-	  But: As N=#particles grows, it becomes increasingly difficult to follows the dynamics of each individual agent. Therefore, we choose a continuous approach where particles are represented by a density field. \\
+\textbf{Simple speed coupling}: weighted speed
+
+\hspace{3}
+
+Particle adapts a fraction of its nearest neighbour's speed.
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Review past models (simple speed coupling, vicsek model, couzin model)}
+	
+	\textbf{Vicsek model} \\
+	
+	
+	\begin{itemize}
+		\item introduce interaction zones: repulsion and alignment
+		\item add noise
+	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Review past models: simple speed coupling, vicsek model, couzin model}
+	
+	\textbf{Couzin model}
+	
+	\begin{itemize}
+		\item different zones of neighbourhoods: repulsion, orientation, attraction
+%		\item 
+	\end{itemize}
+	
+\begin{figure}
+	\includegraphics[width=.45\columnwidth, left]{./img/zones.png}
+	\caption{Representation of an individual in the model centred at the origin: \textit{zor} = zone of repulsion, \textit{zoo} = zone of orientation, \textit{zoa} = zone of attraction. \( \alpha \) = field of perception}
+	\label{zones}
+\end{figure}
+
+	
+\end{frame}
+
+%%%%---------------------------------------------------------------------------------------------
+
+\begin{frame}
+  \frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+  
+  We introduce a bias: orientation of \( \geq 1 \) particle (the "informed" one/ "scout") and merge orientation and attraction zone.
+  
+  
+  \hspace{1}
+  
+ 
+ \textbf{THEORY} 
+ 
+ \hspace{1}
+ 
+\textbf{New parameters}: weight of bias, proportion of bias, group direction
+
+\textbf{Goal:} Which parameter sets give a nice group movement, and how does the behaviour change when we change the parameters?
+
+\hspace{1}
+
+update of \( d \) in each zone: \\
+\begin{figure}
+	\begin{tabular}{cc}
+		\includegraphics[width=35mm]{./img/eq1.png} &   \includegraphics[width=40mm]{./img/eq2.png} \\
+		%		(a) first & (b) second \\[6pt]
+		\includegraphics[width=30mm]{./img/eq3.png} \\
+%		(d) fourth \\[6pt]
+%		\multicolumn{2}{c}
+%		{\includegraphics[width=40mm]{./img/eq3.png} }\\
+		%		\multicolumn{2}{c}{(e) fifth}
+	\end{tabular}
+\end{figure}
+
+\end{frame}
+
+
+%\begin{frame}
+%	\frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+%	
+%	\textbf{METHOD} 
+%	
+%	\hspace{1}
+%	
+%	\begin{itemize}
+%		\item Explicit Euler method: \( v_{t+1}= v_{t} + \Delta t \cdot f(t_{n}, v_{t})  \)
+%		\item How \( d \) is updated in each zone: see paper
+%	\end{itemize}
+%	
+%	
+%\end{frame}
+
+
+%%%%------Senart's part------%%%%
+\begin{frame}
+	\frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+	
+	\textbf{IMPLEMENTATION} 
+	
+	\hspace{1}
+	
+	\begin{itemize}
+		\item periodic boundary conditions
+		\item virtual interaction of agents
+		\item explicit Euler method: \( v_{n+1}= v_{n} + \tau \cdot f(t_{n}, v_{n})  \)
+	\end{itemize}
+	
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+	
+	\textbf{SIMULATION} on specific parameter set 
+	
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+	
+	\textbf{QUANTIFICATION} 
+
+	\hspace{1}
+	
+	\begin{itemize}
+		\item Accuracy
+		\item Group elongation
+		\item Two scouts
+	\end{itemize}
+	
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Module 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+	
+	\textbf{SIMULATION} optimised
+	
+\end{frame}
+
+
+%\begin{frame}
+%	\frametitle{Paper 1: Effective leadership and decision-making in animal groups on the move (Couzin et al): \texttt{czn2}}
+%	
+%	\textbf{Bias, which parameter we control, show simulation gif}
+%	
+%\end{frame}
+
+
+
+%%%%---------------------------------------------------------------------------------------------
+
+
+%%%%------Felicia's part------%%%%
+\begin{frame}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
+  
+  \textbf{Motivation}: Simulate swarming of multiagent systems in order to understand the operating principles of natural swarms, e.g. swarming behaviour of \textit{M. xanthus} cells. \\ 
+  
+  
+  \begin{wrapfigure}{}{\textwidth}
+  	\begin{center}
+  		\includegraphics[width=0.18\textwidth]{./img/mill.png}
+  	\end{center}
+  \end{wrapfigure}
+
+%\hspace{3}
+
+  We choose a \textbf{kinetic theory} based approach.\\
+
+\hspace{3}
+
+  The model traits are:
+  \begin{itemize}
+  	\item self-propulsion
+  	\item friction 
+  	\item interaction between particles: repulsion and attraction
+  \end{itemize}
+ % as we will see this leads to various morphologies, e.f. flocks, rotating mills, rings and clumps.
+ 
+%\small A kinetic theory based approach for swarming systems of self-propelled discrete particles. \\
+%
+% Individuals driven by self-propelling forces and pairwise attractive and repulsive interactions lead to various morphologies, e.f. flocks, rotating mills, rings and clumps. \\
+%  We can \\
+%  - average in direction or velocity \\
+%  - consider different zones of interaction and averaging (see Couzin et al)
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
+	
+%	  
+%	  But: As N=#particles grows, it becomes increasingly difficult to follows the dynamics of each individual agent. Therefore, we choose a continuous approach where particles are represented by a density field. \\
 	  
 	%\textbf{Discrete model}: \\ \\
 	Consider \( N \) interacting, self-propelled particles governed by the following equations of motion
 	
 	
-	\begin{equation} \label{eqOfMotion}
-	\begin{split}
-    & \frac{\partial \vec{x_{i}}}{\partial t} = \vec{v_{i}} \\
-	m & \frac{\partial \vec{v_{i}}}{\partial t} = (\alpha - \beta |\vec{v_{i}}|^{2}) \vec{v_{i}} - \vec{\nabla_{i}} U(\vec{x_{i}})
-	\end{split}
-	\end{equation}
+%	\begin{equation} \label{eqOfMotion}
+%	\begin{split}
+%    & \frac{\partial \vec{x_{i}}}{\partial t} = \vec{v_{i}} \\
+%	m & \frac{\partial \vec{v_{i}}}{\partial t} = (\alpha - \beta |\vec{v_{i}}|^{2}) \vec{v_{i}} - \vec{\nabla_{i}} U(\vec{x_{i}})
+%	\end{split}
+%	\end{equation}
+	
+	
+\begin{equation}
+		\frac{d\vec{x_{i}}}{d t} = \vec{v_{i}}
+\end{equation}
+
+\begin{equation}
+		    F = m  \frac{d\vec{v_{i}}}{d t} = (\textcolor{red}{\alpha}v- \textcolor{red}{\beta} |\vec{v_{i}}|^{2}) \vec{v_{i}} - \textcolor{red}{\vec{\nabla_{i}} U(\vec{x_{i}})}
+\end{equation}
+
 	
 	where \( U \) is a pairwise interaction potential and \( \alpha, \beta > 0\) are values for propulsion and friction forces.\\
 
@@ -290,364 +412,150 @@
 
 
 \begin{frame}
-	\frametitle{Paper 2: Double milling in self-probelled swarms from kinetic theory (Carrillo et al): \texttt{mill}}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
 	
 
-For \( U \) we choose the \textit{Morse potential} which is a common choice for interacting swarming systems
+For \( U \) we choose the \textit{Morse potential} %which is a common choice for interacting swarming systems
 
 \begin{equation} \label{morsePotential}
 U(\vec{x_{i}}) = \sum_{j \neq i}^{} [ \underbrace{-C_{a} e^{-| \vec{x_{i}} - \vec{x_{j}} | / l_{a}}}_{\text{attraction}} + \underbrace{C_{r}e^{-|\vec{x_{i}}-\vec{x_{j}}|/l_{r}}}_{\text{repulsion}} ]
 \end{equation}
 where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_{a}\), \( l_{r}\) their respective length scales.
+
+
+\begin{figure}
+\includegraphics[width=.35\columnwidth]{./img/Morsepotential.jpg}
+\caption{Plot of the Morse potential}
+\label{morsepotential}
+\end{figure}
+
+\end{frame}
+
+
+%%%%---------------------------------------------------------------------------------------------
+%%%%------Fred's part------%%%%
+\begin{frame}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
+	
+	\textbf{IMPLEMENTATION}
+	
+	\begin{itemize}
+		\item rigid boundary conditions
+		\item no virtual interactions
+		\item initial conditions of random distribution
+		\item explicit Euler method to solve the ODEs
+	\end{itemize}
+	
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
+	
+	\textbf{SIMULATION}
+	
+	INSERT one example simulation
 	
 \end{frame}
 
-\begin{frame}
-  \frametitle{Quantification}
-%%\begin{multicols}{2}
-%\begin{figure}[H]
-%\hspace{-10pt}\includegraphics[width=0.9\columnwidth]{../img/SF_esq20.pdf}
-%\end{figure}
-%\begin{multicols}{2}
-%
-%\hspace{-20pt}\vspace{-20pt}
-%\begin{figure}[H]
-%\hspace{-20pt}\vspace{-20pt}\includegraphics[width=0.7\columnwidth]{../img/SF_esq19.png}
-%\end{figure}
-%%\columnbreak
-%\footnotesize
-%\hspace{-20pt}Non-Radiatively: Singlet to Triplet state (reverse of the electron spin)\\
-%\hspace{-20pt}1- Overlap of vibrational levels\\
-%(little E loss/gain, $\sim kT$)\\
-%\hspace{-20pt}2- \textbf{Spin-Orbit Coupling}\\
-%%(Interaction with $\overrightarrow{L}$ of non-circular orbits)\\
-%%\hspace{-20pt}
-%(heavy-atom molecules and paramagnetic species)
-%
-%\end{multicols}
-\end{frame}
-
 
 \begin{frame}
-	\frametitle{Quantification \texttt{czn2}}
-Figure 1: Accuracy 
-\end{frame}
-
-\begin{frame}
-	\frametitle{Quantification \texttt{czn2}}
-	Figure 2: Group elongation 
-\end{frame}
-
-\begin{frame}
-	\frametitle{Quantification \texttt{czn2}}
-	Figure 3: Two groups
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Quantification \texttt{mill}}
+	\frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
+	
+	%	\textbf{Region simulation}
+	%	
+	%	INSERT simulation of different regions
 	
 	\begin{figure}[H]
-		\includegraphics[width=1.\columnwidth]{./img/H-stabilityPhaseDiagram.png}
-		\caption{H-stability phase diagram of the Morse potential}
-		\label{hstability}
-	\end{figure}
-	
-	
-	%%\begin{multicols}{2}
-	%\begin{figure}[H]
-	%\hspace{-10pt}\includegraphics[width=0.9\columnwidth]{../img/SF_esq20.pdf}
-	%\end{figure}
-	%\begin{multicols}{2}
-	%
-	%\hspace{-20pt}\vspace{-20pt}
-	%\begin{figure}[H]
-	%\hspace{-20pt}\vspace{-20pt}\includegraphics[width=0.7\columnwidth]{../img/SF_esq19.png}
-	%\end{figure}
-	%%\columnbreak
-	%\footnotesize
-	%\hspace{-20pt}Non-Radiatively: Singlet to Triplet state (reverse of the electron spin)\\
-	%\hspace{-20pt}1- Overlap of vibrational levels\\
-	%(little E loss/gain, $\sim kT$)\\
-	%\hspace{-20pt}2- \textbf{Spin-Orbit Coupling}\\
-	%%(Interaction with $\overrightarrow{L}$ of non-circular orbits)\\
-	%%\hspace{-20pt}
-	%(heavy-atom molecules and paramagnetic species)
-	%
-	%\end{multicols}
-\end{frame}
-
-
-
-\begin{frame}
-	\frametitle{Quantification \texttt{mill}}
-	
-%\begin{figure}[H]
-%\includegraphics[width=1.\columnwidth]{./img/H-stabilityPhaseDiagram.png}
-%\caption{H-stability phase diagram of the Morse potential}
-%\label{hstability}
-%\end{figure}
-%	
-
-Region I \\
-Region II \\
-Region III \\
-Region IV \\
-Region V \\
-Region VI \\
-	
-   %%\begin{multicols}{2}
-	%\begin{figure}[H]
-	%\hspace{-10pt}\includegraphics[width=0.9\columnwidth]{../img/SF_esq20.pdf}
-	%\end{figure}
-	%\begin{multicols}{2}
-	%
-	%\hspace{-20pt}\vspace{-20pt}
-	%\begin{figure}[H]
-	%\hspace{-20pt}\vspace{-20pt}\includegraphics[width=0.7\columnwidth]{../img/SF_esq19.png}
-	%\end{figure}
-	%%\columnbreak
-	%\footnotesize
-	%\hspace{-20pt}Non-Radiatively: Singlet to Triplet state (reverse of the electron spin)\\
-	%\hspace{-20pt}1- Overlap of vibrational levels\\
-	%(little E loss/gain, $\sim kT$)\\
-	%\hspace{-20pt}2- \textbf{Spin-Orbit Coupling}\\
-	%%(Interaction with $\overrightarrow{L}$ of non-circular orbits)\\
-	%%\hspace{-20pt}
-	%(heavy-atom molecules and paramagnetic species)
-	%
-	%\end{multicols}
-\end{frame}
-
-
-
-\begin{frame}
-	\frametitle{Quantification \texttt{mill}}
-	
-	\begin{figure}[H]
-		\includegraphics[width=.75\columnwidth]{./img/ClumpsRing.png}
+		\includegraphics[width=.6\columnwidth]{./img/ClumpsRing.png}
 		\caption{Catastrophic geometry. \\(a) Clumps. (b) Ring Clumping. (c) Rings.}
 		\label{clumps}
 	\end{figure}
 	
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
 	
-	%%\begin{multicols}{2}
-	%\begin{figure}[H]
-	%\hspace{-10pt}\includegraphics[width=0.9\columnwidth]{../img/SF_esq20.pdf}
-	%\end{figure}
-	%\begin{multicols}{2}
-	%
-	%\hspace{-20pt}\vspace{-20pt}
-	%\begin{figure}[H]
-	%\hspace{-20pt}\vspace{-20pt}\includegraphics[width=0.7\columnwidth]{../img/SF_esq19.png}
-	%\end{figure}
-	%%\columnbreak
-	%\footnotesize
-	%\hspace{-20pt}Non-Radiatively: Singlet to Triplet state (reverse of the electron spin)\\
-	%\hspace{-20pt}1- Overlap of vibrational levels\\
-	%(little E loss/gain, $\sim kT$)\\
-	%\hspace{-20pt}2- \textbf{Spin-Orbit Coupling}\\
-	%%(Interaction with $\overrightarrow{L}$ of non-circular orbits)\\
-	%%\hspace{-20pt}
-	%(heavy-atom molecules and paramagnetic species)
-	%
-	%\end{multicols}
+%	\textbf{Quantification}
+	
+	\begin{figure}[H]
+		\includegraphics[width=.9\columnwidth]{./img/H-stabilityPhaseDiagram.png}
+		\caption{H-stability phase diagram of the Morse potential}
+		\label{hstability}
+	\end{figure}
+	
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
+	
+	
+	INSERT own simulations 
+%	%	\textbf{Region simulation}
+%	%	
+%	%	INSERT simulation of different regions
+%	
+%	\begin{figure}[H]
+%		\includegraphics[width=.65\columnwidth]{./img/ClumpsRing.png}
+%		\caption{Catastrophic geometry. \\(a) Clumps. (b) Ring Clumping. (c) Rings.}
+%		\label{clumps}
+%	\end{figure}
+	
+\end{frame}
+
+% maybe: INTERESTING Trend of N: As N increases we get a smaller radius
+%\begin{frame}
+%  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
+%	
+%	\textbf{Simulation of catastrophic region VII}
+%	
+%	\begin{figure}[H]
+%		\includegraphics[width=1.\columnwidth]{./img/snapshots.png}
+%		%\caption{snapshots of farms for different values of \( N \) in region VII. }
+%		\label{snapshots}
+%	\end{figure}
+%	
+%
+%\end{frame}
+
+
+%\begin{frame}
+%	\frametitle{Quantification \texttt{mill}}
+%	
+%	\begin{figure}[H]
+%		\includegraphics[width=.7 \columnwidth]{./img/vortexScaling.png}
+%		\caption{Vortex scaling for the catastrophic Morse potential.}
+%		\label{vortexScaling}
+%	\end{figure}
+	
+
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Quantification \texttt{mill}}
+  \frametitle{Module 2: Self-Propelled Particles with Soft-Core Interactions: Patterns, Stability, and Collapse (D'Orsogna et al)}
 	
-	\begin{figure}[H]
-		\includegraphics[width=1.\columnwidth]{./img/snapshots.png}
-		%\caption{snapshots of farms for different values of \( N \) in region VII. }
-		\label{snapshots}
-	\end{figure}
+	\textbf{QUANTIFICATION}
 	
+\begin{itemize}
+	\item parameter sets for different regions
+	\item testing interesting trends, e.g. \( R \propto \frac{\alpha m}{\beta N}\) (from setting \( F_{centrifugal} = F_{centripetal} \))
+	\item \( \vec{v}^{2} \) \xrightarrow{t \to \infty} \( \alpha / \beta \) coming from \( (\alpha - \vec{v}^2 \beta ) \vec{v} = 0 \) for steady state
+	\item confirmation of ring formation \\
+	- \( R_{max}, R_{mean}, R_{min} \) converge to same value \\
+	- \( v_{radial} \to 0 \) and \( v_{tangential} \to | v_{i} |  \) for \( t \to \infty \)
+	\item influence of increasing \( N \) on the shape
+%	\item (trend of N, e.g. in simulation of region VII)
+\end{itemize}
 	
-	%%\begin{multicols}{2}
-	%\begin{figure}[H]
-	%\hspace{-10pt}\includegraphics[width=0.9\columnwidth]{../img/SF_esq20.pdf}
-	%\end{figure}
-	%\begin{multicols}{2}
-	%
-	%\hspace{-20pt}\vspace{-20pt}
-	%\begin{figure}[H]
-	%\hspace{-20pt}\vspace{-20pt}\includegraphics[width=0.7\columnwidth]{../img/SF_esq19.png}
-	%\end{figure}
-	%%\columnbreak
-	%\footnotesize
-	%\hspace{-20pt}Non-Radiatively: Singlet to Triplet state (reverse of the electron spin)\\
-	%\hspace{-20pt}1- Overlap of vibrational levels\\
-	%(little E loss/gain, $\sim kT$)\\
-	%\hspace{-20pt}2- \textbf{Spin-Orbit Coupling}\\
-	%%(Interaction with $\overrightarrow{L}$ of non-circular orbits)\\
-	%%\hspace{-20pt}
-	%(heavy-atom molecules and paramagnetic species)
-	%
-	%\end{multicols}
 \end{frame}
-
-
-\begin{frame}
-	\frametitle{Quantification \texttt{mill}}
-	
-	\begin{figure}[H]
-		\includegraphics[width=.7 \columnwidth]{./img/vortexScaling.png}
-		\caption{Vortex scaling for the catastrophic Morse potential.}
-		\label{vortexScaling}
-	\end{figure}
-	
-	
-	%%\begin{multicols}{2}
-	%\begin{figure}[H]
-	%\hspace{-10pt}\includegraphics[width=0.9\columnwidth]{../img/SF_esq20.pdf}
-	%\end{figure}
-	%\begin{multicols}{2}
-	%
-	%\hspace{-20pt}\vspace{-20pt}
-	%\begin{figure}[H]
-	%\hspace{-20pt}\vspace{-20pt}\includegraphics[width=0.7\columnwidth]{../img/SF_esq19.png}
-	%\end{figure}
-	%%\columnbreak
-	%\footnotesize
-	%\hspace{-20pt}Non-Radiatively: Singlet to Triplet state (reverse of the electron spin)\\
-	%\hspace{-20pt}1- Overlap of vibrational levels\\
-	%(little E loss/gain, $\sim kT$)\\
-	%\hspace{-20pt}2- \textbf{Spin-Orbit Coupling}\\
-	%%(Interaction with $\overrightarrow{L}$ of non-circular orbits)\\
-	%%\hspace{-20pt}
-	%(heavy-atom molecules and paramagnetic species)
-	%
-	%\end{multicols}
-\end{frame}
-
-%\begin{frame}
-%  \frametitle{Singlet Fission: Process I}
-%%\begin{multicols}{2}
-%%\vspace{-10pt}
-%%\begin{figure}[H]
-%%%centering
-%%\includegraphics[width=1.1\columnwidth]{../img/SF_esq11.pdf}
-%%\end{figure}
-%%\small
-%%\hspace{-15pt}- $S_1$ controls optical properties\\
-%%\hspace{-15pt}- $T_1$ controls electrical properties\\
-%%
-%%\begin{figure}[H]
-%%\includegraphics[width=1.2\columnwidth]{../img/SF_esq3.pdf}
-%%\end{figure}
-%%\small
-%%\hspace{-15pt}- Fission Probability\\
-%%\hspace{-15pt}- Triplet-state lifetime\\
-%%\hspace{-15pt}- Successful (2x) charge separation
-%%\end{multicols}
-%
-%
-%\end{frame}
-%
-%\begin{frame}
-%\frametitle{Singlet Fission: Process II}
-%%
-%%\begin{figure}[H]
-%%\includegraphics[width=0.7\columnwidth]{../img/SF_esq18.pdf}
-%%\end{figure}
-%%%Calculationsofsingletandtripletexcitonsandcharge
-%%%transferstatesatthepentacene/fullereneinterfaceareshown,withthepurple(orange)densityindicating
-%%%whereless(more)electrondensityisfoundintheexcitedstate.Thedelocalizedsingletexcitonandtwo
-%%%localizedtripletexcitonsarecircledinred.Thelosspathwayforsingletexcitonsisdirectdissociationinto
-%%%chargebeforesingletexcitonfission.
-%
-%\end{frame}
-%
-%
-%\begin{frame}
-%  \frametitle{Singlet Fission: Material Example}
-%%\vspace{-10pt}
-%%\hspace{-30pt}
-%%\begin{figure}[H]
-%%%centering
-%%\hspace{-10pt}\includegraphics[width=.7\columnwidth]{../img/SF_esq4.pdf}
-%%\end{figure}
-%%
-%%%\columnbreak
-%%\begin{multicols}{2}
-%%
-%%\begin{figure}[H]
-%%%centering
-%%\vspace{-40pt}\includegraphics[width=1\columnwidth]{../img/SF_esq5.pdf}
-%%\end{figure}
-%%
-%%%\hspace{40pt}(different side-groups)\\
-%%%\hspace{40pt}(Hanna, Nozik) tetracene, anthracene, other polyacene crystals
-%%\begin{figure}[H]
-%%%centering
-%%\vspace{-40pt}\includegraphics[width=1\columnwidth]{../img/SF_esq21.pdf}
-%%\end{figure}
-%%\vspace{-15pt}\footnotesize Tetracene, Pentacene, Anthracene\\
-%%
-%%
-%%\end{multicols}
-%
-%\end{frame}
-%
-%
-%\begin{frame}
-%  \frametitle{Singlet Fission: Detection Techniques}
-%%\normalsize
-%%%\begin{multicols}{2}
-%%\begin{itemize}
-%%\item Photo-Luminescence (t-resolved)
-%%\item Magneto-Optical Techniques\\
-%%\hspace{10pt}\footnotesize (change in Photo-Luminescence with $\overrightarrow{B}$ field through Zeeman interaction)
-%%\normalsize
-%%\item Electron-Paramagnetic Resonance (EPR) and transient EPR\\
-%%\hspace{10pt}\footnotesize (at FUB/HZB with TIPS-tetracene - soluable and change in E-states)
-%%\end{itemize}
-%%\begin{figure}[H]
-%%\includegraphics[width=1\columnwidth]{../img/SF_HZB.pdf}
-%%\end{figure}
-%%
-%%%\end{multicols}
-%
-%\end{frame}
-%
-%
-%\begin{frame}
-%  \frametitle{Singlet Fission: Trends \& Challenges}
-%%%\begin{multicols}{2}
-%%\vspace{-10pt}
-%%\underline{Application}\\
-%%- tandem PV - SF(b)/M2(t): $47,7\%$ (Highest efficiency!)\\
-%%
-%%%\end{multicols}
-%%\underline{Challenges:}
-%%
-%%\begin{itemize}
-%%\item Cost \& Long-term stability in sunlight
-%%\item Matching E-levels for fast (but low potential-loss) charge separation/transfer;
-%%\item Preventing premature charge injection from first $S_1$ while assuring efficient charge injection from $T_1$
-%%\item Max SF rate, min TTA rate; max absorption at all $E>E_g$
-%%\item Neighbouring molecules coupled in pair or higher agregates; \textbf{strong} coupling for fast SF
-%%\item Independent behaviour of both $T_1$; \textbf{weak} coupling for efficient charge separation
-%%\end{itemize}
-%
-%\end{frame}
-%
-%
-%
-%\begin{frame}
-%  \frametitle{Aknowledgements}
-%%\begin{itemize}
-%%\item Thanks to Klaus Lips and Rowan McQueen for the complete and well organized course "Analytics for Photovoltaics" (WS 2016) wherefrom I could have a lot of backup information and material
-%%\item Thanks to the EPR department of HZB - Alexander Schnegg, Shane Bonke - where I was allowed to do an Internship on the technique's field and contact more with the Solar Cells and Solar Fuels topics
-%%%\item Local defect detection
-%%\end{itemize}
-%%\begin{figure}[H]
-%%\includegraphics[width=0.15\columnwidth]{../img/SF_linda.pdf}
-%%\end{figure}
-%
-%\end{frame}
 
 
 \end{document}
