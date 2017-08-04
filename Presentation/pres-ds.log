@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  4 AUG 2017 08:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  4 AUG 2017 08:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2008,44 +2008,23 @@ Overfull \vbox (0.1549pt too high) detected at line 263
 ] [10
 
 ]
-! Missing number, treated as zero.
-<to be read again> 
-                   }
-l.378 \end{frame}
-                 
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.378 \end{frame}
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
 <./img/mill.png, id=87, 323.2075pt x 274.02374pt>
 File: ./img/mill.png Graphic file (type png)
  <use ./img/mill.png>
-Package pdftex.def Info: ./img/mill.png used on input line 378.
+Package pdftex.def Info: ./img/mill.png used on input line 379.
 (pdftex.def)             Requested size: 55.30992pt x 46.89282pt.
  [11
 
  <./img/mill.png>] [12
 
-] <./img/Morsepotential.jpg, id=99, 855.195pt x 776.9025pt>
+] <./img/Morsepotential.jpg, id=100, 855.195pt x 776.9025pt>
 File: ./img/Morsepotential.jpg Graphic file (type jpg)
 
 <use ./img/Morsepotential.jpg>
-Package pdftex.def Info: ./img/Morsepotential.jpg used on input line 430.
+Package pdftex.def Info: ./img/Morsepotential.jpg used on input line 431.
 (pdftex.def)             Requested size: 107.55333pt x 97.70529pt.
 
-Overfull \vbox (23.02895pt too high) detected at line 430
+Overfull \vbox (23.02895pt too high) detected at line 431
  []
 
 [13
@@ -2055,28 +2034,28 @@ Overfull \vbox (23.02895pt too high) detected at line 430
 ] [15
 
 ]
-<./img/ClumpsRing.png, id=121, 482.80376pt x 419.5675pt>
+<./img/ClumpsRing.png, id=122, 482.80376pt x 419.5675pt>
 File: ./img/ClumpsRing.png Graphic file (type png)
 
 <use ./img/ClumpsRing.png>
-Package pdftex.def Info: ./img/ClumpsRing.png used on input line 474.
+Package pdftex.def Info: ./img/ClumpsRing.png used on input line 475.
 (pdftex.def)             Requested size: 184.3758pt x 160.22475pt.
 
-Overfull \vbox (8.08751pt too high) detected at line 474
+Overfull \vbox (8.08751pt too high) detected at line 475
  []
 
 [16
 
  <./img/ClumpsRing.png>]
-<./img/H-stabilityPhaseDiagram.png, id=129, 555.07375pt x 333.245pt>
+<./img/H-stabilityPhaseDiagram.png, id=130, 555.07375pt x 333.245pt>
 File: ./img/H-stabilityPhaseDiagram.png Graphic file (type png)
 
 <use ./img/H-stabilityPhaseDiagram.png>
 Package pdftex.def Info: ./img/H-stabilityPhaseDiagram.png used on input line 4
-89.
+90.
 (pdftex.def)             Requested size: 276.559pt x 166.03731pt.
 
-Overfull \vbox (1.90007pt too high) detected at line 489
+Overfull \vbox (1.90007pt too high) detected at line 490
  []
 
 [17
@@ -2086,114 +2065,114 @@ Overfull \vbox (1.90007pt too high) detected at line 489
 ] [19
 
 ]
-<../plots/mill_II_radius_alpha_1000.pdf, id=148, 361.35pt x 216.81pt>
+<../plots/mill_II_radius_alpha_1000.pdf, id=149, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_alpha_1000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_alpha_1000.pdf>
 Package pdftex.def Info: ../plots/mill_II_radius_alpha_1000.pdf used on input l
-ine 564.
+ine 565.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [20
 
  <../plots/mill_II_radius_alpha_1000.pdf>]
-<../plots/mill_II_radius_alpha_10000.pdf, id=162, 361.35pt x 216.81pt>
+<../plots/mill_II_radius_alpha_10000.pdf, id=163, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_alpha_10000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_alpha_10000.pdf>
 Package pdftex.def Info: ../plots/mill_II_radius_alpha_10000.pdf used on input 
-line 571.
+line 572.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [21
 
  <../plots/mill_II_radius_alpha_10000.pdf>] <../plots/mill_II_radius_mass.pdf, 
-id=177, 361.35pt x 216.81pt>
+id=178, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_mass.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_mass.pdf>
 Package pdftex.def Info: ../plots/mill_II_radius_mass.pdf used on input line 57
-8.
+9.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [22
 
  <../plots/mill_II_radius_mass.pdf>]
 [23
 
-] <../plots/mill_II_square_alpha_1000.pdf, id=196, 361.35pt x 216.81pt>
+] <../plots/mill_II_square_alpha_1000.pdf, id=197, 361.35pt x 216.81pt>
 File: ../plots/mill_II_square_alpha_1000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_square_alpha_1000.pdf>
 Package pdftex.def Info: ../plots/mill_II_square_alpha_1000.pdf used on input l
-ine 600.
+ine 601.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [24
 
  <../plots/mill_II_square_alpha_1000.pdf>]
-<../plots/mill_II_square_alpha_10000.pdf, id=210, 361.35pt x 216.81pt>
+<../plots/mill_II_square_alpha_10000.pdf, id=211, 361.35pt x 216.81pt>
 File: ../plots/mill_II_square_alpha_10000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_square_alpha_10000.pdf>
 Package pdftex.def Info: ../plots/mill_II_square_alpha_10000.pdf used on input 
-line 607.
+line 608.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [25
 
  <../plots/mill_II_square_alpha_10000.pdf>]
-<../plots/mill_II_square_dt_allN.pdf, id=225, 361.35pt x 216.81pt>
+<../plots/mill_II_square_dt_allN.pdf, id=226, 361.35pt x 216.81pt>
 File: ../plots/mill_II_square_dt_allN.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_square_dt_allN.pdf>
 Package pdftex.def Info: ../plots/mill_II_square_dt_allN.pdf used on input line
- 614.
+ 615.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [26
 
  <../plots/mill_II_square_dt_allN.pdf>] [27
 
-] <../plots/mill_II_radius_dt_allN.pdf, id=244, 361.35pt x 216.81pt>
+] <../plots/mill_II_radius_dt_allN.pdf, id=245, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_dt_allN.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_dt_allN.pdf>
 Package pdftex.def Info: ../plots/mill_II_radius_dt_allN.pdf used on input line
- 637.
+ 638.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [28
 
  <../plots/mill_II_radius_dt_allN.pdf>] <../plots/mill_II_speeds_alpha_10000.pd
-f, id=258, 361.35pt x 216.81pt>
+f, id=259, 361.35pt x 216.81pt>
 File: ../plots/mill_II_speeds_alpha_10000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_speeds_alpha_10000.pdf>
 Package pdftex.def Info: ../plots/mill_II_speeds_alpha_10000.pdf used on input 
-line 653.
+line 654.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [29
 
  <../plots/mill_II_speeds_alpha_10000.pdf>]
-<../plots/mill_II_speeds_dt_allN.pdf, id=272, 361.35pt x 216.81pt>
+<../plots/mill_II_speeds_dt_allN.pdf, id=273, 361.35pt x 216.81pt>
 File: ../plots/mill_II_speeds_dt_allN.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_speeds_dt_allN.pdf>
 Package pdftex.def Info: ../plots/mill_II_speeds_dt_allN.pdf used on input line
- 661.
+ 662.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [30
 
  <../plots/mill_II_speeds_dt_allN.pdf>] [31
 
-] <../plots/mill_II_speeds_N.pdf, id=292, 361.35pt x 216.81pt>
+] <../plots/mill_II_speeds_N.pdf, id=293, 361.35pt x 216.81pt>
 File: ../plots/mill_II_speeds_N.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_speeds_N.pdf>
-Package pdftex.def Info: ../plots/mill_II_speeds_N.pdf used on input line 692.
+Package pdftex.def Info: ../plots/mill_II_speeds_N.pdf used on input line 693.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [32
 
  <../plots/mill_II_speeds_N.pdf>]
-<../plots/mill_II_radius_N.pdf, id=306, 361.35pt x 216.81pt>
+<../plots/mill_II_radius_N.pdf, id=307, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_N.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_N.pdf>
-Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 702.
+Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 703.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [33
 
@@ -2207,12 +2186,12 @@ Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 702.
 \tf@snm=\write8
 \openout8 = `pres-ds.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 705.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 705.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 706.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 706.
 
 (./pres-ds.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 705.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 705.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 706.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 706.
 Package rerunfilecheck Info: File `pres-ds.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2223,13 +2202,13 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 705.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 706.
  ) 
 Here is how much of TeX's memory you used:
- 30096 strings out of 493014
- 599724 string characters out of 6133351
- 630892 words of memory out of 5000000
- 32946 multiletter control sequences out of 15000+600000
+ 30098 strings out of 493014
+ 599734 string characters out of 6133351
+ 630942 words of memory out of 5000000
+ 32947 multiletter control sequences out of 15000+600000
  17805 words of font info for 70 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  67i,13n,102p,10379b,710s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2245,10 +2224,10 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/
 2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
 016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/201
 6/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb>
-Output written on pres-ds.pdf (33 pages, 999421 bytes).
+Output written on pres-ds.pdf (33 pages, 993035 bytes).
 PDF statistics:
- 375 PDF objects out of 1000 (max. 8388607)
- 269 compressed objects within 3 object streams
- 72 named destinations out of 1000 (max. 500000)
+ 378 PDF objects out of 1000 (max. 8388607)
+ 272 compressed objects within 3 object streams
+ 73 named destinations out of 1000 (max. 500000)
  147 words of extra memory for PDF output out of 10000 (max. 10000000)
 
