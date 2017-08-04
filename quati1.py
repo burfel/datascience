@@ -1,6 +1,6 @@
 import numpy as np
 from processData import *
-from sim300 import *
+from sim3001 import *
 #from menu import *
 #import matplotlib
 #matplotlib.use("TkAgg")
