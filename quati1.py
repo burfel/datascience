@@ -1,6 +1,6 @@
 import numpy as np
-from processData import *
-from sim300 import *
+from processData1 import *
+from sim3001 import *
 #from menu import *
 #import matplotlib
 #matplotlib.use("TkAgg")
@@ -186,8 +186,6 @@ def analysis(study_par, par_file):
     #plot(data_file)
 
 
-
-N = 10 * (i + 1)
 analysis('prop', 'parameters/parameters4.txt')
 '''
 par_names = ['model', 'use_pbc', 'use_bias', 'N',

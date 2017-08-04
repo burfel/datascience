@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.11.14)  4 AUG 2017 09:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.11.14)  4 AUG 2017 09:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2022,33 +2022,34 @@ Package pdftex.def Info: ../plots/mill_II_radius_dt_allN.pdf used on input line
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [27
 
- <../plots/mill_II_radius_dt_allN.pdf>] <../plots/mill_II_speeds_alpha_10000.pd
-f, id=244, 361.35pt x 216.81pt>
-File: ../plots/mill_II_speeds_alpha_10000.pdf Graphic file (type pdf)
-
-<use ../plots/mill_II_speeds_alpha_10000.pdf>
-Package pdftex.def Info: ../plots/mill_II_speeds_alpha_10000.pdf used on input 
-line 656.
-(pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [28
-
- <../plots/mill_II_speeds_alpha_10000.pdf>]
-<../plots/mill_II_speeds_dt_allN.pdf, id=258, 361.35pt x 216.81pt>
+ <../plots/mill_II_radius_dt_allN.pdf>] <../plots/mill_II_speeds_dt_allN.pdf, i
+d=244, 361.35pt x 216.81pt>
 File: ../plots/mill_II_speeds_dt_allN.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_speeds_dt_allN.pdf>
 Package pdftex.def Info: ../plots/mill_II_speeds_dt_allN.pdf used on input line
- 664.
+ 658.
+(pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
+ [28
+
+ <../plots/mill_II_speeds_dt_allN.pdf>] <../plots/mill_II_speeds_alpha_10000.pd
+f, id=258, 361.35pt x 216.81pt>
+File: ../plots/mill_II_speeds_alpha_10000.pdf Graphic file (type pdf)
+
+<use ../plots/mill_II_speeds_alpha_10000.pdf>
+Package pdftex.def Info: ../plots/mill_II_speeds_alpha_10000.pdf used on input 
+line 666.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [29
 
- <../plots/mill_II_speeds_dt_allN.pdf>] [30
+ <../plots/mill_II_speeds_alpha_10000.pdf>] [30
 
-] <../plots/mill_II_speeds_N.pdf, id=277, 361.35pt x 216.81pt>
+]
+<../plots/mill_II_speeds_N.pdf, id=277, 361.35pt x 216.81pt>
 File: ../plots/mill_II_speeds_N.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_speeds_N.pdf>
-Package pdftex.def Info: ../plots/mill_II_speeds_N.pdf used on input line 695.
+Package pdftex.def Info: ../plots/mill_II_speeds_N.pdf used on input line 696.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [31
 
@@ -2057,11 +2058,21 @@ Package pdftex.def Info: ../plots/mill_II_speeds_N.pdf used on input line 695.
 File: ../plots/mill_II_radius_N.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_N.pdf>
-Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 705.
+Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 706.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [32
 
  <../plots/mill_II_radius_N.pdf>]
+<../plots/mill_VII_speeds_radius_N_d.pdf, id=306, 355.50786pt x 340.88435pt>
+File: ../plots/mill_VII_speeds_radius_N_d.pdf Graphic file (type pdf)
+
+<use ../plots/mill_VII_speeds_radius_N_d.pdf>
+Package pdftex.def Info: ../plots/mill_VII_speeds_radius_N_d.pdf used on input 
+line 718.
+(pdftex.def)             Requested size: 215.10196pt x 206.25386pt.
+ [33
+
+ <../plots/mill_VII_speeds_radius_N_d.pdf>]
 \tf@nav=\write6
 \openout6 = `pres-ds.nav'.
 
@@ -2071,12 +2082,11 @@ Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 705.
 \tf@snm=\write8
 \openout8 = `pres-ds.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 708.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 708.
-
-(./pres-ds.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 708.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 708.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 721.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 721.
+ (./pres-ds.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 721.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 721.
 Package rerunfilecheck Info: File `pres-ds.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2087,14 +2097,14 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 708.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 721.
  ) 
 Here is how much of TeX's memory you used:
- 27469 strings out of 493304
- 542562 string characters out of 6139870
+ 27487 strings out of 493304
+ 543034 string characters out of 6139870
  589727 words of memory out of 5000000
- 30201 multiletter control sequences out of 15000+600000
- 16829 words of font info for 68 fonts, out of 8000000 for 9000
+ 30216 multiletter control sequences out of 15000+600000
+ 17123 words of font info for 69 fonts, out of 8000000 for 9000
  958 hyphenation exceptions out of 8191
  61i,13n,96p,10420b,711s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -2108,10 +2118,10 @@ onts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb>
-Output written on pres-ds.pdf (32 pages, 986503 bytes).
+Output written on pres-ds.pdf (33 pages, 1033710 bytes).
 PDF statistics:
- 360 PDF objects out of 1000 (max. 8388607)
- 258 compressed objects within 3 object streams
- 71 named destinations out of 1000 (max. 500000)
- 142 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 370 PDF objects out of 1000 (max. 8388607)
+ 266 compressed objects within 3 object streams
+ 73 named destinations out of 1000 (max. 500000)
+ 147 words of extra memory for PDF output out of 10000 (max. 10000000)
 
