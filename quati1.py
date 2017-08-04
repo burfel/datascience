@@ -1,6 +1,6 @@
 import numpy as np
 from processData import *
-from sim3001 import *
+from sim300 import *
 #from menu import *
 #import matplotlib
 #matplotlib.use("TkAgg")
@@ -8,7 +8,7 @@ from sim3001 import *
 from timeit import default_timer
 
 Height = 800
-Width = 1300
+Width = 4000
 
 def def_and_run(parameters, N_steps, dt, graphics=True):
     [model, use_pbc, use_bias, N,
@@ -94,27 +94,10 @@ def def_and_run(parameters, N_steps, dt, graphics=True):
         N_steps  - number of steps to perform
         dt - time step to be used
         """
-        #biases = [[0, 0], [0, 0], [0, 0]]
-
-        comands = {"Up": [0, -1], "Down": [0, 1], "Right": [1, 0], "Left": [-1, 0]}
-        agents, speeds = initialize_agents(s, N, Width, Height, Height / 8)
-        cm = get_cm(agents, N)
-        cmagent = Point(cm[0], cm[1])
-        cmagent.setFill("green")
-
-        if graphics:
-            window = initialize_window(agents + [cmagent], Width, Height)
-            closed = False
-        else:
-            window = 0
-            closed = True
-
-        biase = False
-        leaders = 0
-        if use_bias:
-            leaders = initialize_leaders(agents, prop, n_lead, N)
-
+        agents, speeds = initialize_agents(s, N, Width, Height, Height/2)
+        leaders = initialize_leaders(agents, prop, n_lead, N)
         start = default_timer()
+
         for i in range(N_steps):
             
             # Intruduction of a bias in "prop" of the agents
@@ -129,26 +112,8 @@ def def_and_run(parameters, N_steps, dt, graphics=True):
             # BOUNDARY CONDITIONS
             treat_boundary(agents, speeds)
 
-            
-            if graphics and not closed:
-                key = window.checkKey()
-                if key in ["Up","Down","Left","Right"]:
-                    biases = [np.array(comands[key]) for i in range(3)]
-                elif key == "Return":
-                    biase = True
-                    #leaders = initialize_leaders(agents, prop, n_lead, N)
-                elif key == "Escape":
-                    window.close()
-                    closed = True
-                window.update()
-                    
         stop = default_timer()
         print stop - start
-            #save_datapoint(i * dt, dev, data_file)sp
-        if graphics:
-            window.close()
-
-        #plot(data_file)
         return agents, speeds
     
     return run(N_steps, dt)
@@ -192,15 +157,13 @@ def analysis(study_par, par_file):
                             np.sin(np.pi * bias_angle_1 / 180)])
 
 
-    data_file = 'data/' + str(N) + "_" + used_model + "_" + study_par + ".csv"
-
-
+    
+    data_file = 'data/' + str(N) + "_" + study_par + ".csv"
     file = open(data_file, 'w')
     file.truncate()
     file.write(study_par + '\telong\taccur\tdisp\n' )
     file.close()
     par_range = np.arange(1.0/N, 1.0, 1.0/N)
-    
 
     #agents, speeds = def_and_run(saved_parameters, 150, 1, True)
 
@@ -208,40 +171,41 @@ def analysis(study_par, par_file):
         print(val)
         saved_parameters[par_index] = val
         elong = accur = disp = 0
-        agents, speeds = def_and_run(saved_parameters, 300, 1, True)    
-
-        #for j in range(10):
-        #    agents, speeds = def_and_run(saved_parameters, 150, 1, True)
-        #    elong += elongation(agents)
-        #    accur += accuracy(speeds, bias)
-        #    disp += dispersion(agents)
-        #elong /= 10
-        #accur /= 10
-        #disp /= 10
-        #save_datapoint(val, [elong, accur, disp], data_file)
-
+        
+        for j in range(15):
+            agents, speeds = def_and_run(saved_parameters, 300, 1, False)
+            elong += elongation(agents)
+            accur += accuracy(speeds, bias)
+            disp += dispersion(agents)
+        elong /= 15
+        accur /= 15
+        disp /= 15
+        save_datapoint(val, [elong, accur, disp], data_file)
+        #treat_data(agents, speeds, val, data_file)
 
     #plot(data_file)
 
 
 
-for i in range(5):
-    print 'N = ' + str(10 * (i + 1))
-    analysis('prop', 'parameters/parameters' + str(i) + '.txt')
+N = 10 * (i + 1)
+analysis('prop', 'parameters/parameters4.txt')
+'''
+par_names = ['model', 'use_pbc', 'use_bias', 'N',
+                 's', 'a',
+                 'r', 'rr', 'ro', 'ra', 'roa', 'noise', 'n_lead', 'prop',
+                 'weight', 'bias_angle_1', 'bias_angle_2', 'bias_angle_3',
+                 'dev_bias', 'dTheta', 'sight_theta', 'atract', 'orient',
+                 'cr', 'ca', 'lr', 'la', 'alpha', 'beta', 'mass']
 
+parameters = load_parameters('parameters/parameters3.txt')
+par_index = par_names.index('prop')
+bias_angle_1 = parameters[15]
+bias = np.array([np.cos(np.pi * bias_angle_1 / 180),
+                            np.sin(np.pi * bias_angle_1 / 180)])
 
+for prop in range(1,10):
+    parameters[par_index] = prop/10.0
+    print(prop)
+    def_and_run(parameters, 300, 1, True)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+'''
