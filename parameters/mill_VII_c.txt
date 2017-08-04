@@ -25,6 +25,6 @@ cr = 110
 ca = 100
 lr = 20
 la = 100
-alpha = 1.0
+alpha = 4.0
 beta = 0.05
 mass = 3
