@@ -217,7 +217,8 @@ Particle adapts a fraction of its nearest neighbour's speed.
 	\end{itemize}
 	
 \begin{figure}
-	\includegraphics[width=.45\columnwidth, left]{./img/zones.png}
+%	\includegraphics[width=.45\columnwidth, left]{./img/zones.png}
+	\includegraphics[width=.45\columnwidth]{./img/zones.png}
 	\caption{Representation of an individual in the model centred at the origin: \textit{zor} = zone of repulsion, \textit{zoo} = zone of orientation, \textit{zoa} = zone of attraction. \( \alpha \) = field of perception}
 	\label{zones}
 \end{figure}
@@ -317,7 +318,6 @@ update of \( d \) in each zone: \\
 		\item Group elongation
 		\item Two scouts
 	\end{itemize}
-	
 	
 \end{frame}
 
@@ -534,9 +534,9 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 %		\caption{Vortex scaling for the catastrophic Morse potential.}
 %		\label{vortexScaling}
 %	\end{figure}
-	
-
-\end{frame}
+%	
+%
+%\end{frame}
 
 
 \begin{frame}
@@ -547,14 +547,160 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 \begin{itemize}
 	\item parameter sets for different regions
 	\item testing interesting trends, e.g. \( R \propto \frac{\alpha m}{\beta N}\) (from setting \( F_{centrifugal} = F_{centripetal} \))
-	\item \( \vec{v}^{2} \) \xrightarrow{t \to \infty} \( \alpha / \beta \) coming from \( (\alpha - \vec{v}^2 \beta ) \vec{v} = 0 \) for steady state
+
+	
+%	\item \( |\vec{v}|^{2} \) \xrightarrow{t \to \infty} \( \alpha / \beta \) coming from \( (\alpha - |\vec{v}|^2 \beta ) \vec{v} = 0 \) for steady state
+%	\item confirmation of ring formation \\
+%	- \( R_{max}, R_{mean}, R_{min} \) converge to same value \\
+%	- \( v_{radial} \to 0 \) and \( v_{tangential} \to | v_{i} |  \) for \( t \to \infty \)
+%	\item influence of increasing \( N \) on the shape
+%%	\item (trend of N, e.g. in simulation of region VII)
+\end{itemize}
+	
+\end{frame}
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+\begin{figure}[H]
+	\includegraphics[width=1. \columnwidth]{../plots/mill_II_radius_alpha_1000.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	\begin{figure}[H]
+		\includegraphics[width=1. \columnwidth]{../plots/mill_II_radius_alpha_10000.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	\begin{figure}[H]
+		\includegraphics[width=1. \columnwidth]{../plots/mill_II_radius_mass.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	\begin{itemize}
+		\item parameter sets for different regions
+		\item testing interesting trends, e.g. \( R \propto \frac{\alpha m}{\beta N}\) (from setting \( F_{centrifugal} = F_{centripetal} \))
+		\item \( |\vec{v}|^{2} \) \xrightarrow{t \to \infty} \( \alpha / \beta \) coming from \( (\alpha - |\vec{v}|^2 \beta ) \vec{v} = 0 \) for steady state
+%		\item confirmation of ring formation \\
+%		- \( R_{max}, R_{mean}, R_{min} \) converge to same value \\
+%		- \( v_{radial} \to 0 \) and \( v_{tangential} \to | v_{i} |  \) for \( t \to \infty \)
+%		\item influence of increasing \( N \) on the shape
+%		%	\item (trend of N, e.g. in simulation of region VII)
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	\begin{figure}[H]
+		\includegraphics[width=1. \columnwidth]{../plots/mill_II_square_alpha_1000.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	\begin{figure}[H]
+		\includegraphics[width=1. \columnwidth]{../plots/mill_II_square_alpha_10000.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}	
+	\begin{figure}[H]
+		\includegraphics[width=1. \columnwidth]{../plots/mill_II_square_dt_allN.pdf}
+	\end{figure}	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+\begin{itemize}
+	\item parameter sets for different regions
+	\item testing interesting trends, e.g. \( R \propto \frac{\alpha m}{\beta N}\) (from setting \( F_{centrifugal} = F_{centripetal} \))
+	\item \( |\vec{v}|^{2} \) \xrightarrow{t \to \infty} \( \alpha / \beta \) coming from \( (\alpha - |\vec{v}|^2 \beta ) \vec{v} = 0 \) for steady state
 	\item confirmation of ring formation \\
 	- \( R_{max}, R_{mean}, R_{min} \) converge to same value \\
 	- \( v_{radial} \to 0 \) and \( v_{tangential} \to | v_{i} |  \) for \( t \to \infty \)
-	\item influence of increasing \( N \) on the shape
-%	\item (trend of N, e.g. in simulation of region VII)
+%	\item influence of increasing \( N \) on the shape
+%	%	\item (trend of N, e.g. in simulation of region VII)
 \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}	
+	\begin{figure}[H]
+		\includegraphics[width=1. \columnwidth]{../plots/mill_II_radius_dt_allN.pdf}
+	\end{figure}	
+\end{frame}
+
+%not necessary
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}	
+	\begin{figure}[H]
+		\includegraphics[width=1. \columnwidth]{../plots/mill_II_speeds_alpha_1000.pdf}
+	\end{figure}	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}	
+	\begin{figure}[H]
+		\includegraphics[width=1. \columnwidth]{../plots/mill_II_speeds_alpha_10000.pdf}
+	\end{figure}	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}	
+	\begin{figure}[H]
+		\includegraphics[width=1. \columnwidth]{../plots/mill_II_speeds_dt_allN.pdf}
+	\end{figure}	
+\end{frame}
+
+
+%\begin{frame}
+%	\frametitle{Quantification \texttt{mill}}	
+%	\begin{figure}[H]
+%		\includegraphics[width=1. \columnwidth]{../plots/mill_II_speeds_dt_allN.pdfspeeds.pdf}
+%	\end{figure}	
+%\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	\begin{itemize}
+		\item parameter sets for different regions
+		\item testing interesting trends, e.g. \( R \propto \frac{\alpha m}{\beta N}\) (from setting \( F_{centrifugal} = F_{centripetal} \))
+		\item \( |\vec{v}|^{2} \) \xrightarrow{t \to \infty} \( \alpha / \beta \) coming from \( (\alpha - |\vec{v}|^2 \beta ) \vec{v} = 0 \) for steady state
+		\item confirmation of ring formation \\
+		- \( R_{max}, R_{mean}, R_{min} \) converge to same value \\
+		- \( v_{radial} \to 0 \) and \( v_{tangential} \to | v_{i} |  \) for \( t \to \infty \)
+		\item influence of increasing \( N \) on the shape
+		%	\item (trend of N, e.g. in simulation of region VII)
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
+	\begin{figure}[H]
+		\includegraphics[width=1. \columnwidth]{../plots/mill_II_speeds_N.pdf}
+	\end{figure}	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantification \texttt{mill}}
 	
+\begin{figure}[H]
+		\includegraphics[width=1. \columnwidth]{../plots/mill_II_radius_N.pdf}
+\end{figure}
+
 \end{frame}
 
 
