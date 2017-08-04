@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  4 AUG 2017 03:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  4 AUG 2017 08:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1957,26 +1957,14 @@ LaTeX Font Warning: Font shape `OMS/cmss/bx/n' undefined
 
 [2
 
-]
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \relax 
-l.192 \end{frame}
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[3
+] [3
 
 ] [4
 
 ] <./img/zones.png, id=41, 736.7525pt x 634.37pt>
 File: ./img/zones.png Graphic file (type png)
- <use ./img/zones.png>
+
+<use ./img/zones.png>
 Package pdftex.def Info: ./img/zones.png used on input line 227.
 (pdftex.def)             Requested size: 138.2795pt x 119.06023pt.
 
@@ -1985,58 +1973,22 @@ Overfull \vbox (6.723pt too high) detected at line 227
 
 [5
 
- <./img/zones.png>]
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \relax 
-l.263 \end{frame}
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \relax 
-l.263 \end{frame}
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \relax 
-l.263 \end{frame}
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-<./img/eq1.png, id=52, 474.77374pt x 131.49126pt>
+ <./img/zones.png>] <./img/eq1.png, id=52, 474.77374pt x 131.49126pt>
 File: ./img/eq1.png Graphic file (type png)
- <use ./img/eq1.png>
+
+<use ./img/eq1.png>
 Package pdftex.def Info: ./img/eq1.png used on input line 263.
 (pdftex.def)             Requested size: 99.58464pt x 27.57986pt.
-
-<./img/eq2.png, id=53, 572.1375pt x 97.36375pt>
+ <./img/eq2.png, id=53, 572.1375pt x 97.36375pt>
 File: ./img/eq2.png Graphic file (type png)
- <use ./img/eq2.png>
+
+<use ./img/eq2.png>
 Package pdftex.def Info: ./img/eq2.png used on input line 263.
 (pdftex.def)             Requested size: 113.81102pt x 19.36691pt.
-
-<./img/eq3.png, id=54, 415.5525pt x 101.37875pt>
+ <./img/eq3.png, id=54, 415.5525pt x 101.37875pt>
 File: ./img/eq3.png Graphic file (type png)
- <use ./img/eq3.png>
+
+<use ./img/eq3.png>
 Package pdftex.def Info: ./img/eq3.png used on input line 263.
 (pdftex.def)             Requested size: 85.35826pt x 20.82298pt.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <14.4> not available
@@ -2047,58 +1999,19 @@ Overfull \vbox (0.1549pt too high) detected at line 263
 
 [6
 
- <./img/eq1.png> <./img/eq2.png> <./img/eq3.png>]
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \relax 
-l.297 \end{frame}
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[7
+ <./img/eq1.png> <./img/eq2.png> <./img/eq3.png>] [7
 
 ] [8
 
-]
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \relax 
-l.322 \end{frame}
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[9
+] [9
 
 ] [10
 
 ]
-
-! LaTeX Error: Environment wrapfigure undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.380 \end{frame}
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 ! Missing number, treated as zero.
 <to be read again> 
                    }
-l.380 \end{frame}
+l.378 \end{frame}
                  
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -2107,7 +2020,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    }
-l.380 \end{frame}
+l.378 \end{frame}
                  
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -2119,48 +2032,20 @@ two letters. (See Chapter 27 of The TeXbook.)
 <./img/mill.png, id=87, 323.2075pt x 274.02374pt>
 File: ./img/mill.png Graphic file (type png)
  <use ./img/mill.png>
-Package pdftex.def Info: ./img/mill.png used on input line 380.
+Package pdftex.def Info: ./img/mill.png used on input line 378.
 (pdftex.def)             Requested size: 55.30992pt x 46.89282pt.
-
-
-! LaTeX Error: \begin{beamer@framepauses} on input line 380 ended by \end{wrapf
-igure}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.380 \end{frame}
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \relax 
-l.380 \end{frame}
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[11
+ [11
 
  <./img/mill.png>] [12
 
-]
-<./img/Morsepotential.jpg, id=99, 855.195pt x 776.9025pt>
+] <./img/Morsepotential.jpg, id=99, 855.195pt x 776.9025pt>
 File: ./img/Morsepotential.jpg Graphic file (type jpg)
 
 <use ./img/Morsepotential.jpg>
-Package pdftex.def Info: ./img/Morsepotential.jpg used on input line 432.
+Package pdftex.def Info: ./img/Morsepotential.jpg used on input line 430.
 (pdftex.def)             Requested size: 107.55333pt x 97.70529pt.
 
-Overfull \vbox (23.02895pt too high) detected at line 432
+Overfull \vbox (23.02895pt too high) detected at line 430
  []
 
 [13
@@ -2174,10 +2059,10 @@ Overfull \vbox (23.02895pt too high) detected at line 432
 File: ./img/ClumpsRing.png Graphic file (type png)
 
 <use ./img/ClumpsRing.png>
-Package pdftex.def Info: ./img/ClumpsRing.png used on input line 476.
+Package pdftex.def Info: ./img/ClumpsRing.png used on input line 474.
 (pdftex.def)             Requested size: 184.3758pt x 160.22475pt.
 
-Overfull \vbox (8.08751pt too high) detected at line 476
+Overfull \vbox (8.08751pt too high) detected at line 474
  []
 
 [16
@@ -2188,10 +2073,10 @@ File: ./img/H-stabilityPhaseDiagram.png Graphic file (type png)
 
 <use ./img/H-stabilityPhaseDiagram.png>
 Package pdftex.def Info: ./img/H-stabilityPhaseDiagram.png used on input line 4
-91.
+89.
 (pdftex.def)             Requested size: 276.559pt x 166.03731pt.
 
-Overfull \vbox (1.90007pt too high) detected at line 491
+Overfull \vbox (1.90007pt too high) detected at line 489
  []
 
 [17
@@ -2206,7 +2091,7 @@ File: ../plots/mill_II_radius_alpha_1000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_alpha_1000.pdf>
 Package pdftex.def Info: ../plots/mill_II_radius_alpha_1000.pdf used on input l
-ine 566.
+ine 564.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [20
 
@@ -2216,7 +2101,7 @@ File: ../plots/mill_II_radius_alpha_10000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_alpha_10000.pdf>
 Package pdftex.def Info: ../plots/mill_II_radius_alpha_10000.pdf used on input 
-line 573.
+line 571.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [21
 
@@ -2225,33 +2110,12 @@ id=177, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_mass.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_mass.pdf>
-Package pdftex.def Info: ../plots/mill_II_radius_mass.pdf used on input line 58
-0.
+Package pdftex.def Info: ../plots/mill_II_radius_mass.pdf used on input line 57
+8.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [22
 
  <../plots/mill_II_radius_mass.pdf>]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.594 \end{frame}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! LaTeX Error: Bad math environment delimiter.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.594 \end{frame}
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 [23
 
 ] <../plots/mill_II_square_alpha_1000.pdf, id=196, 361.35pt x 216.81pt>
@@ -2259,7 +2123,7 @@ File: ../plots/mill_II_square_alpha_1000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_square_alpha_1000.pdf>
 Package pdftex.def Info: ../plots/mill_II_square_alpha_1000.pdf used on input l
-ine 602.
+ine 600.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [24
 
@@ -2269,7 +2133,7 @@ File: ../plots/mill_II_square_alpha_10000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_square_alpha_10000.pdf>
 Package pdftex.def Info: ../plots/mill_II_square_alpha_10000.pdf used on input 
-line 609.
+line 607.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [25
 
@@ -2279,113 +2143,59 @@ File: ../plots/mill_II_square_dt_allN.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_square_dt_allN.pdf>
 Package pdftex.def Info: ../plots/mill_II_square_dt_allN.pdf used on input line
- 616.
+ 614.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [26
 
- <../plots/mill_II_square_dt_allN.pdf>]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.631 \end{frame}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! LaTeX Error: Bad math environment delimiter.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.631 \end{frame}
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[27
+ <../plots/mill_II_square_dt_allN.pdf>] [27
 
 ] <../plots/mill_II_radius_dt_allN.pdf, id=244, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_dt_allN.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_dt_allN.pdf>
 Package pdftex.def Info: ../plots/mill_II_radius_dt_allN.pdf used on input line
- 639.
+ 637.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
  [28
 
- <../plots/mill_II_radius_dt_allN.pdf>] <../plots/mill_II_speeds_alpha_1000.pdf
-, id=258, 361.35pt x 216.81pt>
-File: ../plots/mill_II_speeds_alpha_1000.pdf Graphic file (type pdf)
-
-<use ../plots/mill_II_speeds_alpha_1000.pdf>
-Package pdftex.def Info: ../plots/mill_II_speeds_alpha_1000.pdf used on input l
-ine 647.
-(pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [29
-
- <../plots/mill_II_speeds_alpha_1000.pdf>]
-<../plots/mill_II_speeds_alpha_10000.pdf, id=272, 361.35pt x 216.81pt>
+ <../plots/mill_II_radius_dt_allN.pdf>] <../plots/mill_II_speeds_alpha_10000.pd
+f, id=258, 361.35pt x 216.81pt>
 File: ../plots/mill_II_speeds_alpha_10000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_speeds_alpha_10000.pdf>
 Package pdftex.def Info: ../plots/mill_II_speeds_alpha_10000.pdf used on input 
-line 655.
+line 653.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [30
+ [29
 
  <../plots/mill_II_speeds_alpha_10000.pdf>]
-<../plots/mill_II_speeds_dt_allN.pdf, id=286, 361.35pt x 216.81pt>
+<../plots/mill_II_speeds_dt_allN.pdf, id=272, 361.35pt x 216.81pt>
 File: ../plots/mill_II_speeds_dt_allN.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_speeds_dt_allN.pdf>
 Package pdftex.def Info: ../plots/mill_II_speeds_dt_allN.pdf used on input line
- 663.
+ 661.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [31
+ [30
 
- <../plots/mill_II_speeds_dt_allN.pdf>]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.686 \end{frame}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+ <../plots/mill_II_speeds_dt_allN.pdf>] [31
 
-
-! LaTeX Error: Bad math environment delimiter.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.686 \end{frame}
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[32
-
-] <../plots/mill_II_speeds_N.pdf, id=306, 361.35pt x 216.81pt>
+] <../plots/mill_II_speeds_N.pdf, id=292, 361.35pt x 216.81pt>
 File: ../plots/mill_II_speeds_N.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_speeds_N.pdf>
-Package pdftex.def Info: ../plots/mill_II_speeds_N.pdf used on input line 694.
+Package pdftex.def Info: ../plots/mill_II_speeds_N.pdf used on input line 692.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [33
+ [32
 
  <../plots/mill_II_speeds_N.pdf>]
-<../plots/mill_II_radius_N.pdf, id=321, 361.35pt x 216.81pt>
+<../plots/mill_II_radius_N.pdf, id=306, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_N.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_N.pdf>
-Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 704.
+Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 702.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [34
+ [33
 
  <../plots/mill_II_radius_N.pdf>]
 \tf@nav=\write6
@@ -2397,12 +2207,12 @@ Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 704.
 \tf@snm=\write8
 \openout8 = `pres-ds.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 707.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 707.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 705.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 705.
 
 (./pres-ds.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 707.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 707.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 705.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 705.
 Package rerunfilecheck Info: File `pres-ds.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2413,13 +2223,13 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 707.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 705.
  ) 
 Here is how much of TeX's memory you used:
- 30107 strings out of 493014
- 599982 string characters out of 6133351
+ 30096 strings out of 493014
+ 599724 string characters out of 6133351
  630892 words of memory out of 5000000
- 32954 multiletter control sequences out of 15000+600000
+ 32946 multiletter control sequences out of 15000+600000
  17805 words of font info for 70 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  67i,13n,102p,10379b,710s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2435,10 +2245,10 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/
 2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
 016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/201
 6/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb>
-Output written on pres-ds.pdf (34 pages, 1007462 bytes).
+Output written on pres-ds.pdf (33 pages, 999421 bytes).
 PDF statistics:
- 391 PDF objects out of 1000 (max. 8388607)
- 281 compressed objects within 3 object streams
- 74 named destinations out of 1000 (max. 500000)
- 152 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 375 PDF objects out of 1000 (max. 8388607)
+ 269 compressed objects within 3 object streams
+ 72 named destinations out of 1000 (max. 500000)
+ 147 words of extra memory for PDF output out of 10000 (max. 10000000)
 

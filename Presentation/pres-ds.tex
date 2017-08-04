@@ -185,7 +185,7 @@
 	
 \textbf{Simple speed coupling}: weighted speed
 
-\hspace{3}
+\hspace{1cm}
 
 Particle adapts a fraction of its nearest neighbour's speed.
 
@@ -234,20 +234,20 @@ Particle adapts a fraction of its nearest neighbour's speed.
   We introduce a bias: orientation of \( \geq 1 \) particle (the "informed" one/ "scout") and merge orientation and attraction zone.
   
   
-  \hspace{1}
+  \hspace{1cm}
   
  
  \textbf{THEORY} 
  
- \hspace{1}
+ \hspace{1cm}
  
 \textbf{New parameters}: weight of bias, proportion of bias, group direction
 
 \textbf{Goal:} Which parameter sets give a nice group movement, and how does the behaviour change when we change the parameters?
 
-\hspace{1}
+\hspace{1cm}
 
-update of \( d \) in each zone: \\
+update of \( d_{i} \) in each zone: \\
 \begin{figure}
 	\begin{tabular}{cc}
 		\includegraphics[width=35mm]{./img/eq1.png} &   \includegraphics[width=40mm]{./img/eq2.png} \\
@@ -285,7 +285,7 @@ update of \( d \) in each zone: \\
 	
 	\textbf{IMPLEMENTATION} 
 	
-	\hspace{1}
+	\hspace{1cm}
 	
 	\begin{itemize}
 		\item periodic boundary conditions
@@ -311,7 +311,7 @@ update of \( d \) in each zone: \\
 	
 	\textbf{QUANTIFICATION} 
 
-	\hspace{1}
+	\hspace{1cm}
 	
 	\begin{itemize}
 		\item Accuracy
@@ -349,17 +349,16 @@ update of \( d \) in each zone: \\
   \textbf{Motivation}: Simulate swarming of multiagent systems in order to understand the operating principles of natural swarms, e.g. swarming behaviour of \textit{M. xanthus} cells. \\ 
   
   
-  \begin{wrapfigure}{}{\textwidth}
-  	\begin{center}
+  \begin{figure}{}{\textwidth}
+  	\centering
   		\includegraphics[width=0.18\textwidth]{./img/mill.png}
-  	\end{center}
-  \end{wrapfigure}
+  \end{figure}
 
 %\hspace{3}
 
   We choose a \textbf{kinetic theory} based approach.\\
 
-\hspace{3}
+\hspace{3cm}
 
   The model traits are:
   \begin{itemize}
@@ -375,7 +374,6 @@ update of \( d \) in each zone: \\
 %  We can \\
 %  - average in direction or velocity \\
 %  - consider different zones of interaction and averaging (see Couzin et al)
-
 
 \end{frame}
 
@@ -584,7 +582,7 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 	\begin{itemize}
 		\item parameter sets for different regions
 		\item testing interesting trends, e.g. \( R \propto \frac{\alpha m}{\beta N}\) (from setting \( F_{centrifugal} = F_{centripetal} \))
-		\item \( |\vec{v}|^{2} \) \xrightarrow{t \to \infty} \( \alpha / \beta \) coming from \( (\alpha - |\vec{v}|^2 \beta ) \vec{v} = 0 \) for steady state
+		\item \( |\vec{v}|^{2} \) \( \xrightarrow{t \to \infty} \) \( \alpha / \beta \) coming from \( (\alpha - |\vec{v}|^2 \beta ) \vec{v} = 0 \) for steady state
 %		\item confirmation of ring formation \\
 %		- \( R_{max}, R_{mean}, R_{min} \) converge to same value \\
 %		- \( v_{radial} \to 0 \) and \( v_{tangential} \to | v_{i} |  \) for \( t \to \infty \)
@@ -621,7 +619,7 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 \begin{itemize}
 	\item parameter sets for different regions
 	\item testing interesting trends, e.g. \( R \propto \frac{\alpha m}{\beta N}\) (from setting \( F_{centrifugal} = F_{centripetal} \))
-	\item \( |\vec{v}|^{2} \) \xrightarrow{t \to \infty} \( \alpha / \beta \) coming from \( (\alpha - |\vec{v}|^2 \beta ) \vec{v} = 0 \) for steady state
+	\item \( |\vec{v}|^{2}  \xrightarrow{t \to \infty}  \alpha / \beta \) coming from \( (\alpha - |\vec{v}|^2 \beta ) \vec{v} = 0 \) for steady state
 	\item confirmation of ring formation \\
 	- \( R_{max}, R_{mean}, R_{min} \) converge to same value \\
 	- \( v_{radial} \to 0 \) and \( v_{tangential} \to | v_{i} |  \) for \( t \to \infty \)
@@ -638,13 +636,13 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 	\end{figure}	
 \end{frame}
 
-%not necessary
-\begin{frame}
-	\frametitle{Quantification \texttt{mill}}	
-	\begin{figure}[H]
-		\includegraphics[width=1. \columnwidth]{../plots/mill_II_speeds_alpha_1000.pdf}
-	\end{figure}	
-\end{frame}
+%%not necessary
+%\begin{frame}
+%	\frametitle{Quantification \texttt{mill}}	
+%	\begin{figure}[H]
+%		\includegraphics[width=1. \columnwidth]{../plots/mill_II_speeds_alpha_1000.pdf}
+%	\end{figure}	
+%\end{frame}
 
 
 \begin{frame}
@@ -676,7 +674,7 @@ where \( C_{a}\), \( C_{r}\) denote attractive and repulsive strengths and \( l_
 	\begin{itemize}
 		\item parameter sets for different regions
 		\item testing interesting trends, e.g. \( R \propto \frac{\alpha m}{\beta N}\) (from setting \( F_{centrifugal} = F_{centripetal} \))
-		\item \( |\vec{v}|^{2} \) \xrightarrow{t \to \infty} \( \alpha / \beta \) coming from \( (\alpha - |\vec{v}|^2 \beta ) \vec{v} = 0 \) for steady state
+		\item \( |\vec{v}|^{2} \xrightarrow{t \to \infty}  \alpha / \beta \) coming from \( (\alpha - |\vec{v}|^2 \beta ) \vec{v} = 0 \) for steady state
 		\item confirmation of ring formation \\
 		- \( R_{max}, R_{mean}, R_{min} \) converge to same value \\
 		- \( v_{radial} \to 0 \) and \( v_{tangential} \to | v_{i} |  \) for \( t \to \infty \)
