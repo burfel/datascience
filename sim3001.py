@@ -107,10 +107,10 @@ def nearest_neighbour(agent, agents, N):
 
 
 def softened_angle(speed, newspeed, s, maxTheta):
-    #proposal = normalized(newspeed + normalized(speed))
-    theta = angle(speed, newspeed)
+    proposal = normalized(newspeed + normalized(speed))
+    theta = angle(speed, proposal)
     if maxTheta > theta: # changed to non-square ---> TEST!
-        return s * newspeed
+        return s * proposal
     else:
         return np.dot(rot_matrix(maxTheta), speed)    
 
@@ -174,6 +174,7 @@ def periodic_boundary(x_bound, y_bound, agents, speeds, N):  #Changed from rigid
             dy = y_bound
 
         agents[i].move(dx, dy)
+
 
 def next_step(agents, speeds, dt, N):
     dxvec = [dt * speeds[i][0] for i in range(N)]

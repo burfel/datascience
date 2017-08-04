@@ -11,7 +11,7 @@ import sys
 # N - Number of particles
 # Width and Height of window
 
-#[N, Width, Height] = map(int, sys.argv[1:])
+[N, Width, Height] = map(int, sys.argv[1:])
 steps = 1000
 time_step = 1
 parameters_file = 'mill_I'
@@ -189,7 +189,7 @@ else:
 #####################################################################################################
 
 
-[model, use_pbc, use_bias, a, s, r, rr, ro, ra, roa, noise, n_lead,
+[model, use_pbc, use_bias, N, a, s, r, rr, ro, ra, roa, noise, n_lead,
  prop, weight, bias_angle_1, bias_angle_2, bias_angle_3, dev_bias,
  dTheta, sight_theta, atract, orient,
  cr, ca, lr, la, alpha, beta, mass] = load_parameters(parameters_file)
@@ -307,4 +307,4 @@ def run(N_steps, dt):
     return
 
 
-run(500, 1)
+run(5000, 0.1)
