@@ -157,7 +157,7 @@ def rigid_boundary(x_bound, y_bound, agents, speeds, N):
         agents[i].move(dx, dy)
         
         
-def periodic_boundary(x_bound, y_bound, agents, speeds, N):  #Changed from rigid boundaries do periodic boundary condition
+def periodic_boundary(x_bound, y_bound, agents, speeds, N):  #Changed from rigid boundaries to periodic boundary condition
     [dx, dy] = [0, 0]
     for i in range(N):
         [x, y] = [agents[i].getX(), agents[i].getY()]
@@ -234,7 +234,7 @@ def mill_observables (N, agents, speeds):
 
 # In[13]:
 
-#COUZIN MODEL IMPLEMENTED WITH REPULSION, ATRACT AND ORIENT ZONES SEPARATED (1ST PAPER)
+#COUZIN MODEL IMPLEMENTED WITH REPULSION, ATTRACTION AND ORIENTATION ZONE SEPARATED (1ST PAPER)
 def couzin(agents, other_agents, speeds, N, width, height, s, noise, dTheta, rr, ro, ra, sight_range, model2, roa, atract, orient):
     
     if not model2:
