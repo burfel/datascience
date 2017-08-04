@@ -163,7 +163,7 @@ def analysis(study_par, par_file):
     file.truncate()
     file.write(study_par + '\telong\taccur\tdisp\n' )
     file.close()
-    par_range = np.arange(1.0/N, 1.0, 1.0/N)
+    par_range = np.arange(0, 1.0, 5.0/N)
 
     #agents, speeds = def_and_run(saved_parameters, 150, 1, True)
 
