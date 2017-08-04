@@ -27,4 +27,4 @@ lr = 230
 la = 150
 alpha = 2.0
 beta = 0.01
-mass = 3
+mass = 2
