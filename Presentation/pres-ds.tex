@@ -185,16 +185,12 @@
 	
 \textbf{Simple speed coupling}: weighted speed
 
-\hspace{1cm}
+%\hspace{.5pt}
 
 Particle adapts a fraction of its nearest neighbour's speed.
 
-\end{frame}
+\hspace{3cm}
 
-
-\begin{frame}
-	\frametitle{Review past models (simple speed coupling, vicsek model, couzin model)}
-	
 	\textbf{Vicsek model} \\
 	
 	
@@ -202,8 +198,10 @@ Particle adapts a fraction of its nearest neighbour's speed.
 		\item introduce interaction zones: repulsion and alignment
 		\item add noise
 	\end{itemize}
-	
+
 \end{frame}
+
+
 
 
 \begin{frame}
@@ -241,24 +239,11 @@ Particle adapts a fraction of its nearest neighbour's speed.
  
  \hspace{1cm}
  
-\textbf{New parameters}: weight of bias, proportion of bias, group direction
+\textbf{New parameters}: weight of bias \( \omega  \), bias direction \( g_{i}\), proportion of bias \( prop  \)
 
 \textbf{Goal:} Which parameter sets give a nice group movement, and how does the behaviour change when we change the parameters?
 
 \hspace{1cm}
-
-update of \( d_{i} \) in each zone: \\
-\begin{figure}
-	\begin{tabular}{cc}
-		\includegraphics[width=35mm]{./img/eq1.png} &   \includegraphics[width=40mm]{./img/eq2.png} \\
-		%		(a) first & (b) second \\[6pt]
-		\includegraphics[width=30mm]{./img/eq3.png} \\
-%		(d) fourth \\[6pt]
-%		\multicolumn{2}{c}
-%		{\includegraphics[width=40mm]{./img/eq3.png} }\\
-		%		\multicolumn{2}{c}{(e) fifth}
-	\end{tabular}
-\end{figure}
 
 \end{frame}
 
@@ -290,7 +275,20 @@ update of \( d_{i} \) in each zone: \\
 	\begin{itemize}
 		\item periodic boundary conditions
 		\item virtual interaction of agents
-		\item explicit Euler method: \( v_{n+1}= v_{n} + \tau \cdot f(t_{n}, v_{n})  \)
+		\item explicit Euler method: \( v_{n+1}= v_{n} + \tau \cdot \frac{dv_{n}}{dt}  \)
+		\item update of desired direction of travel \( d_{i} \) in each zone: \\
+		\begin{figure}
+			\begin{tabular}{cc}
+				\includegraphics[width=35mm]{./img/eq1.png} &   \includegraphics[width=40mm]{./img/eq2.png} \\
+				%		(a) first & (b) second \\[6pt]
+				\includegraphics[width=30mm]{./img/eq3.png} \\
+				%		(d) fourth \\[6pt]
+				%		\multicolumn{2}{c}
+				%		{\includegraphics[width=40mm]{./img/eq3.png} }\\
+				%		\multicolumn{2}{c}{(e) fifth}
+			\end{tabular}
+		\end{figure}
+		with position vector \( c_{i}(t) \), direction vector \( v_{i}(t) \)%, speed \( s_{i} \)
 	\end{itemize}
 	
 	

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  4 AUG 2017 08:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.28)  4 AUG 2017 12:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1959,212 +1959,208 @@ LaTeX Font Warning: Font shape `OMS/cmss/bx/n' undefined
 
 ] [3
 
-] [4
-
-] <./img/zones.png, id=41, 736.7525pt x 634.37pt>
+] <./img/zones.png, id=36, 736.7525pt x 634.37pt>
 File: ./img/zones.png Graphic file (type png)
-
-<use ./img/zones.png>
-Package pdftex.def Info: ./img/zones.png used on input line 227.
+ <use ./img/zones.png>
+Package pdftex.def Info: ./img/zones.png used on input line 225.
 (pdftex.def)             Requested size: 138.2795pt x 119.06023pt.
 
-Overfull \vbox (6.723pt too high) detected at line 227
+Overfull \vbox (6.723pt too high) detected at line 225
  []
 
-[5
+[4
 
- <./img/zones.png>] <./img/eq1.png, id=52, 474.77374pt x 131.49126pt>
+ <./img/zones.png>]
+LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 248.
+ [5
+
+] <./img/eq1.png, id=55, 474.77374pt x 131.49126pt>
 File: ./img/eq1.png Graphic file (type png)
 
 <use ./img/eq1.png>
-Package pdftex.def Info: ./img/eq1.png used on input line 263.
+Package pdftex.def Info: ./img/eq1.png used on input line 295.
 (pdftex.def)             Requested size: 99.58464pt x 27.57986pt.
- <./img/eq2.png, id=53, 572.1375pt x 97.36375pt>
+ <./img/eq2.png, id=56, 572.1375pt x 97.36375pt>
 File: ./img/eq2.png Graphic file (type png)
 
 <use ./img/eq2.png>
-Package pdftex.def Info: ./img/eq2.png used on input line 263.
+Package pdftex.def Info: ./img/eq2.png used on input line 295.
 (pdftex.def)             Requested size: 113.81102pt x 19.36691pt.
- <./img/eq3.png, id=54, 415.5525pt x 101.37875pt>
+ <./img/eq3.png, id=57, 415.5525pt x 101.37875pt>
 File: ./img/eq3.png Graphic file (type png)
 
 <use ./img/eq3.png>
-Package pdftex.def Info: ./img/eq3.png used on input line 263.
+Package pdftex.def Info: ./img/eq3.png used on input line 295.
 (pdftex.def)             Requested size: 85.35826pt x 20.82298pt.
-LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 263.
+ [6
 
-Overfull \vbox (0.1549pt too high) detected at line 263
- []
-
-[6
-
- <./img/eq1.png> <./img/eq2.png> <./img/eq3.png>] [7
+ <./img/eq1.png> <./img/eq2.png> <./img/eq3.png>]
+[7
 
 ] [8
 
 ] [9
 
-] [10
+] <./img/mill.png, id=82, 323.2075pt x 274.02374pt>
+File: ./img/mill.png Graphic file (type png)
+
+<use ./img/mill.png>
+Package pdftex.def Info: ./img/mill.png used on input line 377.
+(pdftex.def)             Requested size: 55.30992pt x 46.89282pt.
+ [10
+
+ <./img/mill.png>] [11
 
 ]
-<./img/mill.png, id=87, 323.2075pt x 274.02374pt>
-File: ./img/mill.png Graphic file (type png)
- <use ./img/mill.png>
-Package pdftex.def Info: ./img/mill.png used on input line 379.
-(pdftex.def)             Requested size: 55.30992pt x 46.89282pt.
- [11
-
- <./img/mill.png>] [12
-
-] <./img/Morsepotential.jpg, id=100, 855.195pt x 776.9025pt>
+<./img/Morsepotential.jpg, id=95, 855.195pt x 776.9025pt>
 File: ./img/Morsepotential.jpg Graphic file (type jpg)
 
 <use ./img/Morsepotential.jpg>
-Package pdftex.def Info: ./img/Morsepotential.jpg used on input line 431.
+Package pdftex.def Info: ./img/Morsepotential.jpg used on input line 429.
 (pdftex.def)             Requested size: 122.91406pt x 111.65811pt.
 
-Overfull \vbox (10.98177pt too high) detected at line 431
+Overfull \vbox (10.98177pt too high) detected at line 429
  []
 
-[13
+[12
 
- <./img/Morsepotential.jpg>] [14
+ <./img/Morsepotential.jpg>] [13
 
-] [15
+] [14
 
 ]
-<./img/ClumpsRing.png, id=122, 482.80376pt x 419.5675pt>
+<./img/ClumpsRing.png, id=117, 482.80376pt x 419.5675pt>
 File: ./img/ClumpsRing.png Graphic file (type png)
 
 <use ./img/ClumpsRing.png>
-Package pdftex.def Info: ./img/ClumpsRing.png used on input line 475.
+Package pdftex.def Info: ./img/ClumpsRing.png used on input line 473.
 (pdftex.def)             Requested size: 184.3758pt x 160.22475pt.
 
-Overfull \vbox (8.08751pt too high) detected at line 475
+Overfull \vbox (8.08751pt too high) detected at line 473
  []
 
-[16
+[15
 
  <./img/ClumpsRing.png>]
-<./img/H-stabilityPhaseDiagram.png, id=130, 555.07375pt x 333.245pt>
+<./img/H-stabilityPhaseDiagram.png, id=125, 555.07375pt x 333.245pt>
 File: ./img/H-stabilityPhaseDiagram.png Graphic file (type png)
 
 <use ./img/H-stabilityPhaseDiagram.png>
 Package pdftex.def Info: ./img/H-stabilityPhaseDiagram.png used on input line 4
-90.
+88.
 (pdftex.def)             Requested size: 276.559pt x 166.03731pt.
 
-Overfull \vbox (1.90007pt too high) detected at line 490
+Overfull \vbox (1.90007pt too high) detected at line 488
  []
 
-[17
+[16
 
- <./img/H-stabilityPhaseDiagram.png>] [18
+ <./img/H-stabilityPhaseDiagram.png>] [17
 
-] [19
+] [18
 
 ]
-<../plots/mill_II_radius_alpha_1000.pdf, id=149, 361.35pt x 216.81pt>
+<../plots/mill_II_radius_alpha_1000.pdf, id=143, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_alpha_1000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_alpha_1000.pdf>
 Package pdftex.def Info: ../plots/mill_II_radius_alpha_1000.pdf used on input l
-ine 567.
+ine 565.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [20
+ [19
 
  <../plots/mill_II_radius_alpha_1000.pdf>]
-<../plots/mill_II_radius_alpha_10000.pdf, id=163, 361.35pt x 216.81pt>
+<../plots/mill_II_radius_alpha_10000.pdf, id=158, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_alpha_10000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_alpha_10000.pdf>
 Package pdftex.def Info: ../plots/mill_II_radius_alpha_10000.pdf used on input 
-line 574.
+line 572.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [21
+ [20
 
  <../plots/mill_II_radius_alpha_10000.pdf>] <../plots/mill_II_radius_mass.pdf, 
-id=178, 361.35pt x 216.81pt>
+id=173, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_mass.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_mass.pdf>
-Package pdftex.def Info: ../plots/mill_II_radius_mass.pdf used on input line 58
-1.
+Package pdftex.def Info: ../plots/mill_II_radius_mass.pdf used on input line 57
+9.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [22
+ [21
 
  <../plots/mill_II_radius_mass.pdf>]
-[23
+[22
 
-] <../plots/mill_II_square_alpha_10000.pdf, id=197, 361.35pt x 216.81pt>
+] <../plots/mill_II_square_alpha_10000.pdf, id=192, 361.35pt x 216.81pt>
 File: ../plots/mill_II_square_alpha_10000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_square_alpha_10000.pdf>
 Package pdftex.def Info: ../plots/mill_II_square_alpha_10000.pdf used on input 
-line 610.
+line 608.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [24
+ [23
 
  <../plots/mill_II_square_alpha_10000.pdf>]
-<../plots/mill_II_square_dt_allN.pdf, id=211, 361.35pt x 216.81pt>
+<../plots/mill_II_square_dt_allN.pdf, id=206, 361.35pt x 216.81pt>
 File: ../plots/mill_II_square_dt_allN.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_square_dt_allN.pdf>
 Package pdftex.def Info: ../plots/mill_II_square_dt_allN.pdf used on input line
- 617.
+ 615.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [25
+ [24
 
- <../plots/mill_II_square_dt_allN.pdf>] [26
+ <../plots/mill_II_square_dt_allN.pdf>] [25
 
-] <../plots/mill_II_radius_dt_allN.pdf, id=231, 361.35pt x 216.81pt>
+] <../plots/mill_II_radius_dt_allN.pdf, id=226, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_dt_allN.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_dt_allN.pdf>
 Package pdftex.def Info: ../plots/mill_II_radius_dt_allN.pdf used on input line
- 640.
+ 638.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [27
+ [26
 
  <../plots/mill_II_radius_dt_allN.pdf>] <../plots/mill_II_speeds_alpha_10000.pd
-f, id=245, 361.35pt x 216.81pt>
+f, id=240, 361.35pt x 216.81pt>
 File: ../plots/mill_II_speeds_alpha_10000.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_speeds_alpha_10000.pdf>
 Package pdftex.def Info: ../plots/mill_II_speeds_alpha_10000.pdf used on input 
-line 656.
+line 654.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [28
+ [27
 
  <../plots/mill_II_speeds_alpha_10000.pdf>]
-<../plots/mill_II_speeds_dt_allN.pdf, id=259, 361.35pt x 216.81pt>
+<../plots/mill_II_speeds_dt_allN.pdf, id=254, 361.35pt x 216.81pt>
 File: ../plots/mill_II_speeds_dt_allN.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_speeds_dt_allN.pdf>
 Package pdftex.def Info: ../plots/mill_II_speeds_dt_allN.pdf used on input line
- 664.
+ 662.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [29
+ [28
 
- <../plots/mill_II_speeds_dt_allN.pdf>] [30
+ <../plots/mill_II_speeds_dt_allN.pdf>] [29
 
-] <../plots/mill_II_speeds_N.pdf, id=278, 361.35pt x 216.81pt>
+] <../plots/mill_II_speeds_N.pdf, id=273, 361.35pt x 216.81pt>
 File: ../plots/mill_II_speeds_N.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_speeds_N.pdf>
-Package pdftex.def Info: ../plots/mill_II_speeds_N.pdf used on input line 695.
+Package pdftex.def Info: ../plots/mill_II_speeds_N.pdf used on input line 693.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [31
+ [30
 
  <../plots/mill_II_speeds_N.pdf>]
-<../plots/mill_II_radius_N.pdf, id=293, 361.35pt x 216.81pt>
+<../plots/mill_II_radius_N.pdf, id=287, 361.35pt x 216.81pt>
 File: ../plots/mill_II_radius_N.pdf Graphic file (type pdf)
 
 <use ../plots/mill_II_radius_N.pdf>
-Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 705.
+Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 703.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [32
+ [31
 
  <../plots/mill_II_radius_N.pdf>]
 \tf@nav=\write6
@@ -2176,12 +2172,12 @@ Package pdftex.def Info: ../plots/mill_II_radius_N.pdf used on input line 705.
 \tf@snm=\write8
 \openout8 = `pres-ds.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 708.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 708.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 706.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 706.
 
 (./pres-ds.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 708.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 708.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 706.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 706.
 Package rerunfilecheck Info: File `pres-ds.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2192,13 +2188,13 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 708.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 706.
  ) 
 Here is how much of TeX's memory you used:
- 30091 strings out of 493014
- 599515 string characters out of 6133351
+ 30086 strings out of 493014
+ 599481 string characters out of 6133351
  630951 words of memory out of 5000000
- 32943 multiletter control sequences out of 15000+600000
+ 32940 multiletter control sequences out of 15000+600000
  17805 words of font info for 70 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  67i,13n,102p,10379b,710s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2214,10 +2210,10 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/
 2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
 016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/201
 6/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb>
-Output written on pres-ds.pdf (32 pages, 984459 bytes).
+Output written on pres-ds.pdf (31 pages, 984945 bytes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
- 260 compressed objects within 3 object streams
- 71 named destinations out of 1000 (max. 500000)
+ 357 PDF objects out of 1000 (max. 8388607)
+ 256 compressed objects within 3 object streams
+ 69 named destinations out of 1000 (max. 500000)
  142 words of extra memory for PDF output out of 10000 (max. 10000000)
 
