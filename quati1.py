@@ -9,7 +9,7 @@ from timeit import default_timer
 
 Height = 800
 Width = 4000
-
+o = 8
 def def_and_run(parameters, N_steps, dt, graphics=True):
     [model, use_pbc, use_bias, N,
      s, a,
