@@ -1,15 +1,13 @@
 import numpy as np
-from processData1 import *
+from processData import *
 from sim3001 import *
-#from menu import *
+from menu1 import *
 #import matplotlib
 #matplotlib.use("TkAgg")
 #from matplotlib import pyplot as plt
 from timeit import default_timer
 
-Height = 800
-Width = 4000
-o = 8
+
 def def_and_run(parameters, N_steps, dt, graphics=True):
     [model, use_pbc, use_bias, N,
      s, a,
@@ -95,13 +93,19 @@ def def_and_run(parameters, N_steps, dt, graphics=True):
         dt - time step to be used
         """
         agents, speeds = initialize_agents(s, N, Width, Height, Height/2)
-        leaders = initialize_leaders(agents, prop, n_lead, N)
-        start = default_timer()
+        leaders = window = closed = 1
+        if use_bias:
+            leaders = initialize_leaders(agents, prop, n_lead, N)
+        if graphics:
+            window = initialize_window(agents, Width, Height)
+            closed = False
 
+        start = default_timer()
         for i in range(N_steps):
             
             # Intruduction of a bias in "prop" of the agents
-            treat_biases(agents, speeds, leaders)
+            if use_bias:
+                treat_biases(agents, speeds, leaders)
 
             # Model for agent interactions
             interaction(agents, speeds, dt)
@@ -112,8 +116,18 @@ def def_and_run(parameters, N_steps, dt, graphics=True):
             # BOUNDARY CONDITIONS
             treat_boundary(agents, speeds)
 
+            if graphics and not closed:
+                key = window.checkKey()
+                if key == "Escape":
+                    window.close()
+                    closed = True
+                window.update()
+
         stop = default_timer()
         print stop - start
+        if graphics:
+            window.close()
+
         return agents, speeds
     
     return run(N_steps, dt)
@@ -163,7 +177,7 @@ def analysis(study_par, par_file):
     file.truncate()
     file.write(study_par + '\telong\taccur\tdisp\n' )
     file.close()
-    par_range = np.arange(0, 1.0, 5.0/N)
+    par_range = np.arange(1.0/N, 1.0, 1.0/N)
 
     #agents, speeds = def_and_run(saved_parameters, 150, 1, True)
 
@@ -185,8 +199,47 @@ def analysis(study_par, par_file):
 
     #plot(data_file)
 
+N_steps = int(sys.argv[1])
+dt = float(sys.argv[2])
+parameters_file = 'parameters/' + sys.argv[3] + '.txt'
+print(N_steps)
 
-analysis('prop', 'parameters/parameters4.txt')
+Height = 500
+Width = 500
+
+parameters = menu(parameters_file)
+def_and_run(parameters, N_steps, dt, graphics=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#N = 10 * (i + 1)
+#analysis('prop', 'parameters/parameters4.txt')
 '''
 par_names = ['model', 'use_pbc', 'use_bias', 'N',
                  's', 'a',
