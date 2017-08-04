@@ -204,8 +204,8 @@ dt = float(sys.argv[2])
 parameters_file = 'parameters/' + sys.argv[3] + '.txt'
 print(N_steps)
 
-Height = 700
-Width = 1350
+Height = 500
+Width = 500
 
 parameters = menu(parameters_file)
 def_and_run(parameters, N_steps, dt, graphics=True)
